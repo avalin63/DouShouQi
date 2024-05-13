@@ -7,12 +7,32 @@
 
 import SwiftUI
 
-struct PrimaryLeftButton: View {
+struct PrimaryLeftButton<Leading: View>: View {
+    var leading: () -> Leading
+    var label: String
+    
+    init(@ViewBuilder leading: @escaping () -> Leading, label: String) {
+        self.leading = leading
+        self.label = label
+    }
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        GenericLeftButton(leading: self.leading, label: self.label, backgroundColor: DSQColors.primaryColor, foregroundColor: DSQColors.primaryTextButtonColor)
+            .shadow(color: DSQColors.primaryColor.opacity(0.3), radius: 15, x: 0, y: 0)
+        
     }
 }
 
-#Preview {
-    PrimaryLeftButton()
+
+#Preview("Light") {
+    PrimaryLeftButton(leading:{
+        Image(systemName: "chart.pie.fill")}
+                      , label: "Statistiques")
+}
+
+#Preview("Dark") {
+    PrimaryLeftButton(leading: {
+        Image(systemName: "chart.pie.fill")}
+                      , label: "Statistiques")
+    .preferredColorScheme(/*@START_MENU_TOKEN@*/.dark/*@END_MENU_TOKEN@*/)
 }

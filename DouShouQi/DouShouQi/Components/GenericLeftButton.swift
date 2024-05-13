@@ -7,45 +7,34 @@
 
 import SwiftUI
 
-import SwiftUI
-
-struct GenericLeftButton<Leading: View, Trailing: View>: View {
+struct GenericLeftButton<Leading: View>: View {
     var leading: () -> Leading
-    var trailing: () -> Trailing
     var label: String
-    var color: Color
+    var backgroundColor: Color
+    var foregroundColor: Color
     
-    init(@ViewBuilder leading: @escaping () -> Leading, @ViewBuilder trailing: @escaping () -> Trailing, label: String, color: Color = DSQColors.buttonbackgroundColor) {
+    @State private var isExpanded = false
+    
+    init(@ViewBuilder leading: @escaping () -> Leading, label: String, backgroundColor: Color = DSQColors.buttonBackgroundColor, foregroundColor: Color = DSQColors.buttonTextColor) {
         self.leading = leading
-        self.trailing = trailing
         self.label = label
-        self.color = color
+        self.backgroundColor = backgroundColor
+        self.foregroundColor = foregroundColor
     }
-
+    
     var body: some View {
-        Button(action: {}) {
+        Button(action: {
+            withAnimation {
+                isExpanded.toggle()
+            }
+        }) {
             HStack(spacing: 10){
-                leading()
+                leading().frame(width: 40)
                 Text(self.label)
-                trailing()
                 Spacer()
             }
         }
-        .buttonStyle(OptionsButtonStyle(backgroundColor: color))
+        .buttonStyle(LeftButtonStyle(backgroundColor: backgroundColor, foregroundColor: foregroundColor, isExpanded: isExpanded))
     }
 }
 
-#Preview("Light") {
-    GenericLeftButton(leading: {
-        Image(systemName: "chart.pie.fill")
-    }, trailing: {
-    }, label: "Statistiques", color: DSQColors.primaryColor)
-}
-
-#Preview("Dark") {
-    GenericLeftButton(leading: {
-        Image(systemName: "chart.pie.fill")
-    }, trailing: {
-    }, label: "Statistiques", color: DSQColors.primaryColor)
-    .preferredColorScheme(/*@START_MENU_TOKEN@*/.dark/*@END_MENU_TOKEN@*/)
-}
