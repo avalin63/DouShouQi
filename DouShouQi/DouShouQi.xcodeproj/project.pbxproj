@@ -14,6 +14,13 @@
 		1221D8812BF1EFF600CB5EB9 /* DouShouQiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1221D8802BF1EFF600CB5EB9 /* DouShouQiTests.swift */; };
 		1221D88B2BF1EFF600CB5EB9 /* DouShouQiUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1221D88A2BF1EFF600CB5EB9 /* DouShouQiUITests.swift */; };
 		1221D88D2BF1EFF600CB5EB9 /* DouShouQiUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1221D88C2BF1EFF600CB5EB9 /* DouShouQiUITestsLaunchTests.swift */; };
+		1221D89B2BF2401D00CB5EB9 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1221D89A2BF2401D00CB5EB9 /* HomeView.swift */; };
+		1221D89F2BF2416600CB5EB9 /* GenericLeftButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1221D89E2BF2416600CB5EB9 /* GenericLeftButton.swift */; };
+		1221D8A22BF2431600CB5EB9 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1221D8A12BF2431600CB5EB9 /* Colors.swift */; };
+		1221D8A52BF244E500CB5EB9 /* RoundedCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1221D8A42BF244E400CB5EB9 /* RoundedCorner.swift */; };
+		1221D8A72BF24D4E00CB5EB9 /* Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1221D8A62BF24D4E00CB5EB9 /* Styles.swift */; };
+		1221D8A92BF25F1100CB5EB9 /* PrimaryLeftButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1221D8A82BF25F1100CB5EB9 /* PrimaryLeftButton.swift */; };
+		1221D8AB2BF260E700CB5EB9 /* OptionsLeftButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1221D8AA2BF260E700CB5EB9 /* OptionsLeftButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +51,13 @@
 		1221D8862BF1EFF600CB5EB9 /* DouShouQiUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DouShouQiUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1221D88A2BF1EFF600CB5EB9 /* DouShouQiUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DouShouQiUITests.swift; sourceTree = "<group>"; };
 		1221D88C2BF1EFF600CB5EB9 /* DouShouQiUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DouShouQiUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		1221D89A2BF2401D00CB5EB9 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		1221D89E2BF2416600CB5EB9 /* GenericLeftButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericLeftButton.swift; sourceTree = "<group>"; };
+		1221D8A12BF2431600CB5EB9 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		1221D8A42BF244E400CB5EB9 /* RoundedCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCorner.swift; sourceTree = "<group>"; };
+		1221D8A62BF24D4E00CB5EB9 /* Styles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Styles.swift; sourceTree = "<group>"; };
+		1221D8A82BF25F1100CB5EB9 /* PrimaryLeftButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryLeftButton.swift; sourceTree = "<group>"; };
+		1221D8AA2BF260E700CB5EB9 /* OptionsLeftButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsLeftButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +108,10 @@
 		1221D86E2BF1EFF600CB5EB9 /* DouShouQi */ = {
 			isa = PBXGroup;
 			children = (
+				1221D8A32BF244B800CB5EB9 /* Extensions */,
+				1221D8A02BF2430600CB5EB9 /* Ressources */,
+				1221D89D2BF240D400CB5EB9 /* Components */,
+				1221D8992BF23FCE00CB5EB9 /* Views */,
 				1221D86F2BF1EFF600CB5EB9 /* DouShouQiApp.swift */,
 				1221D8712BF1EFF600CB5EB9 /* ContentView.swift */,
 				1221D8732BF1EFF600CB5EB9 /* Assets.xcassets */,
@@ -125,6 +143,41 @@
 				1221D88C2BF1EFF600CB5EB9 /* DouShouQiUITestsLaunchTests.swift */,
 			);
 			path = DouShouQiUITests;
+			sourceTree = "<group>";
+		};
+		1221D8992BF23FCE00CB5EB9 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				1221D89A2BF2401D00CB5EB9 /* HomeView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		1221D89D2BF240D400CB5EB9 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				1221D89E2BF2416600CB5EB9 /* GenericLeftButton.swift */,
+				1221D8A82BF25F1100CB5EB9 /* PrimaryLeftButton.swift */,
+				1221D8AA2BF260E700CB5EB9 /* OptionsLeftButton.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		1221D8A02BF2430600CB5EB9 /* Ressources */ = {
+			isa = PBXGroup;
+			children = (
+				1221D8A12BF2431600CB5EB9 /* Colors.swift */,
+				1221D8A62BF24D4E00CB5EB9 /* Styles.swift */,
+			);
+			path = Ressources;
+			sourceTree = "<group>";
+		};
+		1221D8A32BF244B800CB5EB9 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				1221D8A42BF244E400CB5EB9 /* RoundedCorner.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -257,7 +310,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1221D8A52BF244E500CB5EB9 /* RoundedCorner.swift in Sources */,
+				1221D8A72BF24D4E00CB5EB9 /* Styles.swift in Sources */,
+				1221D89B2BF2401D00CB5EB9 /* HomeView.swift in Sources */,
+				1221D8A22BF2431600CB5EB9 /* Colors.swift in Sources */,
 				1221D8722BF1EFF600CB5EB9 /* ContentView.swift in Sources */,
+				1221D8AB2BF260E700CB5EB9 /* OptionsLeftButton.swift in Sources */,
+				1221D8A92BF25F1100CB5EB9 /* PrimaryLeftButton.swift in Sources */,
+				1221D89F2BF2416600CB5EB9 /* GenericLeftButton.swift in Sources */,
 				1221D8702BF1EFF600CB5EB9 /* DouShouQiApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
