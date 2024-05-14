@@ -21,7 +21,7 @@ struct LeftButtonStyle: ButtonStyle {
             .background(backgroundColor)
             .foregroundColor(foregroundColor)
             .cornerRadius(15, corners: [.bottomRight, .topRight])
-            .padding(.trailing, isExpanded ? -10 : 30)
+            .padding(.trailing, isExpanded ? -0 : 30)
             .contentShape(Rectangle())
     }
 }

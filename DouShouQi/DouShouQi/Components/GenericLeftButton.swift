@@ -29,7 +29,7 @@ struct GenericLeftButton<Leading: View>: View {
             }
         }) {
             HStack(spacing: 10){
-                leading().frame(width: 40)
+                leading().frame(width: 40, alignment: .trailing)
                 Text(self.label)
                 Spacer()
             }
