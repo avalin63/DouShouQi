@@ -1,0 +1,17 @@
+/* 
+  Localizable.strings
+  DouShouQi
+
+  Created by Emre Kartal on 14/05/2024.
+  
+*/
+
+"new_game" = "New game";
+"statistics" = "Statistics";
+"options" = "Options";
+"player" = "Joueur";
+"players" = "Joueurs";
+"round" = "Round";
+"validate" = "Validate";
+"in_waiting" = "In waiting...";
+"historics" = "Historics";
