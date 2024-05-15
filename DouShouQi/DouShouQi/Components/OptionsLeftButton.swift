@@ -25,12 +25,12 @@ struct OptionsLeftButton<Leading: View>: View {
 #Preview("Light") {
     OptionsLeftButton(leading:
                         {Image(systemName: "chart.pie.fill")}
-                      , label: "Statistiques")
+                      , label: NSLocalizedString("statistics", comment: "Statistics"))
 }
 
 #Preview("Dark") {
     OptionsLeftButton(leading: 
                         {Image(systemName: "chart.pie.fill")}
-                      , label: "Statistiques")
+                      , label: NSLocalizedString("statistics", comment: "Statistics"))
     .preferredColorScheme(/*@START_MENU_TOKEN@*/.dark/*@END_MENU_TOKEN@*/)
 }

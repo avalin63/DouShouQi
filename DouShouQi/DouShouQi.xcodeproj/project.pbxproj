@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		1221D8702BF1EFF600CB5EB9 /* DouShouQiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1221D86F2BF1EFF600CB5EB9 /* DouShouQiApp.swift */; };
-		1221D8722BF1EFF600CB5EB9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1221D8712BF1EFF600CB5EB9 /* ContentView.swift */; };
 		1221D8742BF1EFF600CB5EB9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1221D8732BF1EFF600CB5EB9 /* Assets.xcassets */; };
 		1221D8772BF1EFF600CB5EB9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1221D8762BF1EFF600CB5EB9 /* Preview Assets.xcassets */; };
 		1221D8812BF1EFF600CB5EB9 /* DouShouQiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1221D8802BF1EFF600CB5EB9 /* DouShouQiTests.swift */; };
@@ -21,6 +20,7 @@
 		1221D8A72BF24D4E00CB5EB9 /* Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1221D8A62BF24D4E00CB5EB9 /* Styles.swift */; };
 		1221D8A92BF25F1100CB5EB9 /* PrimaryLeftButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1221D8A82BF25F1100CB5EB9 /* PrimaryLeftButton.swift */; };
 		1221D8AB2BF260E700CB5EB9 /* OptionsLeftButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1221D8AA2BF260E700CB5EB9 /* OptionsLeftButton.swift */; };
+		C95EE5E02BF3A8D4002C459C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C95EE5DE2BF3A8D4002C459C /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,7 +43,6 @@
 /* Begin PBXFileReference section */
 		1221D86C2BF1EFF600CB5EB9 /* DouShouQi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DouShouQi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1221D86F2BF1EFF600CB5EB9 /* DouShouQiApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DouShouQiApp.swift; sourceTree = "<group>"; };
-		1221D8712BF1EFF600CB5EB9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		1221D8732BF1EFF600CB5EB9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1221D8762BF1EFF600CB5EB9 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		1221D87C2BF1EFF600CB5EB9 /* DouShouQiTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DouShouQiTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -58,6 +57,8 @@
 		1221D8A62BF24D4E00CB5EB9 /* Styles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Styles.swift; sourceTree = "<group>"; };
 		1221D8A82BF25F1100CB5EB9 /* PrimaryLeftButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryLeftButton.swift; sourceTree = "<group>"; };
 		1221D8AA2BF260E700CB5EB9 /* OptionsLeftButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsLeftButton.swift; sourceTree = "<group>"; };
+		C95EE5DF2BF3A8D4002C459C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		C95EE5E12BF3A8DD002C459C /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,11 +110,10 @@
 			isa = PBXGroup;
 			children = (
 				1221D8A32BF244B800CB5EB9 /* Extensions */,
-				1221D8A02BF2430600CB5EB9 /* Ressources */,
+				1221D8A02BF2430600CB5EB9 /* Resources */,
 				1221D89D2BF240D400CB5EB9 /* Components */,
 				1221D8992BF23FCE00CB5EB9 /* Views */,
 				1221D86F2BF1EFF600CB5EB9 /* DouShouQiApp.swift */,
-				1221D8712BF1EFF600CB5EB9 /* ContentView.swift */,
 				1221D8732BF1EFF600CB5EB9 /* Assets.xcassets */,
 				1221D8752BF1EFF600CB5EB9 /* Preview Content */,
 			);
@@ -163,13 +163,14 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
-		1221D8A02BF2430600CB5EB9 /* Ressources */ = {
+		1221D8A02BF2430600CB5EB9 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
 				1221D8A12BF2431600CB5EB9 /* Colors.swift */,
 				1221D8A62BF24D4E00CB5EB9 /* Styles.swift */,
+				C95EE5DE2BF3A8D4002C459C /* Localizable.strings */,
 			);
-			path = Ressources;
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		1221D8A32BF244B800CB5EB9 /* Extensions */ = {
@@ -266,6 +267,7 @@
 			knownRegions = (
 				en,
 				Base,
+				fr,
 			);
 			mainGroup = 1221D8632BF1EFF600CB5EB9;
 			productRefGroup = 1221D86D2BF1EFF600CB5EB9 /* Products */;
@@ -285,6 +287,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1221D8772BF1EFF600CB5EB9 /* Preview Assets.xcassets in Resources */,
+				C95EE5E02BF3A8D4002C459C /* Localizable.strings in Resources */,
 				1221D8742BF1EFF600CB5EB9 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -314,7 +317,6 @@
 				1221D8A72BF24D4E00CB5EB9 /* Styles.swift in Sources */,
 				1221D89B2BF2401D00CB5EB9 /* HomeView.swift in Sources */,
 				1221D8A22BF2431600CB5EB9 /* Colors.swift in Sources */,
-				1221D8722BF1EFF600CB5EB9 /* ContentView.swift in Sources */,
 				1221D8AB2BF260E700CB5EB9 /* OptionsLeftButton.swift in Sources */,
 				1221D8A92BF25F1100CB5EB9 /* PrimaryLeftButton.swift in Sources */,
 				1221D89F2BF2416600CB5EB9 /* GenericLeftButton.swift in Sources */,
@@ -353,6 +355,18 @@
 			targetProxy = 1221D8872BF1EFF600CB5EB9 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		C95EE5DE2BF3A8D4002C459C /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C95EE5DF2BF3A8D4002C459C /* en */,
+				C95EE5E12BF3A8DD002C459C /* fr */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		1221D88E2BF1EFF600CB5EB9 /* Debug */ = {

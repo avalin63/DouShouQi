@@ -26,13 +26,13 @@ struct HomeView: View {
                 Spacer()
                 PrimaryLeftButton(leading:
                                     {Image(systemName: "gamecontroller.fill")}
-                                  ,label: "Nouvelle partie")
+                                  ,label: NSLocalizedString("new_game", comment: "New Game"))
                 OptionsLeftButton(leading:
                                     {Image(systemName: "chart.pie.fill")}
-                                  , label: "Statistiques")
+                                  , label: NSLocalizedString("statistics", comment: "Statistics"))
                 OptionsLeftButton(leading:
                                     {Image(systemName: "gearshape.fill")}
-                                  , label: "Options")
+                                  , label: NSLocalizedString("options", comment: "Options"))
             }
             .padding(.top, 100)
             .padding(.bottom,200)
