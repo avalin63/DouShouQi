@@ -16,4 +16,7 @@ struct DSQColors {
     static let buttonTextColor = Color("ButtonTextColor")
     static let primaryTextButtonColor = Color("PrimaryTextButtonColor")
     static let titleColor = Color("TitleColor")
+    static let subHeadTextColor = Color("SubHeadTextColor")
+    static let partyCellBackgroundColor = Color("PartyCellBackgroundColor")
+    static let partyCellBorderColor = Color("PartyCellBorderColor")
 }
