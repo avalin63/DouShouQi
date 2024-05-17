@@ -12,13 +12,13 @@ struct StartGameView: View {
         VStack(alignment: .leading){
             VStack{
                 PrimaryLeftButton(leading: {Image(systemName: "gamecontroller.fill")}
-                                  ,label: "1 joueur")
+                                  ,label: String(localized: "\(1) player"))
                 PrimaryLeftButton(leading: {Image(systemName: "gamecontroller.fill")
                     Image(systemName: "gamecontroller.fill")}
-                                  ,label: "2 joueurs")
+                                  ,label: String(localized: "\(2) player"))
             }.padding(.bottom, 30)
             VStack(alignment: .leading){
-                Text("Historique")
+                Text(String(localized: "historics"))
                     .font(.title2)
                     .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
                     .foregroundStyle(DSQColors.titleColor)

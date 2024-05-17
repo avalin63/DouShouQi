@@ -24,7 +24,7 @@
 		122FD9B32BF6A0B9000B6D0A /* PartyResumeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122FD9B22BF6A0B9000B6D0A /* PartyResumeCell.swift */; };
 		122FD9B52BF6A377000B6D0A /* BorderEdge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122FD9B42BF6A377000B6D0A /* BorderEdge.swift */; };
 		122FD9B72BF6A71D000B6D0A /* ScrollViewFade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122FD9B62BF6A71D000B6D0A /* ScrollViewFade.swift */; };
-		C95EE5E02BF3A8D4002C459C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C95EE5DE2BF3A8D4002C459C /* Localizable.strings */; };
+		12C9C5882BF7846D00BB5B39 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 12C9C5872BF7846D00BB5B39 /* Localizable.xcstrings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,8 +65,7 @@
 		122FD9B22BF6A0B9000B6D0A /* PartyResumeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartyResumeCell.swift; sourceTree = "<group>"; };
 		122FD9B42BF6A377000B6D0A /* BorderEdge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderEdge.swift; sourceTree = "<group>"; };
 		122FD9B62BF6A71D000B6D0A /* ScrollViewFade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollViewFade.swift; sourceTree = "<group>"; };
-		C95EE5DF2BF3A8D4002C459C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		C95EE5E12BF3A8DD002C459C /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		12C9C5872BF7846D00BB5B39 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -178,7 +177,7 @@
 			children = (
 				1221D8A12BF2431600CB5EB9 /* Colors.swift */,
 				1221D8A62BF24D4E00CB5EB9 /* Styles.swift */,
-				C95EE5DE2BF3A8D4002C459C /* Localizable.strings */,
+				12C9C5872BF7846D00BB5B39 /* Localizable.xcstrings */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -299,7 +298,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1221D8772BF1EFF600CB5EB9 /* Preview Assets.xcassets in Resources */,
-				C95EE5E02BF3A8D4002C459C /* Localizable.strings in Resources */,
+				12C9C5882BF7846D00BB5B39 /* Localizable.xcstrings in Resources */,
 				1221D8742BF1EFF600CB5EB9 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -371,18 +370,6 @@
 			targetProxy = 1221D8872BF1EFF600CB5EB9 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		C95EE5DE2BF3A8D4002C459C /* Localizable.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C95EE5DF2BF3A8D4002C459C /* en */,
-				C95EE5E12BF3A8DD002C459C /* fr */,
-			);
-			name = Localizable.strings;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		1221D88E2BF1EFF600CB5EB9 /* Debug */ = {
