@@ -19,20 +19,20 @@ struct HomeView: View {
                 .edgesIgnoringSafeArea(.all)
                 .position(x: 160, y: 150)
             VStack{
-                Text("DouShouQi")
+                Text(String(localized: "DouShouQi"))
                     .font(.largeTitle)
                     .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
                     .foregroundStyle(DSQColors.titleColor)
                 Spacer()
                 PrimaryLeftButton(leading:
                                     {Image(systemName: "gamecontroller.fill")}
-                                  ,label: NSLocalizedString("new_game", comment: "New Game"))
+                                  ,label: String(localized: "new_game"))
                 OptionsLeftButton(leading:
                                     {Image(systemName: "chart.pie.fill")}
-                                  , label: NSLocalizedString("statistics", comment: "Statistics"))
+                                  , label: String(localized: "statistics"))
                 OptionsLeftButton(leading:
                                     {Image(systemName: "gearshape.fill")}
-                                  , label: NSLocalizedString("options", comment: "Options"))
+                                  , label: String(localized: "options"))
             }
             .padding(.top, 100)
             .padding(.bottom,200)
