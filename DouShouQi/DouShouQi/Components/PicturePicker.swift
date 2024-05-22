@@ -8,19 +8,21 @@
 import SwiftUI
 
 struct PicturePicker: View {
+    var backgroundColor: Color
+    var foregroundColor: Color
     var body: some View {
         ZStack{
-            Circle().scaledToFit()
+            Circle().fill(backgroundColor).scaledToFit()
             Image(systemName: "camera.fill")
                 .resizable()
                 .scaledToFit()
-                .foregroundColor(.white)
-                .padding(20)
+                .foregroundColor(foregroundColor)
+                .padding(40)
                 
         }
     }
 }
 
 #Preview {
-    PicturePicker()
+    PicturePicker(backgroundColor: DSQColors.topPhotoPickerBackgroundColor, foregroundColor: DSQColors.topPhotoPickerForegroundColor)
 }

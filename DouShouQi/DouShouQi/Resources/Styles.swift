@@ -53,4 +53,3 @@ struct BottomUsernameTextInputStyle: TextFieldStyle {
             .fixedSize()
     }
 }
-

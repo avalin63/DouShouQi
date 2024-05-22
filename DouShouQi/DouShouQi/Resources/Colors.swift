@@ -23,4 +23,8 @@ struct DSQColors {
     static let bottomUsernameTextInputBackgroundColor = Color("BottomUsernameTextInputBackgroundColor")
     static let topUserContaierBackgroundColor = Color("TopUserContaierBackgroundColor")
     static let bottomUserContainerBackgroundColor = Color("BottomUserContainerBackgroundColor")
+    static let topPhotoPickerBackgroundColor = Color("TopPhotoPickerBackgroundColor")
+    static let bottomPhotoPickerBackgroundColor = Color("BottomPhotoPickerBackgroundColor")
+    static let topPhotoPickerForegroundColor = Color("TopPhotoPickerForegroundColor")
+    static let bottomPhotoPickerForegroundColor = Color("BottomPhotoPickerForegroundColor")
 }

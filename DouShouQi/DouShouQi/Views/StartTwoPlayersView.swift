@@ -12,20 +12,12 @@ struct PreparationTwoPlayersView: View {
         GeometryReader{ geo in
             VStack(spacing: 0){
                         VStack{
-                            HStack{
-                                Spacer()
-                                PlayerPreparation(textInputStyle: TopUsernameTextInputStyle())
-                                Spacer()
-                            }
-                        }.frame(height: geo.size.height * (1/2))
+                            PlayerPreparation(textInputStyle: TopUsernameTextInputStyle(), picturePickerBackground: DSQColors.topPhotoPickerBackgroundColor, picturePickerForeground: DSQColors.topPhotoPickerForegroundColor)
+                        }.frame(width: geo.size.width,height: geo.size.height * (1/2))
                             .background(DSQColors.topUserContaierBackgroundColor)
                         VStack{
-                            HStack{
-                                Spacer()
-                                PlayerPreparation(textInputStyle: BottomUsernameTextInputStyle())
-                                Spacer()
-                            }
-                        }.frame(height: geo.size.height * (1/2))
+                            PlayerPreparation(textInputStyle: BottomUsernameTextInputStyle(), picturePickerBackground: DSQColors.bottomPhotoPickerBackgroundColor, picturePickerForeground: DSQColors.bottomPhotoPickerForegroundColor)
+                        }.frame(width: geo.size.width,height: geo.size.height * (1/2))
                             .background(DSQColors.bottomUserContainerBackgroundColor)
                     }
                 }
