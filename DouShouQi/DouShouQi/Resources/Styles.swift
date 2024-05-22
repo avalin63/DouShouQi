@@ -25,3 +25,32 @@ struct LeftButtonStyle: ButtonStyle {
             .contentShape(Rectangle())
     }
 }
+
+struct TopUsernameTextInputStyle: TextFieldStyle {
+    func _body(configuration: TextField<Self._Label>) -> some View {
+        configuration
+            .textInputAutocapitalization(.words)
+            .foregroundStyle(.white)
+            .padding(.horizontal, 15)
+            .padding(.vertical, 7)
+            .background(DSQColors.topUsernameTextInputBackgroundColor)
+            .cornerRadius(15)
+            .autocorrectionDisabled()
+            .fixedSize()
+    }
+}
+
+struct BottomUsernameTextInputStyle: TextFieldStyle {
+    func _body(configuration: TextField<Self._Label>) -> some View {
+        configuration
+            .textInputAutocapitalization(.words)
+            .foregroundStyle(.white)
+            .padding(.horizontal, 15)
+            .padding(.vertical, 7)
+            .background(DSQColors.bottomUsernameTextInputBackgroundColor)
+            .cornerRadius(15)
+            .autocorrectionDisabled()
+            .fixedSize()
+    }
+}
+

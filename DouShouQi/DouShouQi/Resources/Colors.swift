@@ -19,4 +19,8 @@ struct DSQColors {
     static let subHeadTextColor = Color("SubHeadTextColor")
     static let partyCellBackgroundColor = Color("PartyCellBackgroundColor")
     static let partyCellBorderColor = Color("PartyCellBorderColor")
+    static let topUsernameTextInputBackgroundColor = Color("TopUsernameTextInputBackgroundColor")
+    static let bottomUsernameTextInputBackgroundColor = Color("BottomUsernameTextInputBackgroundColor")
+    static let topUserContaierBackgroundColor = Color("TopUserContaierBackgroundColor")
+    static let bottomUserContainerBackgroundColor = Color("BottomUserContainerBackgroundColor")
 }
