@@ -11,11 +11,14 @@ struct StartGameView: View {
     var body: some View {
         VStack(alignment: .leading){
             VStack{
-                PrimaryLeftButton(leading: {Image(systemName: "gamecontroller.fill")}
-                                  ,label: String(localized: "\(1) player"))
-                PrimaryLeftButton(leading: {Image(systemName: "gamecontroller.fill")
-                    Image(systemName: "gamecontroller.fill")}
-                                  ,label: String(localized: "\(2) player"))
+                PrimaryLeftButton(
+                    leading: { Image("icSingleplayer") },
+                    label: String(localized: "\(1) player")
+                )
+                PrimaryLeftButton(
+                    leading: { Image("icTwoPlayers") },
+                    label: String(localized: "\(2) player")
+                )
             }.padding(.bottom, 30)
             VStack(alignment: .leading){
                 Text(String(localized: "historics"))

@@ -17,20 +17,30 @@ struct OptionsLeftButton<Leading: View>: View {
     }
     
     var body: some View {
-        GenericLeftButton(leading: self.leading, label: self.label, backgroundColor: DSQColors.buttonBackgroundColor)
+        GenericLeftButton(
+            leading: self.leading,
+            label: self.label,
+            backgroundColor: DSQColors.buttonBackgroundColor
+        )
         
     }
 }
 
 #Preview("Light") {
-    OptionsLeftButton(leading:
-                        {Image(systemName: "chart.pie.fill")}
-                      , label: NSLocalizedString("statistics", comment: "Statistics"))
+    OptionsLeftButton(
+        leading: {
+            Image(systemName: "chart.pie.fill")
+        }, 
+        label: NSLocalizedString("statistics", comment: "Statistics")
+    )
 }
 
 #Preview("Dark") {
-    OptionsLeftButton(leading: 
-                        {Image(systemName: "chart.pie.fill")}
-                      , label: NSLocalizedString("statistics", comment: "Statistics"))
+    OptionsLeftButton(
+        leading: {
+            Image(systemName: "chart.pie.fill")
+        },
+        label: NSLocalizedString("statistics", comment: "Statistics")
+    )
     .preferredColorScheme(/*@START_MENU_TOKEN@*/.dark/*@END_MENU_TOKEN@*/)
 }
