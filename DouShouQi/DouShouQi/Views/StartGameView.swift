@@ -16,7 +16,9 @@ struct StartGameView: View {
                 PrimaryLeftButton(leading: {Image(systemName: "gamecontroller.fill")
                     Image(systemName: "gamecontroller.fill")}
                                   ,label: String(localized: "\(2) player"))
-            }.padding(.bottom, 30)
+            }
+            .padding(.bottom, 30)
+            
             VStack(alignment: .leading){
                 Text(String(localized: "historics"))
                     .font(.title2)
@@ -32,7 +34,8 @@ struct StartGameView: View {
                     PartyResumeCell()
                     PartyResumeCell()
                     PartyResumeCell()
-                }.fadeOutTop(fadeLength: 30)
+                }
+                .fadeOutTop(fadeLength: 30)
             }
             Spacer()
         }
