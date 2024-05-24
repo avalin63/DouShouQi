@@ -19,4 +19,5 @@ struct DSQColors {
     static let subHeadTextColor = Color("SubHeadTextColor")
     static let partyCellBackgroundColor = Color("PartyCellBackgroundColor")
     static let partyCellBorderColor = Color("PartyCellBorderColor")
+    static let moveCellBackgroundColor = Color("MoveCellBackgroundColor")
 }
