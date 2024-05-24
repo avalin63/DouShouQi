@@ -87,23 +87,6 @@
         }
       }
     },
-    "in_waiting" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "In waiting..."
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "En attente..."
-          }
-        }
-      }
-    },
     "new_game" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -134,6 +117,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Options"
+          }
+        }
+      }
+    },
+    "player %lld" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Player %lld"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Joueur %lld"
           }
         }
       }
@@ -184,13 +184,30 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Validate"
+            "value" : "VALIDATE"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Valider"
+            "value" : "VALIDER"
+          }
+        }
+      }
+    },
+    "waiting" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Waiting..."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "En attente..."
           }
         }
       }

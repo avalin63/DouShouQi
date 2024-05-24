@@ -24,19 +24,29 @@ struct HomeView: View {
                     .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
                     .foregroundStyle(DSQColors.titleColor)
                 Spacer()
-                PrimaryLeftButton(leading:
-                                    {Image(systemName: "gamecontroller.fill")}
-                                  ,label: String(localized: "new_game"))
-                OptionsLeftButton(leading:
-                                    {Image(systemName: "chart.pie.fill")}
-                                  , label: String(localized: "statistics"))
-                OptionsLeftButton(leading:
-                                    {Image(systemName: "gearshape.fill")}
-                                  , label: String(localized: "options"))
+                PrimaryLeftButton(
+                    leading: {
+                        Image(systemName: "gamecontroller.fill")
+                    },
+                    label: String(localized: "new_game")
+                )
+                OptionsLeftButton(
+                    leading: {
+                        Image(systemName: "chart.pie.fill")
+                    },
+                    label: String(localized: "statistics")
+                )
+                OptionsLeftButton(
+                    leading: {
+                        Image(systemName: "gearshape.fill")
+                    },
+                    label: String(localized: "options")
+                )
             }
             .padding(.top, 100)
             .padding(.bottom,200)
-        }.background(DSQColors.backgroundColor)
+        }
+        .background(DSQColors.backgroundColor)
     }
 }
 
