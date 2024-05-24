@@ -48,6 +48,15 @@
     "12min34s" : {
 
     },
+    "Annuler" : {
+
+    },
+    "Appareil Photo" : {
+
+    },
+    "Depuis quelle source souhaitez vous prendre votre photo de profil ?" : {
+
+    },
     "DouShouQi" : {
       "localizations" : {
         "fr" : {
@@ -57,6 +66,9 @@
           }
         }
       }
+    },
+    "Galerie" : {
+
     },
     "historics" : {
       "extractionState" : "manual",
@@ -127,6 +139,9 @@
       }
     },
     "Pseudo" : {
+
+    },
+    "Pseudonyme" : {
 
     },
     "round" : {

@@ -11,34 +11,15 @@ struct PlayerPreparation<TextStyle: TextFieldStyle>: View {
     var textInputStyle: TextStyle
     var picturePickerBackground: Color
     var picturePickerForeground: Color
-
-    @State private var isShowingDialog = false
     
     var body: some View {
         VStack {
-            PicturePicker(backgroundColor: picturePickerBackground, foregroundColor: picturePickerForeground).onTapGesture {
-                isShowingDialog = true
-            }
+            PicturePicker(backgroundColor: picturePickerBackground, foregroundColor: picturePickerForeground)
             .frame(width: 170, height: 170)
             .padding(.bottom, 30)
             
             PlayerNameTextInput(style:textInputStyle)
         }
-        .confirmationDialog(
-              "Depuis quelle source souhaitez vous prendre votre photo de profil ?",
-              isPresented: $isShowingDialog,
-              titleVisibility: .visible
-            ) {
-              Button("Galerie") {
-              // Handle Galerie.
-              }
-              Button("Appareil Photo") {
-              // Handle camera.
-              }
-              Button("Annuler", role: .cancel) {
-                isShowingDialog = false
-              }
-            }
         .frame(width: 170, height: 170)
         .padding(.bottom, 30)
     }
