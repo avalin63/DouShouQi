@@ -11,9 +11,10 @@ struct PicturePicker: View {
     var backgroundColor: Color
     var foregroundColor: Color
     @State private var pickerItem: PhotosPickerItem?
-    @State private var selectedImage: Image?
+    @Binding var selectedImage: Image?
     @State private var isShowingDialog = false
     @State private var isShowingImagePicker = false
+    
     
     var body: some View {
         ZStack{

@@ -13,6 +13,7 @@
 		120475032BFE1B7C0044AD97 /* PicturePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 120475022BFE1B7C0044AD97 /* PicturePicker.swift */; };
 		120475052BFE8B600044AD97 /* Effects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 120475042BFE8B600044AD97 /* Effects.swift */; };
 		120475082C00BC4F0044AD97 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 120475072C00BC4F0044AD97 /* ImagePicker.swift */; };
+		1204750A2C00BD6B0044AD97 /* StartOnePlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 120475092C00BD6B0044AD97 /* StartOnePlayerView.swift */; };
 		1221D8702BF1EFF600CB5EB9 /* DouShouQiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1221D86F2BF1EFF600CB5EB9 /* DouShouQiApp.swift */; };
 		1221D8742BF1EFF600CB5EB9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1221D8732BF1EFF600CB5EB9 /* Assets.xcassets */; };
 		1221D8772BF1EFF600CB5EB9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1221D8762BF1EFF600CB5EB9 /* Preview Assets.xcassets */; };
@@ -57,6 +58,7 @@
 		120475022BFE1B7C0044AD97 /* PicturePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PicturePicker.swift; sourceTree = "<group>"; };
 		120475042BFE8B600044AD97 /* Effects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Effects.swift; sourceTree = "<group>"; };
 		120475072C00BC4F0044AD97 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		120475092C00BD6B0044AD97 /* StartOnePlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartOnePlayerView.swift; sourceTree = "<group>"; };
 		1221D86C2BF1EFF600CB5EB9 /* DouShouQi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DouShouQi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1221D86F2BF1EFF600CB5EB9 /* DouShouQiApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DouShouQiApp.swift; sourceTree = "<group>"; };
 		1221D8732BF1EFF600CB5EB9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -179,6 +181,7 @@
 				1221D89A2BF2401D00CB5EB9 /* HomeView.swift */,
 				122FD9B02BF69F1B000B6D0A /* StartGameView.swift */,
 				120474FC2BFE13F60044AD97 /* StartTwoPlayersView.swift */,
+				120475092C00BD6B0044AD97 /* StartOnePlayerView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -365,6 +368,7 @@
 				1221D8A92BF25F1100CB5EB9 /* PrimaryLeftButton.swift in Sources */,
 				122FD9B32BF6A0B9000B6D0A /* PartyResumeCell.swift in Sources */,
 				120474FF2BFE143F0044AD97 /* PlayerPreparation.swift in Sources */,
+				1204750A2C00BD6B0044AD97 /* StartOnePlayerView.swift in Sources */,
 				1221D89F2BF2416600CB5EB9 /* GenericLeftButton.swift in Sources */,
 				1221D8702BF1EFF600CB5EB9 /* DouShouQiApp.swift in Sources */,
 				120474FD2BFE13F60044AD97 /* StartTwoPlayersView.swift in Sources */,

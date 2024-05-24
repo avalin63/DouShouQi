@@ -9,7 +9,7 @@ import SwiftUI
 import Combine
 
 struct PlayerNameTextInput<Style: TextFieldStyle>: View {
-    @State private var username: String = ""
+    @Binding var username: String
     let textLimit = 20
     var style: Style
     
@@ -35,11 +35,3 @@ struct PlayerNameTextInput<Style: TextFieldStyle>: View {
     }
 }
 
-#Preview("Light") {
-    PlayerNameTextInput(style: BottomUsernameTextInputStyle())
-}
-
-#Preview("Dark") {
-    PlayerNameTextInput(style: BottomUsernameTextInputStyle())
-        .preferredColorScheme(.dark)
-}
