@@ -6,8 +6,16 @@
 //
 
 import SwiftUI
+import SpriteKit
 
 struct GameView: View {
+    @Environment(\.colorScheme) var colorScheme
+    @State var gameScene: BoardScene
+    
+    init() {
+        gameScene = BoardScene(size: BoardSceneValues.GRID_SIZE)
+    }
+    
     var body: some View {
         VStack() {
             HStack {
@@ -33,7 +41,10 @@ struct GameView: View {
                 MoveIndicatorCell()
             }
             
-            Spacer()
+            SpriteView(scene: gameScene)
+                .border(.black, width: 3.0)
+                .padding(.all, 8)
+                .ignoresSafeArea()
             
             Button(action: {}) {
                 Text(String(localized: "validate"))
@@ -44,6 +55,7 @@ struct GameView: View {
                     .background(DSQColors.primaryColor)
             }
             .background()
+            .padding(.bottom, 24)
         }
         .padding(.vertical, 20)
         .background(DSQColors.backgroundColor)
