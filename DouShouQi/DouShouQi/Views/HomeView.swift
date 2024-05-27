@@ -28,19 +28,22 @@ struct HomeView: View {
                     leading: {
                         Image(systemName: "gamecontroller.fill")
                     },
-                    label: String(localized: "new_game")
+                    label: String(localized: "new_game"),
+                    destination: { StartGameView() }
                 )
                 OptionsLeftButton(
                     leading: {
                         Image(systemName: "chart.pie.fill")
                     },
-                    label: String(localized: "statistics")
+                    label: String(localized: "statistics"),
+                    destination: { StartGameView() }
                 )
                 OptionsLeftButton(
                     leading: {
                         Image(systemName: "gearshape.fill")
                     },
-                    label: String(localized: "options")
+                    label: String(localized: "options"),
+                    destination: { StartGameView() }
                 )
             }
             .padding(.top, 100)

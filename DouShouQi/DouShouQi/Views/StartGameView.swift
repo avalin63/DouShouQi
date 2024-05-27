@@ -13,13 +13,16 @@ struct StartGameView: View {
             VStack{
                 PrimaryLeftButton(
                     leading: { Image("icSingleplayer") },
-                    label: String(localized: "\(1) player")
+                    label: String(localized: "\(1) player"),
+                    destination: { StartGameView() }
                 )
                 PrimaryLeftButton(
                     leading: { Image("icTwoPlayers") },
-                    label: String(localized: "\(2) player")
+                    label: String(localized: "\(2) player"),
+                    destination: { StartGameView() }
                 )
-            }.padding(.bottom, 30)
+            }
+            .padding(.bottom, 30)
             VStack(alignment: .leading){
                 Text(String(localized: "historics"))
                     .font(.title2)
