@@ -48,7 +48,8 @@ struct HomeView: View {
             }
             .padding(.top, 100)
             .padding(.bottom,200)
-        }.background(DSQColors.backgroundColor)
+        }
+        .background(DSQColors.backgroundColor)
     }
 }
 

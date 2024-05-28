@@ -38,7 +38,8 @@ struct StartGameView: View {
                     PartyResumeCell()
                     PartyResumeCell()
                     PartyResumeCell()
-                }.fadeOutTop(fadeLength: 30)
+                }
+                .fadeOutTop(fadeLength: 30)
             }
             Spacer()
         }
