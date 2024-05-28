@@ -42,6 +42,12 @@
         }
       }
     },
+    "11/05/2024" : {
+
+    },
+    "12min34s" : {
+
+    },
     "DouShouQi" : {
       "localizations" : {
         "fr" : {
@@ -120,6 +126,9 @@
         }
       }
     },
+    "Pseudo" : {
+
+    },
     "round" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -187,6 +196,9 @@
           }
         }
       }
+    },
+    "Winning reason" : {
+
     }
   },
   "version" : "1.0"
