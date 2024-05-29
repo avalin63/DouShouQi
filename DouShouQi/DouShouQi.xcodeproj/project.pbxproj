@@ -24,6 +24,13 @@
 		122FD9B32BF6A0B9000B6D0A /* PartyResumeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122FD9B22BF6A0B9000B6D0A /* PartyResumeCell.swift */; };
 		122FD9B52BF6A377000B6D0A /* BorderEdge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122FD9B42BF6A377000B6D0A /* BorderEdge.swift */; };
 		122FD9B72BF6A71D000B6D0A /* ScrollViewFade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122FD9B62BF6A71D000B6D0A /* ScrollViewFade.swift */; };
+		12972BAF2C05D24900FB6BA0 /* OptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12972BAE2C05D24900FB6BA0 /* OptionsView.swift */; };
+		12972BB12C05D2B400FB6BA0 /* OptionsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12972BB02C05D2B400FB6BA0 /* OptionsButton.swift */; };
+		12972BB52C05F43300FB6BA0 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12972BB42C05F43300FB6BA0 /* Theme.swift */; };
+		12972BB82C06004D00FB6BA0 /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12972BB72C06004D00FB6BA0 /* ThemeManager.swift */; };
+		12972BBA2C06027100FB6BA0 /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12972BB92C06027100FB6BA0 /* Language.swift */; };
+		12A9E4902C06059200AB8677 /* LanguageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A9E48F2C06059200AB8677 /* LanguageManager.swift */; };
+		12A9E4922C06268300AB8677 /* MenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A9E4912C06268300AB8677 /* MenuCell.swift */; };
 		12C9C5882BF7846D00BB5B39 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 12C9C5872BF7846D00BB5B39 /* Localizable.xcstrings */; };
 		BD6B02C42C024B75006838AF /* BoardScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6B02C32C024B75006838AF /* BoardScene.swift */; };
 		BD6B02C62C024B9B006838AF /* PieceSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6B02C52C024B9B006838AF /* PieceSprite.swift */; };
@@ -73,6 +80,13 @@
 		122FD9B22BF6A0B9000B6D0A /* PartyResumeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartyResumeCell.swift; sourceTree = "<group>"; };
 		122FD9B42BF6A377000B6D0A /* BorderEdge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderEdge.swift; sourceTree = "<group>"; };
 		122FD9B62BF6A71D000B6D0A /* ScrollViewFade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollViewFade.swift; sourceTree = "<group>"; };
+		12972BAE2C05D24900FB6BA0 /* OptionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsView.swift; sourceTree = "<group>"; };
+		12972BB02C05D2B400FB6BA0 /* OptionsButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsButton.swift; sourceTree = "<group>"; };
+		12972BB42C05F43300FB6BA0 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		12972BB72C06004D00FB6BA0 /* ThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeManager.swift; sourceTree = "<group>"; };
+		12972BB92C06027100FB6BA0 /* Language.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Language.swift; sourceTree = "<group>"; };
+		12A9E48F2C06059200AB8677 /* LanguageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageManager.swift; sourceTree = "<group>"; };
+		12A9E4912C06268300AB8677 /* MenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCell.swift; sourceTree = "<group>"; };
 		12C9C5872BF7846D00BB5B39 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		BD6B02C32C024B75006838AF /* BoardScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardScene.swift; sourceTree = "<group>"; };
 		BD6B02C52C024B9B006838AF /* PieceSprite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieceSprite.swift; sourceTree = "<group>"; };
@@ -134,6 +148,7 @@
 		1221D86E2BF1EFF600CB5EB9 /* DouShouQi */ = {
 			isa = PBXGroup;
 			children = (
+				12972BB22C05F42000FB6BA0 /* Model */,
 				BD6B02C22C024B5C006838AF /* Scenes */,
 				1221D8A32BF244B800CB5EB9 /* Extensions */,
 				1221D8A02BF2430600CB5EB9 /* Resources */,
@@ -177,6 +192,7 @@
 				1221D89A2BF2401D00CB5EB9 /* HomeView.swift */,
 				122FD9B02BF69F1B000B6D0A /* StartGameView.swift */,
 				C96124992BFE7B4C00E1E55C /* GameView.swift */,
+				12972BAE2C05D24900FB6BA0 /* OptionsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -190,6 +206,8 @@
 				122FD9B22BF6A0B9000B6D0A /* PartyResumeCell.swift */,
 				C961249B2BFF33F000E1E55C /* PlayerIndicatorCell.swift */,
 				C961249D2BFF33FC00E1E55C /* MoveIndicatorCell.swift */,
+				12972BB02C05D2B400FB6BA0 /* OptionsButton.swift */,
+				12A9E4912C06268300AB8677 /* MenuCell.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -212,6 +230,33 @@
 				122FD9B62BF6A71D000B6D0A /* ScrollViewFade.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		12972BB22C05F42000FB6BA0 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				12972BB62C06003600FB6BA0 /* managers */,
+				12972BB32C05F42600FB6BA0 /* enums */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		12972BB32C05F42600FB6BA0 /* enums */ = {
+			isa = PBXGroup;
+			children = (
+				12972BB42C05F43300FB6BA0 /* Theme.swift */,
+				12972BB92C06027100FB6BA0 /* Language.swift */,
+			);
+			path = enums;
+			sourceTree = "<group>";
+		};
+		12972BB62C06003600FB6BA0 /* managers */ = {
+			isa = PBXGroup;
+			children = (
+				12972BB72C06004D00FB6BA0 /* ThemeManager.swift */,
+				12A9E48F2C06059200AB8677 /* LanguageManager.swift */,
+			);
+			path = managers;
 			sourceTree = "<group>";
 		};
 		BD6B02C22C024B5C006838AF /* Scenes */ = {
@@ -365,11 +410,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				12972BB82C06004D00FB6BA0 /* ThemeManager.swift in Sources */,
 				1221D8A52BF244E500CB5EB9 /* RoundedCorner.swift in Sources */,
 				BD6B02C62C024B9B006838AF /* PieceSprite.swift in Sources */,
 				BD6B02CF2C0254E7006838AF /* TileSprite.swift in Sources */,
+				12A9E4902C06059200AB8677 /* LanguageManager.swift in Sources */,
+				12972BAF2C05D24900FB6BA0 /* OptionsView.swift in Sources */,
 				BD6B02C42C024B75006838AF /* BoardScene.swift in Sources */,
 				122FD9B72BF6A71D000B6D0A /* ScrollViewFade.swift in Sources */,
+				12972BB12C05D2B400FB6BA0 /* OptionsButton.swift in Sources */,
 				122FD9B12BF69F1B000B6D0A /* StartGameView.swift in Sources */,
 				1221D8A72BF24D4E00CB5EB9 /* Styles.swift in Sources */,
 				C961249C2BFF33F000E1E55C /* PlayerIndicatorCell.swift in Sources */,
@@ -378,11 +427,14 @@
 				1221D8A22BF2431600CB5EB9 /* Colors.swift in Sources */,
 				1221D8AB2BF260E700CB5EB9 /* OptionsLeftButton.swift in Sources */,
 				1221D8A92BF25F1100CB5EB9 /* PrimaryLeftButton.swift in Sources */,
+				12972BB52C05F43300FB6BA0 /* Theme.swift in Sources */,
 				122FD9B32BF6A0B9000B6D0A /* PartyResumeCell.swift in Sources */,
 				BD6B02C82C024BD7006838AF /* BoardSceneValues.swift in Sources */,
 				C961249E2BFF33FC00E1E55C /* MoveIndicatorCell.swift in Sources */,
 				1221D89F2BF2416600CB5EB9 /* GenericLeftButton.swift in Sources */,
+				12972BBA2C06027100FB6BA0 /* Language.swift in Sources */,
 				C961249A2BFE7B4C00E1E55C /* GameView.swift in Sources */,
+				12A9E4922C06268300AB8677 /* MenuCell.swift in Sources */,
 				1221D8702BF1EFF600CB5EB9 /* DouShouQiApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

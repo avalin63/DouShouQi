@@ -58,6 +58,40 @@
         }
       }
     },
+    "English" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "English"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Anglais"
+          }
+        }
+      }
+    },
+    "French" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "French"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Français"
+          }
+        }
+      }
+    },
     "historics" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -71,6 +105,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Historiques"
+          }
+        }
+      }
+    },
+    "Language" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Language"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Langue"
           }
         }
       }
@@ -93,14 +144,17 @@
       }
     },
     "options" : {
-      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Options"
+            "value" : "options"
           }
-        },
+        }
+      }
+    },
+    "Options" : {
+      "localizations" : {
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -146,6 +200,9 @@
         }
       }
     },
+    "Round %lld" : {
+
+    },
     "statistics" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -159,6 +216,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Statistiques"
+          }
+        }
+      }
+    },
+    "Theme" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Theme"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Thème"
           }
         }
       }
