@@ -25,6 +25,11 @@
 		122FD9B52BF6A377000B6D0A /* BorderEdge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122FD9B42BF6A377000B6D0A /* BorderEdge.swift */; };
 		122FD9B72BF6A71D000B6D0A /* ScrollViewFade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122FD9B62BF6A71D000B6D0A /* ScrollViewFade.swift */; };
 		12C9C5882BF7846D00BB5B39 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 12C9C5872BF7846D00BB5B39 /* Localizable.xcstrings */; };
+		BD6B02C42C024B75006838AF /* BoardScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6B02C32C024B75006838AF /* BoardScene.swift */; };
+		BD6B02C62C024B9B006838AF /* PieceSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6B02C52C024B9B006838AF /* PieceSprite.swift */; };
+		BD6B02C82C024BD7006838AF /* BoardSceneValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6B02C72C024BD7006838AF /* BoardSceneValues.swift */; };
+		BD6B02CB2C024ED7006838AF /* DSQ.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD6B02CA2C024ED7006838AF /* DSQ.xcframework */; };
+		BD6B02CF2C0254E7006838AF /* TileSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6B02CE2C0254E7006838AF /* TileSprite.swift */; };
 		C961249A2BFE7B4C00E1E55C /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96124992BFE7B4C00E1E55C /* GameView.swift */; };
 		C961249C2BFF33F000E1E55C /* PlayerIndicatorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C961249B2BFF33F000E1E55C /* PlayerIndicatorCell.swift */; };
 		C961249E2BFF33FC00E1E55C /* MoveIndicatorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C961249D2BFF33FC00E1E55C /* MoveIndicatorCell.swift */; };
@@ -69,6 +74,11 @@
 		122FD9B42BF6A377000B6D0A /* BorderEdge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderEdge.swift; sourceTree = "<group>"; };
 		122FD9B62BF6A71D000B6D0A /* ScrollViewFade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollViewFade.swift; sourceTree = "<group>"; };
 		12C9C5872BF7846D00BB5B39 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		BD6B02C32C024B75006838AF /* BoardScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardScene.swift; sourceTree = "<group>"; };
+		BD6B02C52C024B9B006838AF /* PieceSprite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieceSprite.swift; sourceTree = "<group>"; };
+		BD6B02C72C024BD7006838AF /* BoardSceneValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardSceneValues.swift; sourceTree = "<group>"; };
+		BD6B02CA2C024ED7006838AF /* DSQ.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = DSQ.xcframework; path = ../../SwiftUI_ARKit_2024/XCFramework/DSQ.xcframework; sourceTree = "<group>"; };
+		BD6B02CE2C0254E7006838AF /* TileSprite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TileSprite.swift; sourceTree = "<group>"; };
 		C96124992BFE7B4C00E1E55C /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
 		C961249B2BFF33F000E1E55C /* PlayerIndicatorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerIndicatorCell.swift; sourceTree = "<group>"; };
 		C961249D2BFF33FC00E1E55C /* MoveIndicatorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveIndicatorCell.swift; sourceTree = "<group>"; };
@@ -79,6 +89,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BD6B02CB2C024ED7006838AF /* DSQ.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -106,6 +117,7 @@
 				1221D87F2BF1EFF600CB5EB9 /* DouShouQiTests */,
 				1221D8892BF1EFF600CB5EB9 /* DouShouQiUITests */,
 				1221D86D2BF1EFF600CB5EB9 /* Products */,
+				BD6B02C92C024ED7006838AF /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -122,6 +134,7 @@
 		1221D86E2BF1EFF600CB5EB9 /* DouShouQi */ = {
 			isa = PBXGroup;
 			children = (
+				BD6B02C22C024B5C006838AF /* Scenes */,
 				1221D8A32BF244B800CB5EB9 /* Extensions */,
 				1221D8A02BF2430600CB5EB9 /* Resources */,
 				1221D89D2BF240D400CB5EB9 /* Components */,
@@ -199,6 +212,25 @@
 				122FD9B62BF6A71D000B6D0A /* ScrollViewFade.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		BD6B02C22C024B5C006838AF /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				BD6B02C32C024B75006838AF /* BoardScene.swift */,
+				BD6B02C52C024B9B006838AF /* PieceSprite.swift */,
+				BD6B02CE2C0254E7006838AF /* TileSprite.swift */,
+				BD6B02C72C024BD7006838AF /* BoardSceneValues.swift */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		BD6B02C92C024ED7006838AF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BD6B02CA2C024ED7006838AF /* DSQ.xcframework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -334,6 +366,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				1221D8A52BF244E500CB5EB9 /* RoundedCorner.swift in Sources */,
+				BD6B02C62C024B9B006838AF /* PieceSprite.swift in Sources */,
+				BD6B02CF2C0254E7006838AF /* TileSprite.swift in Sources */,
+				BD6B02C42C024B75006838AF /* BoardScene.swift in Sources */,
 				122FD9B72BF6A71D000B6D0A /* ScrollViewFade.swift in Sources */,
 				122FD9B12BF69F1B000B6D0A /* StartGameView.swift in Sources */,
 				1221D8A72BF24D4E00CB5EB9 /* Styles.swift in Sources */,
@@ -344,6 +379,7 @@
 				1221D8AB2BF260E700CB5EB9 /* OptionsLeftButton.swift in Sources */,
 				1221D8A92BF25F1100CB5EB9 /* PrimaryLeftButton.swift in Sources */,
 				122FD9B32BF6A0B9000B6D0A /* PartyResumeCell.swift in Sources */,
+				BD6B02C82C024BD7006838AF /* BoardSceneValues.swift in Sources */,
 				C961249E2BFF33FC00E1E55C /* MoveIndicatorCell.swift in Sources */,
 				1221D89F2BF2416600CB5EB9 /* GenericLeftButton.swift in Sources */,
 				C961249A2BFE7B4C00E1E55C /* GameView.swift in Sources */,
