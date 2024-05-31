@@ -217,6 +217,40 @@
     },
     "Winning reason" : {
 
+    },
+    "You Loosed !" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You loosed !"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Perdu !"
+          }
+        }
+      }
+    },
+    "You Won !" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You won !"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gagné !"
+          }
+        }
+      }
     }
   },
   "version" : "1.0"
