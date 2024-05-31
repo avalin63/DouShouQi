@@ -160,6 +160,23 @@
         }
       }
     },
+    "Loose" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You loose !"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Perdu !"
+          }
+        }
+      }
+    },
     "new_game" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -318,6 +335,23 @@
           "stringUnit" : {
             "state" : "needs_review",
             "value" : "En attente..."
+          }
+        }
+      }
+    },
+    "Win" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You Win !"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gagné !"
           }
         }
       }
