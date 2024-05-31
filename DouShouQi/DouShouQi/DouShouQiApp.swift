@@ -15,12 +15,10 @@ struct DouShouQiApp: App {
         WindowGroup {
             NavigationView {
                 HomeView()
-                    .environment(\.locale, Locale(identifier: languageManager.selectedLang.description))
             }
             .preferredColorScheme(themeManager.selectedTheme.colorScheme)
             .environmentObject(themeManager)
             .environmentObject(languageManager)
-            
         }
     }
 }

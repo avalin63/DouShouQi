@@ -7,12 +7,14 @@
 
 import SwiftUI
 
-struct Strings: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+extension String {
+    func localizedLanguage(language: String = "en") -> String {
+        if let bundlePath = Bundle.main.path(forResource: language, ofType: "lproj") {
+            if let bundle = Bundle(path: bundlePath) {
+                return bundle.localizedString(forKey: self, value: self, table: nil)
+            }
+        }
+    
+        return self
     }
-}
-
-#Preview {
-    Strings()
 }

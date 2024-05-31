@@ -48,6 +48,23 @@
     "12min34s" : {
 
     },
+    "Dark" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dark"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sombre"
+          }
+        }
+      }
+    },
     "DouShouQi" : {
       "localizations" : {
         "fr" : {
@@ -122,6 +139,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Langue"
+          }
+        }
+      }
+    },
+    "Light" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Light"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Clair"
           }
         }
       }
@@ -216,6 +250,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Statistiques"
+          }
+        }
+      }
+    },
+    "System" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "System"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Système"
           }
         }
       }

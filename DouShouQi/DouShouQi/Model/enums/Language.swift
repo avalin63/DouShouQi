@@ -11,7 +11,7 @@ enum Language: String, CaseIterable, CustomStringConvertible{
     case fr = "French"
     case en = "English"
     
-    var colorScheme: String {
+    var initial: String {
         switch self{
         case .fr:
             return "fr"

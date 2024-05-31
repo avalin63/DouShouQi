@@ -9,9 +9,5 @@ import Foundation
 import SwiftUI
 
 class LanguageManager: ObservableObject {
-    @AppStorage("user_lang") var selectedLang: Language = .en {
-        didSet {
-            objectWillChange.send()
-        }
-    }
+    @AppStorage("user_lang") var selectedLang: Language = .en
 }
