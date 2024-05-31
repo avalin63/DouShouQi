@@ -12,11 +12,11 @@ struct PreparationTwoPlayersView: View {
         GeometryReader{ geo in
             VStack(spacing: 0){
                         VStack{
-                            PlayerPreparation(textInputStyle: TopUsernameTextInputStyle(), picturePickerBackground: DSQColors.topPhotoPickerBackgroundColor, picturePickerForeground: DSQColors.topPhotoPickerForegroundColor)
+                            PlayerPreparation(style:.defaultStyle, textInputStyle: TopUsernameTextInputStyle())
                         }.frame(width: geo.size.width,height: geo.size.height * (1/2))
                             .background(DSQColors.topUserContaierBackgroundColor)
                         VStack{
-                            PlayerPreparation(textInputStyle: BottomUsernameTextInputStyle(), picturePickerBackground: DSQColors.bottomPhotoPickerBackgroundColor, picturePickerForeground: DSQColors.bottomPhotoPickerForegroundColor)
+                            PlayerPreparation(style: .variant, textInputStyle: BottomUsernameTextInputStyle())
                         }.frame(width: geo.size.width,height: geo.size.height * (1/2))
                             .background(DSQColors.bottomUserContainerBackgroundColor)
                     }
