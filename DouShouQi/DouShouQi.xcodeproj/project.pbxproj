@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		120474FD2BFE13F60044AD97 /* StartTwoPlayersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 120474FC2BFE13F60044AD97 /* StartTwoPlayersView.swift */; };
+		120474FF2BFE143F0044AD97 /* PlayerPreparation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 120474FE2BFE143F0044AD97 /* PlayerPreparation.swift */; };
+		120475012BFE14590044AD97 /* UsernameTextInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 120475002BFE14590044AD97 /* UsernameTextInput.swift */; };
+		120475032BFE1B7C0044AD97 /* PicturePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 120475022BFE1B7C0044AD97 /* PicturePicker.swift */; };
+		120475052BFE8B600044AD97 /* Effects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 120475042BFE8B600044AD97 /* Effects.swift */; };
+		120475082C00BC4F0044AD97 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 120475072C00BC4F0044AD97 /* ImagePicker.swift */; };
+		1204750A2C00BD6B0044AD97 /* StartOnePlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 120475092C00BD6B0044AD97 /* StartOnePlayerView.swift */; };
 		1221D8702BF1EFF600CB5EB9 /* DouShouQiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1221D86F2BF1EFF600CB5EB9 /* DouShouQiApp.swift */; };
 		1221D8742BF1EFF600CB5EB9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1221D8732BF1EFF600CB5EB9 /* Assets.xcassets */; };
 		1221D8772BF1EFF600CB5EB9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1221D8762BF1EFF600CB5EB9 /* Preview Assets.xcassets */; };
@@ -53,6 +60,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		120474FC2BFE13F60044AD97 /* StartTwoPlayersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartTwoPlayersView.swift; sourceTree = "<group>"; };
+		120474FE2BFE143F0044AD97 /* PlayerPreparation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerPreparation.swift; sourceTree = "<group>"; };
+		120475002BFE14590044AD97 /* UsernameTextInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsernameTextInput.swift; sourceTree = "<group>"; };
+		120475022BFE1B7C0044AD97 /* PicturePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PicturePicker.swift; sourceTree = "<group>"; };
+		120475042BFE8B600044AD97 /* Effects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Effects.swift; sourceTree = "<group>"; };
+		120475072C00BC4F0044AD97 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		120475092C00BD6B0044AD97 /* StartOnePlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartOnePlayerView.swift; sourceTree = "<group>"; };
 		1221D86C2BF1EFF600CB5EB9 /* DouShouQi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DouShouQi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1221D86F2BF1EFF600CB5EB9 /* DouShouQiApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DouShouQiApp.swift; sourceTree = "<group>"; };
 		1221D8732BF1EFF600CB5EB9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -110,6 +124,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		120475062C00BC3E0044AD97 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				120475072C00BC4F0044AD97 /* ImagePicker.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		1221D8632BF1EFF600CB5EB9 = {
 			isa = PBXGroup;
 			children = (
@@ -134,6 +156,7 @@
 		1221D86E2BF1EFF600CB5EB9 /* DouShouQi */ = {
 			isa = PBXGroup;
 			children = (
+				120475062C00BC3E0044AD97 /* Utils */,
 				BD6B02C22C024B5C006838AF /* Scenes */,
 				1221D8A32BF244B800CB5EB9 /* Extensions */,
 				1221D8A02BF2430600CB5EB9 /* Resources */,
@@ -176,6 +199,8 @@
 			children = (
 				1221D89A2BF2401D00CB5EB9 /* HomeView.swift */,
 				122FD9B02BF69F1B000B6D0A /* StartGameView.swift */,
+				120474FC2BFE13F60044AD97 /* StartTwoPlayersView.swift */,
+				120475092C00BD6B0044AD97 /* StartOnePlayerView.swift */,
 				C96124992BFE7B4C00E1E55C /* GameView.swift */,
 			);
 			path = Views;
@@ -188,6 +213,9 @@
 				1221D8A82BF25F1100CB5EB9 /* PrimaryLeftButton.swift */,
 				1221D8AA2BF260E700CB5EB9 /* OptionsLeftButton.swift */,
 				122FD9B22BF6A0B9000B6D0A /* PartyResumeCell.swift */,
+				120474FE2BFE143F0044AD97 /* PlayerPreparation.swift */,
+				120475002BFE14590044AD97 /* UsernameTextInput.swift */,
+				120475022BFE1B7C0044AD97 /* PicturePicker.swift */,
 				C961249B2BFF33F000E1E55C /* PlayerIndicatorCell.swift */,
 				C961249D2BFF33FC00E1E55C /* MoveIndicatorCell.swift */,
 			);
@@ -200,6 +228,7 @@
 				1221D8A12BF2431600CB5EB9 /* Colors.swift */,
 				1221D8A62BF24D4E00CB5EB9 /* Styles.swift */,
 				12C9C5872BF7846D00BB5B39 /* Localizable.xcstrings */,
+				120475042BFE8B600044AD97 /* Effects.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -366,24 +395,31 @@
 			buildActionMask = 2147483647;
 			files = (
 				1221D8A52BF244E500CB5EB9 /* RoundedCorner.swift in Sources */,
+				120475052BFE8B600044AD97 /* Effects.swift in Sources */,
 				BD6B02C62C024B9B006838AF /* PieceSprite.swift in Sources */,
 				BD6B02CF2C0254E7006838AF /* TileSprite.swift in Sources */,
 				BD6B02C42C024B75006838AF /* BoardScene.swift in Sources */,
 				122FD9B72BF6A71D000B6D0A /* ScrollViewFade.swift in Sources */,
+				120475082C00BC4F0044AD97 /* ImagePicker.swift in Sources */,
 				122FD9B12BF69F1B000B6D0A /* StartGameView.swift in Sources */,
 				1221D8A72BF24D4E00CB5EB9 /* Styles.swift in Sources */,
 				C961249C2BFF33F000E1E55C /* PlayerIndicatorCell.swift in Sources */,
 				1221D89B2BF2401D00CB5EB9 /* HomeView.swift in Sources */,
+				120475012BFE14590044AD97 /* UsernameTextInput.swift in Sources */,
 				122FD9B52BF6A377000B6D0A /* BorderEdge.swift in Sources */,
 				1221D8A22BF2431600CB5EB9 /* Colors.swift in Sources */,
+				120475032BFE1B7C0044AD97 /* PicturePicker.swift in Sources */,
 				1221D8AB2BF260E700CB5EB9 /* OptionsLeftButton.swift in Sources */,
 				1221D8A92BF25F1100CB5EB9 /* PrimaryLeftButton.swift in Sources */,
 				122FD9B32BF6A0B9000B6D0A /* PartyResumeCell.swift in Sources */,
+				120474FF2BFE143F0044AD97 /* PlayerPreparation.swift in Sources */,
+				1204750A2C00BD6B0044AD97 /* StartOnePlayerView.swift in Sources */,
 				BD6B02C82C024BD7006838AF /* BoardSceneValues.swift in Sources */,
 				C961249E2BFF33FC00E1E55C /* MoveIndicatorCell.swift in Sources */,
 				1221D89F2BF2416600CB5EB9 /* GenericLeftButton.swift in Sources */,
 				C961249A2BFE7B4C00E1E55C /* GameView.swift in Sources */,
 				1221D8702BF1EFF600CB5EB9 /* DouShouQiApp.swift in Sources */,
+				120474FD2BFE13F60044AD97 /* StartTwoPlayersView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
