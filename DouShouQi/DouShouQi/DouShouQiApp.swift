@@ -11,8 +11,10 @@ import SwiftUI
 struct DouShouQiApp: App {
     var body: some Scene {
         WindowGroup {
-            PreparationTwoPlayersView()
-                .environment(\.locale, .init(identifier: "en"))
+            NavigationView {
+                HomeView()
+                    .environment(\.locale, .init(identifier: "en"))
+            }
         }
     }
 }
