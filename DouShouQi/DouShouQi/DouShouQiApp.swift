@@ -12,7 +12,7 @@ struct DouShouQiApp: App {
     var body: some Scene {
         WindowGroup {
             NavigationView {
-                PreparationTwoPlayersView()
+                HomeView()
                     .environment(\.locale, .init(identifier: "en"))
             }
         }
