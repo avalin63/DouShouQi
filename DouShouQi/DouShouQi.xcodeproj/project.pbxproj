@@ -28,11 +28,12 @@
 		BD6B02C42C024B75006838AF /* BoardScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6B02C32C024B75006838AF /* BoardScene.swift */; };
 		BD6B02C62C024B9B006838AF /* PieceSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6B02C52C024B9B006838AF /* PieceSprite.swift */; };
 		BD6B02C82C024BD7006838AF /* BoardSceneValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6B02C72C024BD7006838AF /* BoardSceneValues.swift */; };
-		BD6B02CB2C024ED7006838AF /* DSQ.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD6B02CA2C024ED7006838AF /* DSQ.xcframework */; };
 		BD6B02CF2C0254E7006838AF /* TileSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6B02CE2C0254E7006838AF /* TileSprite.swift */; };
 		C961249A2BFE7B4C00E1E55C /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96124992BFE7B4C00E1E55C /* GameView.swift */; };
 		C961249C2BFF33F000E1E55C /* PlayerIndicatorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C961249B2BFF33F000E1E55C /* PlayerIndicatorCell.swift */; };
 		C961249E2BFF33FC00E1E55C /* MoveIndicatorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C961249D2BFF33FC00E1E55C /* MoveIndicatorCell.swift */; };
+		C9940B502C0881D60016CE9F /* DSQ.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9940B4F2C0881D60016CE9F /* DSQ.xcframework */; };
+		C9940B552C0885230016CE9F /* GameVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9940B542C0885230016CE9F /* GameVM.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,11 +78,12 @@
 		BD6B02C32C024B75006838AF /* BoardScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardScene.swift; sourceTree = "<group>"; };
 		BD6B02C52C024B9B006838AF /* PieceSprite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieceSprite.swift; sourceTree = "<group>"; };
 		BD6B02C72C024BD7006838AF /* BoardSceneValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardSceneValues.swift; sourceTree = "<group>"; };
-		BD6B02CA2C024ED7006838AF /* DSQ.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = DSQ.xcframework; path = ../../SwiftUI_ARKit_2024/XCFramework/DSQ.xcframework; sourceTree = "<group>"; };
 		BD6B02CE2C0254E7006838AF /* TileSprite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TileSprite.swift; sourceTree = "<group>"; };
 		C96124992BFE7B4C00E1E55C /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
 		C961249B2BFF33F000E1E55C /* PlayerIndicatorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerIndicatorCell.swift; sourceTree = "<group>"; };
 		C961249D2BFF33FC00E1E55C /* MoveIndicatorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveIndicatorCell.swift; sourceTree = "<group>"; };
+		C9940B4F2C0881D60016CE9F /* DSQ.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = DSQ.xcframework; path = ../DSQ.xcframework; sourceTree = "<group>"; };
+		C9940B542C0885230016CE9F /* GameVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameVM.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,7 +91,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BD6B02CB2C024ED7006838AF /* DSQ.xcframework in Frameworks */,
+				C9940B502C0881D60016CE9F /* DSQ.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -134,6 +136,7 @@
 		1221D86E2BF1EFF600CB5EB9 /* DouShouQi */ = {
 			isa = PBXGroup;
 			children = (
+				C9940B532C0882840016CE9F /* ViewModels */,
 				BD6B02C22C024B5C006838AF /* Scenes */,
 				1221D8A32BF244B800CB5EB9 /* Extensions */,
 				1221D8A02BF2430600CB5EB9 /* Resources */,
@@ -228,9 +231,17 @@
 		BD6B02C92C024ED7006838AF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				BD6B02CA2C024ED7006838AF /* DSQ.xcframework */,
+				C9940B4F2C0881D60016CE9F /* DSQ.xcframework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C9940B532C0882840016CE9F /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				C9940B542C0885230016CE9F /* GameVM.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -375,6 +386,7 @@
 				C961249C2BFF33F000E1E55C /* PlayerIndicatorCell.swift in Sources */,
 				1221D89B2BF2401D00CB5EB9 /* HomeView.swift in Sources */,
 				122FD9B52BF6A377000B6D0A /* BorderEdge.swift in Sources */,
+				C9940B552C0885230016CE9F /* GameVM.swift in Sources */,
 				1221D8A22BF2431600CB5EB9 /* Colors.swift in Sources */,
 				1221D8AB2BF260E700CB5EB9 /* OptionsLeftButton.swift in Sources */,
 				1221D8A92BF25F1100CB5EB9 /* PrimaryLeftButton.swift in Sources */,

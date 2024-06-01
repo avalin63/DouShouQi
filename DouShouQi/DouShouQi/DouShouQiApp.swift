@@ -9,12 +9,14 @@ import SwiftUI
 
 @main
 struct DouShouQiApp: App {
+    @StateObject var gameVM = GameVM()
+    
     var body: some Scene {
         WindowGroup {
             NavigationView {
                 HomeView()
-                    .environment(\.locale, .init(identifier: "en"))
             }
+            .environmentObject(gameVM)
         }
     }
 }

@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct StartGameView: View {
+    @EnvironmentObject var gameVM: GameVM 
+    
     var body: some View {
         VStack(alignment: .leading){
             VStack{
