@@ -30,5 +30,5 @@ struct DSQColors {
     static let moveCellBackgroundColor = Color("MoveCellBackgroundColor")
     static let checkMarkColor = Color("CheckMarkColor")
     static let buttonOptionsBackgroundColor = Color("ButtonOptionsBackgroundColor")
-    static let buttonOptionsForegroundColor = Color("ButtonOptionsForegroundColor")
+    static let buttonOptionsForegroundColor = Color("buttonOptionsForegroundColor")
 }

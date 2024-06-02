@@ -30,10 +30,10 @@
 		122FD9B32BF6A0B9000B6D0A /* PartyResumeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122FD9B22BF6A0B9000B6D0A /* PartyResumeCell.swift */; };
 		122FD9B52BF6A377000B6D0A /* BorderEdge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122FD9B42BF6A377000B6D0A /* BorderEdge.swift */; };
 		122FD9B72BF6A71D000B6D0A /* ScrollViewFade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122FD9B62BF6A71D000B6D0A /* ScrollViewFade.swift */; };
+		126AB5AF2C09A7B8001555CD /* GameOverStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 126AB5AE2C09A7B8001555CD /* GameOverStatus.swift */; };
 		126AB5B42C09EE82001555CD /* DSQ.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD6B02CA2C024ED7006838AF /* DSQ.xcframework */; };
 		126AB5B52C09EE82001555CD /* DSQ.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BD6B02CA2C024ED7006838AF /* DSQ.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		126AB5B82C09F68F001555CD /* StylesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 126AB5B72C09F68F001555CD /* StylesCell.swift */; };
-		126AB5AF2C09A7B8001555CD /* GameOverStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 126AB5AE2C09A7B8001555CD /* GameOverStatus.swift */; };
 		12972BAF2C05D24900FB6BA0 /* OptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12972BAE2C05D24900FB6BA0 /* OptionsView.swift */; };
 		12972BB12C05D2B400FB6BA0 /* OptionsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12972BB02C05D2B400FB6BA0 /* OptionsButton.swift */; };
 		12972BB52C05F43300FB6BA0 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12972BB42C05F43300FB6BA0 /* Theme.swift */; };
@@ -110,8 +110,8 @@
 		122FD9B22BF6A0B9000B6D0A /* PartyResumeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartyResumeCell.swift; sourceTree = "<group>"; };
 		122FD9B42BF6A377000B6D0A /* BorderEdge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderEdge.swift; sourceTree = "<group>"; };
 		122FD9B62BF6A71D000B6D0A /* ScrollViewFade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollViewFade.swift; sourceTree = "<group>"; };
-		126AB5B72C09F68F001555CD /* StylesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StylesCell.swift; sourceTree = "<group>"; };
 		126AB5AE2C09A7B8001555CD /* GameOverStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverStatus.swift; sourceTree = "<group>"; };
+		126AB5B72C09F68F001555CD /* StylesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StylesCell.swift; sourceTree = "<group>"; };
 		12972BAE2C05D24900FB6BA0 /* OptionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsView.swift; sourceTree = "<group>"; };
 		12972BB02C05D2B400FB6BA0 /* OptionsButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsButton.swift; sourceTree = "<group>"; };
 		12972BB42C05F43300FB6BA0 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
@@ -157,13 +157,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		120475062C00BC3E0044AD97 /* Utils */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Utils;
-			sourceTree = "<group>";
-		};
 		1221D8632BF1EFF600CB5EB9 = {
 			isa = PBXGroup;
 			children = (
@@ -188,7 +181,6 @@
 		1221D86E2BF1EFF600CB5EB9 /* DouShouQi */ = {
 			isa = PBXGroup;
 			children = (
-				120475062C00BC3E0044AD97 /* Utils */,
 				12972BB22C05F42000FB6BA0 /* Model */,
 				BD6B02C22C024B5C006838AF /* Scenes */,
 				1221D8A32BF244B800CB5EB9 /* Extensions */,
