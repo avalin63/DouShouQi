@@ -46,17 +46,17 @@ struct PicturePicker: View {
             isShowingDialog = true
         }
         .confirmationDialog(
-            "Depuis quelle source souhaitez-vous prendre votre photo de profil ?",
+            String(localized: "Source question"),
             isPresented: $isShowingDialog,
             titleVisibility: .visible
         ) {
-            Button("Galerie") {
+            Button(String(localized: "Gallery")) {
                 isShowingImagePicker = true
             }
-            Button("Appareil Photo") {
+            Button(String(localized: "Camera")) {
                 isShowCamera = true
             }
-            Button("Annuler", role: .cancel) {
+            Button(String(localized: "Cancel"), role: .cancel) {
                 isShowingDialog = false
             }
         }
