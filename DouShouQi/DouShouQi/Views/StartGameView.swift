@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct StartGameView: View {
-    @EnvironmentObject var gameVM: GameVM 
+    @EnvironmentObject var gameVM: GameVM
     
     var body: some View {
         VStack(alignment: .leading){
@@ -16,12 +16,18 @@ struct StartGameView: View {
                 PrimaryLeftButton(
                     leading: { Image("icSingleplayer") },
                     label: String(localized: "\(1) player"),
-                    destination: { StartGameView() }
+                    destination: { 
+                        StartOnePlayerView()
+                            .navigationBarBackButtonHidden(true)
+                    }
                 )
                 PrimaryLeftButton(
                     leading: { Image("icTwoPlayers") },
                     label: String(localized: "\(2) player"),
-                    destination: { StartGameView() }
+                    destination: {
+                        PreparationTwoPlayersView()
+                            .navigationBarBackButtonHidden(true)
+                    }
                 )
             }
             .padding(.bottom, 30)

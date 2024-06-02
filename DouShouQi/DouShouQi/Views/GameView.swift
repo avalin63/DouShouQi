@@ -9,7 +9,6 @@ import SwiftUI
 import SpriteKit
 
 struct GameView: View {
-    @Environment(\.colorScheme) var colorScheme
     @State var gameScene: BoardScene
     
     init() {
