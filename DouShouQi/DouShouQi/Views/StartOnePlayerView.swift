@@ -10,7 +10,7 @@ import SwiftUI
 struct StartOnePlayerView: View {
     var body: some View {
         VStack{
-            PlayerPreparation(textInputStyle: TopUsernameTextInputStyle(), picturePickerBackground: DSQColors.topPhotoPickerBackgroundColor, picturePickerForeground: DSQColors.topPhotoPickerForegroundColor)
+            PlayerPreparation(style: .defaultStyle, textInputStyle: TopUsernameTextInputStyle())
         }
         .frame(
                     maxWidth: .infinity,

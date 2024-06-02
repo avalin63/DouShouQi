@@ -10,18 +10,24 @@ import SwiftUI
 struct PicturePicker: View {
     var backgroundColor: Color
     var foregroundColor: Color
-    @State private var pickerItem: PhotosPickerItem?
-    @Binding var selectedImage: Image?
+    @State private var selectedItem: PhotosPickerItem?
+    @Binding var selectedImage: UIImage?
     @State private var isShowingDialog = false
     @State private var isShowingImagePicker = false
+    @State private var isShowCamera = false
     
+    func loadImage() {
+        Task {
+            guard let imageData = try await selectedItem?.loadTransferable(type: Data.self) else { return }
+            selectedImage = UIImage(data: imageData)
+        }
+    }
     
     var body: some View {
         ZStack{
             
-            if let image = selectedImage {
-                Circle().fill(backgroundColor).scaledToFit()
-                image
+            if let selectedImage {
+                Image(uiImage: selectedImage)
                     .resizable()
                     .scaledToFill()
                     .frame(width: 160, height: 160)
@@ -34,28 +40,68 @@ struct PicturePicker: View {
                     .foregroundColor(foregroundColor)
                     .padding(40)
             }
-                
+            
         }
         .onTapGesture {
             isShowingDialog = true
         }
         .confirmationDialog(
-              "Depuis quelle source souhaitez vous prendre votre photo de profil ?",
-              isPresented: $isShowingDialog,
-              titleVisibility: .visible
-            ) {
-              Button("Galerie") {
-                  isShowingImagePicker = true
-              }
-              Button("Appareil Photo") {
-                  // Handle camera.
-              }
-              Button("Annuler", role: .cancel) {
-                isShowingDialog = false
-              }
+            String(localized: "Source question"),
+            isPresented: $isShowingDialog,
+            titleVisibility: .visible
+        ) {
+            Button(String(localized: "Gallery")) {
+                isShowingImagePicker = true
             }
-        .sheet(isPresented: $isShowingImagePicker) {
-            ImagePicker(selectedImage: $selectedImage)
+            Button(String(localized: "Camera")) {
+                isShowCamera = true
+            }
+            Button(String(localized: "Cancel"), role: .cancel) {
+                isShowingDialog = false
+            }
         }
+        .onChange(of: selectedItem, loadImage)
+        
+        .photosPicker(isPresented: $isShowingImagePicker, selection: $selectedItem)
+        .fullScreenCover(isPresented: $isShowCamera) {
+            accessCameraView(selectedImage: self.$selectedImage).ignoresSafeArea(.all)
+        }
+        
+    }
+}
+
+struct accessCameraView: UIViewControllerRepresentable {
+    
+    @Binding var selectedImage: UIImage?
+    @Environment(\.presentationMode) var isPresented
+    
+    func makeUIViewController(context: Context) -> UIImagePickerController {
+        let imagePicker = UIImagePickerController()
+        imagePicker.sourceType = .camera
+        imagePicker.allowsEditing = true
+        imagePicker.delegate = context.coordinator
+        return imagePicker
+    }
+    
+    func updateUIViewController(_ uiViewController: UIImagePickerController, context: Context) {
+        
+    }
+    
+    func makeCoordinator() -> Coordinator {
+        return Coordinator(picker: self)
+    }
+}
+
+class Coordinator: NSObject, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+    var picker: accessCameraView
+    
+    init(picker: accessCameraView) {
+        self.picker = picker
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        guard let selectedImage = info[.originalImage] as? UIImage else { return }
+        self.picker.selectedImage = selectedImage
+        self.picker.isPresented.wrappedValue.dismiss()
     }
 }

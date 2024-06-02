@@ -48,14 +48,39 @@
     "12min34s" : {
 
     },
-    "Annuler" : {
-
+    "Camera" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Camera"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Appareil photo"
+          }
+        }
+      }
     },
-    "Appareil Photo" : {
-
-    },
-    "Depuis quelle source souhaitez vous prendre votre photo de profil ?" : {
-
+    "Cancel" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cancel"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Annuler"
+          }
+        }
+      }
     },
     "DouShouQi" : {
       "localizations" : {
@@ -67,8 +92,22 @@
         }
       }
     },
-    "Galerie" : {
-
+    "Gallery" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gallery"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Galerie"
+          }
+        }
+      }
     },
     "historics" : {
       "extractionState" : "manual",
@@ -163,6 +202,23 @@
     },
     "Round %lld" : {
 
+    },
+    "Source question" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "From which source would you like to take your profile picture?"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Depuis quelle source souhaitez-vous prendre votre photo de profil ?"
+          }
+        }
+      }
     },
     "statistics" : {
       "extractionState" : "manual",

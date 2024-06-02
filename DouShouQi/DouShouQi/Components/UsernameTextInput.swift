@@ -19,7 +19,7 @@ struct PlayerNameTextInput<Style: TextFieldStyle>: View {
         TextField("Pseudonyme", text: $username)
             .onReceive(Just(username)) { _ in limitText(textLimit) }
             .textFieldStyle(style)
-            .modifier(ShakeEffect(shakes: isShaking ? 2 : 0)) // Apply shake effect conditionally
+            .modifier(ShakeEffect(shakes: isShaking ? 2 : 0))
     }
     
     func limitText(_ upper: Int) {
