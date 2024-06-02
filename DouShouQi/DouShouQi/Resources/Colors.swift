@@ -29,4 +29,6 @@ struct DSQColors {
     static let bottomPhotoPickerForegroundColor = Color("BottomPhotoPickerForegroundColor")
     static let moveCellBackgroundColor = Color("MoveCellBackgroundColor")
     static let checkMarkColor = Color("CheckMarkColor")
+    static let buttonOptionsBackgroundColor = Color("ButtonOptionsBackgroundColor")
+    static let buttonOptionsForegroundColor = Color("buttonOptionsForegroundColor")
 }
