@@ -30,9 +30,12 @@
 		122FD9B32BF6A0B9000B6D0A /* PartyResumeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122FD9B22BF6A0B9000B6D0A /* PartyResumeCell.swift */; };
 		122FD9B52BF6A377000B6D0A /* BorderEdge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122FD9B42BF6A377000B6D0A /* BorderEdge.swift */; };
 		122FD9B72BF6A71D000B6D0A /* ScrollViewFade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122FD9B62BF6A71D000B6D0A /* ScrollViewFade.swift */; };
+		123F31D92C0E229F009B6D65 /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 123F31D82C0E229F009B6D65 /* RoundedButton.swift */; };
 		126AB5AF2C09A7B8001555CD /* GameOverStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 126AB5AE2C09A7B8001555CD /* GameOverStatus.swift */; };
 		126AB5B52C09EE82001555CD /* (null) in Embed Frameworks */ = {isa = PBXBuildFile; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		126AB5B82C09F68F001555CD /* StylesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 126AB5B72C09F68F001555CD /* StylesCell.swift */; };
+		12751D322C0E0E56001DA505 /* DSQ.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12751D312C0E0E56001DA505 /* DSQ.xcframework */; };
+		12751D332C0E0E56001DA505 /* DSQ.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 12751D312C0E0E56001DA505 /* DSQ.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		12972BAF2C05D24900FB6BA0 /* OptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12972BAE2C05D24900FB6BA0 /* OptionsView.swift */; };
 		12972BB12C05D2B400FB6BA0 /* OptionsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12972BB02C05D2B400FB6BA0 /* OptionsButton.swift */; };
 		12972BB52C05F43300FB6BA0 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12972BB42C05F43300FB6BA0 /* Theme.swift */; };
@@ -49,7 +52,6 @@
 		C961249A2BFE7B4C00E1E55C /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96124992BFE7B4C00E1E55C /* GameView.swift */; };
 		C961249C2BFF33F000E1E55C /* PlayerIndicatorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C961249B2BFF33F000E1E55C /* PlayerIndicatorCell.swift */; };
 		C961249E2BFF33FC00E1E55C /* MoveIndicatorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C961249D2BFF33FC00E1E55C /* MoveIndicatorCell.swift */; };
-		C9940B502C0881D60016CE9F /* DSQ.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9940B4F2C0881D60016CE9F /* DSQ.xcframework */; };
 		C9940B552C0885230016CE9F /* GameVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9940B542C0885230016CE9F /* GameVM.swift */; };
 		C9940B572C0CF7D30016CE9F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9940B562C0CF7D30016CE9F /* User.swift */; };
 /* End PBXBuildFile section */
@@ -78,6 +80,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				12751D332C0E0E56001DA505 /* DSQ.xcframework in Embed Frameworks */,
 				126AB5B52C09EE82001555CD /* (null) in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -112,8 +115,10 @@
 		122FD9B22BF6A0B9000B6D0A /* PartyResumeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartyResumeCell.swift; sourceTree = "<group>"; };
 		122FD9B42BF6A377000B6D0A /* BorderEdge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderEdge.swift; sourceTree = "<group>"; };
 		122FD9B62BF6A71D000B6D0A /* ScrollViewFade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollViewFade.swift; sourceTree = "<group>"; };
+		123F31D82C0E229F009B6D65 /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
 		126AB5AE2C09A7B8001555CD /* GameOverStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverStatus.swift; sourceTree = "<group>"; };
 		126AB5B72C09F68F001555CD /* StylesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StylesCell.swift; sourceTree = "<group>"; };
+		12751D312C0E0E56001DA505 /* DSQ.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = DSQ.xcframework; path = ../../../SwiftUI_ARKit_2024/XCFramework/DSQ.xcframework; sourceTree = "<group>"; };
 		12972BAE2C05D24900FB6BA0 /* OptionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsView.swift; sourceTree = "<group>"; };
 		12972BB02C05D2B400FB6BA0 /* OptionsButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsButton.swift; sourceTree = "<group>"; };
 		12972BB42C05F43300FB6BA0 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
@@ -140,7 +145,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C9940B502C0881D60016CE9F /* DSQ.xcframework in Frameworks */,
+				12751D322C0E0E56001DA505 /* DSQ.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -252,6 +257,7 @@
 				12972BB02C05D2B400FB6BA0 /* OptionsButton.swift */,
 				12A9E4912C06268300AB8677 /* MenuCell.swift */,
 				126AB5AE2C09A7B8001555CD /* GameOverStatus.swift */,
+				123F31D82C0E229F009B6D65 /* RoundedButton.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -321,6 +327,7 @@
 		BD6B02C92C024ED7006838AF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				12751D312C0E0E56001DA505 /* DSQ.xcframework */,
 				C9940B4F2C0881D60016CE9F /* DSQ.xcframework */,
 			);
 			name = Frameworks;
@@ -470,6 +477,7 @@
 				12972BB82C06004D00FB6BA0 /* ThemeManager.swift in Sources */,
 				1221D8A52BF244E500CB5EB9 /* RoundedCorner.swift in Sources */,
 				120475052BFE8B600044AD97 /* Effects.swift in Sources */,
+				123F31D92C0E229F009B6D65 /* RoundedButton.swift in Sources */,
 				BD6B02C62C024B9B006838AF /* PieceSprite.swift in Sources */,
 				BD6B02CF2C0254E7006838AF /* TileSprite.swift in Sources */,
 				12A9E4902C06059200AB8677 /* LanguageManager.swift in Sources */,

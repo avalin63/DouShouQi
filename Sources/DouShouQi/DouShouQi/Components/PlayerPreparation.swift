@@ -11,7 +11,7 @@ import PhotosUI
 struct PlayerPreparation<TextStyle: TextFieldStyle>: View {
     let style: PlayerPreparationStyle
     var textInputStyle: TextStyle
-    @Binding var isCheckmarkVisible: Bool
+    @Binding var isReady: Bool
     @Binding var username: String
     
     @State var image: UIImage? = nil
@@ -27,11 +27,11 @@ struct PlayerPreparation<TextStyle: TextFieldStyle>: View {
             }
             Image(systemName: "checkmark.circle.fill")
                 .resizable()
-                .scaleEffect(isCheckmarkVisible ? 1 : 0)
+                .scaleEffect(isReady ? 1 : 0)
                 .frame(width: 30, height: 30)
                 .foregroundColor(style.checkMarkColor)
                 .font(.largeTitle)
-                .opacity(isCheckmarkVisible ? 1 : 0)
+                .opacity(isReady ? 1 : 0)
                 .position(x:180, y:0)
         }
         .frame(width: 170, height: 170)
@@ -46,7 +46,7 @@ struct PlayerPreparation<TextStyle: TextFieldStyle>: View {
     
     private func updateCheckmarkVisibility() {
         withAnimation{
-            isCheckmarkVisible = !username.isEmpty && image != nil
+            isReady = !username.isEmpty && image != nil
         }
     }
 }
@@ -58,10 +58,10 @@ struct PlayerPreparationStyle {
 }
 
 #Preview("Light") {
-    PlayerPreparation(style: .defaultStyle, textInputStyle: TopUsernameTextInputStyle(), isCheckmarkVisible: .constant(false), username: .constant("DefaultUser"))
+    PlayerPreparation(style: .defaultStyle, textInputStyle: TopUsernameTextInputStyle(), isReady: .constant(false), username: .constant("DefaultUser"))
 }
 
 #Preview("Dark") {
-    PlayerPreparation(style: .variant, textInputStyle: BottomUsernameTextInputStyle(), isCheckmarkVisible: .constant(false), username: .constant("DefaultUser"))
+    PlayerPreparation(style: .variant, textInputStyle: BottomUsernameTextInputStyle(), isReady: .constant(false), username: .constant("DefaultUser"))
         .preferredColorScheme(/*@START_MENU_TOKEN@*/.dark/*@END_MENU_TOKEN@*/)
 }
