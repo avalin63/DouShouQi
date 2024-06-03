@@ -7,13 +7,34 @@
 
 import SwiftUI
 import SpriteKit
+import DouShouQiModel
+
+let player1: Player = HumanPlayer(
+    withName: "Dave",
+    andId: .player1
+)!
+
+let player2: Player = HumanPlayer(
+    withName: "Lucas",
+    andId: .player2
+)!
+
+class GameViewState : ObservableObject {
+    @Published var currentPlayer: Player = player1
+}
 
 struct GameView: View {
     @Environment(\.colorScheme) var colorScheme
-    @State var gameScene: BoardScene
     
-    init() {
-        gameScene = BoardScene(size: BoardSceneValues.GRID_SIZE)
+    @StateObject var state = GameViewState()
+    @StateObject var gameColors = GameColors()
+    var gameScene: BoardScene {
+        BoardScene(
+            size: BoardSceneValues.GRID_SIZE,
+            colors: gameColors,
+            board: ClassicRules.createBoard(),
+            state: state
+        )
     }
     
     var body: some View {
@@ -34,25 +55,41 @@ struct GameView: View {
             .padding([.leading, .trailing], 30)
             
             HStack {
-                PlayerIndicatorCell()
+                PlayerIndicatorCell(
+                    text: state.currentPlayer.name,
+                    color: state.currentPlayer.id.playerColor!
+                )
                 
                 Spacer()
                 
-                MoveIndicatorCell()
+                MoveIndicatorCell(move: nil, animal: nil)
             }
             
             SpriteView(scene: gameScene)
                 .border(.black, width: 3.0)
+                .aspectRatio(
+                    CGSize(
+                        width: BoardSceneValues.GRID_WIDTH,
+                        height: BoardSceneValues.GRID_HEIGHT
+                    ),
+                    contentMode: .fit
+                )
                 .padding(.all, 8)
                 .ignoresSafeArea()
             
-            Button(action: {}) {
+            Button(action: {
+                state.currentPlayer = if (state.currentPlayer.id == .player2){
+                    player1
+                } else {
+                    player2
+                }
+            }) {
                 Text(String(localized: "validate"))
                     .font(.title)
                     .fontWeight(.bold)
                     .foregroundStyle(.white)
                     .frame(maxWidth: .infinity, minHeight: 70)
-                    .background(DSQColors.primaryColor)
+                    .background(state.currentPlayer.id.playerColor!)
             }
             .background()
             .padding(.bottom, 24)

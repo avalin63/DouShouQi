@@ -16,6 +16,14 @@ class PieceSprite : SKSpriteNode {
             color: UIColor(),
             size: CGSize(width: BoardSceneValues.CELL_SIZE, height: BoardSceneValues.CELL_SIZE)
         )
+        
+        let shape = SKShapeNode(circleOfRadius: (BoardSceneValues.CELL_SIZE / 2) - 5)
+        let color = SKColor(named: piece.owner.tileColor!)!
+        shape.fillColor = color
+        shape.strokeColor = color
+        shape.zPosition = -1.0
+        
+        addChild(shape)
     }
     
     required init?(coder aDecoder: NSCoder) {

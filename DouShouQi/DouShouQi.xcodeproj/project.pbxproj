@@ -30,6 +30,11 @@
 		BD6B02C82C024BD7006838AF /* BoardSceneValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6B02C72C024BD7006838AF /* BoardSceneValues.swift */; };
 		BD6B02CB2C024ED7006838AF /* DSQ.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD6B02CA2C024ED7006838AF /* DSQ.xcframework */; };
 		BD6B02CF2C0254E7006838AF /* TileSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6B02CE2C0254E7006838AF /* TileSprite.swift */; };
+		BDD97D7D2C087E42002B1B9E /* Owner.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD97D7C2C087E42002B1B9E /* Owner.swift */; };
+		BDD97D7F2C087E57002B1B9E /* Animal.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD97D7E2C087E57002B1B9E /* Animal.swift */; };
+		BDD97D812C087E6E002B1B9E /* CellType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD97D802C087E6E002B1B9E /* CellType.swift */; };
+		BDD97D832C087F4E002B1B9E /* GameColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD97D822C087F4E002B1B9E /* GameColors.swift */; };
+		BDD97D862C088582002B1B9E /* Move.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD97D852C088582002B1B9E /* Move.swift */; };
 		C961249A2BFE7B4C00E1E55C /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96124992BFE7B4C00E1E55C /* GameView.swift */; };
 		C961249C2BFF33F000E1E55C /* PlayerIndicatorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C961249B2BFF33F000E1E55C /* PlayerIndicatorCell.swift */; };
 		C961249E2BFF33FC00E1E55C /* MoveIndicatorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C961249D2BFF33FC00E1E55C /* MoveIndicatorCell.swift */; };
@@ -79,6 +84,11 @@
 		BD6B02C72C024BD7006838AF /* BoardSceneValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardSceneValues.swift; sourceTree = "<group>"; };
 		BD6B02CA2C024ED7006838AF /* DSQ.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = DSQ.xcframework; path = ../../SwiftUI_ARKit_2024/XCFramework/DSQ.xcframework; sourceTree = "<group>"; };
 		BD6B02CE2C0254E7006838AF /* TileSprite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TileSprite.swift; sourceTree = "<group>"; };
+		BDD97D7C2C087E42002B1B9E /* Owner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Owner.swift; sourceTree = "<group>"; };
+		BDD97D7E2C087E57002B1B9E /* Animal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animal.swift; sourceTree = "<group>"; };
+		BDD97D802C087E6E002B1B9E /* CellType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellType.swift; sourceTree = "<group>"; };
+		BDD97D822C087F4E002B1B9E /* GameColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameColors.swift; sourceTree = "<group>"; };
+		BDD97D852C088582002B1B9E /* Move.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Move.swift; sourceTree = "<group>"; };
 		C96124992BFE7B4C00E1E55C /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
 		C961249B2BFF33F000E1E55C /* PlayerIndicatorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerIndicatorCell.swift; sourceTree = "<group>"; };
 		C961249D2BFF33FC00E1E55C /* MoveIndicatorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveIndicatorCell.swift; sourceTree = "<group>"; };
@@ -210,6 +220,10 @@
 				1221D8A42BF244E400CB5EB9 /* RoundedCorner.swift */,
 				122FD9B42BF6A377000B6D0A /* BorderEdge.swift */,
 				122FD9B62BF6A71D000B6D0A /* ScrollViewFade.swift */,
+				BDD97D7C2C087E42002B1B9E /* Owner.swift */,
+				BDD97D7E2C087E57002B1B9E /* Animal.swift */,
+				BDD97D802C087E6E002B1B9E /* CellType.swift */,
+				BDD97D852C088582002B1B9E /* Move.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -221,6 +235,7 @@
 				BD6B02C52C024B9B006838AF /* PieceSprite.swift */,
 				BD6B02CE2C0254E7006838AF /* TileSprite.swift */,
 				BD6B02C72C024BD7006838AF /* BoardSceneValues.swift */,
+				BDD97D822C087F4E002B1B9E /* GameColors.swift */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -369,6 +384,8 @@
 				BD6B02C62C024B9B006838AF /* PieceSprite.swift in Sources */,
 				BD6B02CF2C0254E7006838AF /* TileSprite.swift in Sources */,
 				BD6B02C42C024B75006838AF /* BoardScene.swift in Sources */,
+				BDD97D862C088582002B1B9E /* Move.swift in Sources */,
+				BDD97D832C087F4E002B1B9E /* GameColors.swift in Sources */,
 				122FD9B72BF6A71D000B6D0A /* ScrollViewFade.swift in Sources */,
 				122FD9B12BF69F1B000B6D0A /* StartGameView.swift in Sources */,
 				1221D8A72BF24D4E00CB5EB9 /* Styles.swift in Sources */,
@@ -376,10 +393,13 @@
 				1221D89B2BF2401D00CB5EB9 /* HomeView.swift in Sources */,
 				122FD9B52BF6A377000B6D0A /* BorderEdge.swift in Sources */,
 				1221D8A22BF2431600CB5EB9 /* Colors.swift in Sources */,
+				BDD97D7F2C087E57002B1B9E /* Animal.swift in Sources */,
 				1221D8AB2BF260E700CB5EB9 /* OptionsLeftButton.swift in Sources */,
 				1221D8A92BF25F1100CB5EB9 /* PrimaryLeftButton.swift in Sources */,
+				BDD97D7D2C087E42002B1B9E /* Owner.swift in Sources */,
 				122FD9B32BF6A0B9000B6D0A /* PartyResumeCell.swift in Sources */,
 				BD6B02C82C024BD7006838AF /* BoardSceneValues.swift in Sources */,
+				BDD97D812C087E6E002B1B9E /* CellType.swift in Sources */,
 				C961249E2BFF33FC00E1E55C /* MoveIndicatorCell.swift in Sources */,
 				1221D89F2BF2416600CB5EB9 /* GenericLeftButton.swift in Sources */,
 				C961249A2BFE7B4C00E1E55C /* GameView.swift in Sources */,
