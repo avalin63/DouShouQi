@@ -29,11 +29,11 @@ struct StartOnePlayerView: View {
                 EmptyView()
             }
         )
-        .navigationDestination(isPresented: $isReady) {
-            GameView()
-        }
         .onChange(of: isReady) {
             gameVM.startGame()
+        }
+        .onAppear {
+            UINavigationBar.appearance().barTintColor = .systemRed
         }
     }
 }

@@ -18,7 +18,6 @@ struct StartGameView: View {
                     label: String(localized: "\(1) player"),
                     destination: { 
                         StartOnePlayerView()
-                            .navigationBarBackButtonHidden(true)
                     }
                 )
                 PrimaryLeftButton(
@@ -26,7 +25,6 @@ struct StartGameView: View {
                     label: String(localized: "\(2) player"),
                     destination: {
                         PreparationTwoPlayersView()
-                            .navigationBarBackButtonHidden(true)
                     }
                 )
             }

@@ -15,7 +15,7 @@ struct PreparationTwoPlayersView: View {
     
     var body: some View {
         GeometryReader{ geo in
-            VStack(spacing: 0){
+            VStack(spacing: 0) {
                 VStack{
                     PlayerPreparation(style:.defaultStyle, textInputStyle: TopUsernameTextInputStyle(), isCheckmarkVisible: $isReadyFirst, username: $gameVM.firstUser.name)
                 }
@@ -42,7 +42,6 @@ struct PreparationTwoPlayersView: View {
                 EmptyView()
             }
         )
-        .navigationBarHidden(true)
     }
     
     private func check() {

@@ -48,7 +48,6 @@ struct GenericLeftButton<Leading: View, Destination: View>: View {
                 }
             )
         }
-        
     }
 }
 

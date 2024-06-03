@@ -1,398 +1,420 @@
 {
-    "sourceLanguage": "en",
-    "version": "1.0",
-    "strings": {
-        "%lld player": {
-            "extractionState": "manual",
-            "localizations": {
-                "en": {
-                    "variations": {
-                        "plural": {
-                            "one": {
-                                "stringUnit": {
-                                    "state": "translated",
-                                    "value": "%lld player"
-                                }
-                            },
-                            "other": {
-                                "stringUnit": {
-                                    "state": "translated",
-                                    "value": "%lld players"
-                                }
-                            }
-                        }
-                    }
-                },
-                "fr": {
-                    "variations": {
-                        "plural": {
-                            "one": {
-                                "stringUnit": {
-                                    "state": "translated",
-                                    "value": "%lld joueur"
-                                }
-                            },
-                            "other": {
-                                "stringUnit": {
-                                    "state": "translated",
-                                    "value": "%lld joueurs"
-                                }
-                            }
-                        }
-                    }
+  "sourceLanguage" : "en",
+  "strings" : {
+    "%lld player" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld player"
                 }
-            }
-        },
-        "11/05/2024": {},
-        "12min34s": {},
-        "Camera": {
-            "extractionState": "manual",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Camera"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Appareil photo"
-                    }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld players"
                 }
+              }
             }
+          }
         },
-        "Cancel": {
-            "extractionState": "manual",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Cancel"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Annuler"
-                    }
+        "fr" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld joueur"
                 }
-            }
-        },
-        "DouShouQi": {
-            "localizations": {
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "DouShouQi"
-                    }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld joueurs"
                 }
+              }
             }
+          }
+        }
+      }
+    },
+    "11/05/2024" : {
+
+    },
+    "12min34s" : {
+
+    },
+    "Camera" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Camera"
+          }
         },
-        "Gallery": {
-            "extractionState": "manual",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Gallery"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Galerie"
-                    }
-                }
-            }
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Appareil photo"
+          }
+        }
+      }
+    },
+    "Cancel" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cancel"
+          }
         },
-        "historics": {
-            "extractionState": "manual",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Historics"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Historiques"
-                    }
-                }
-            }
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Annuler"
+          }
+        }
+      }
+    },
+    "Dark" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dark"
+          }
         },
-        "new_game": {
-            "extractionState": "manual",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "New game"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Nouvelle partie"
-                    }
-                }
-            }
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sombre"
+          }
+        }
+      }
+    },
+    "DouShouQi" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "DouShouQi"
+          }
+        }
+      }
+    },
+    "English" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "English"
+          }
         },
-        "options": {
-            "extractionState": "manual",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "options"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Options"
-                    }
-                }
-            }
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Anglais"
+          }
+        }
+      }
+    },
+    "French" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "French"
+          }
         },
-        "player %lld": {
-            "extractionState": "manual",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Player %lld"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Joueur %lld"
-                    }
-                }
-            }
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Français"
+          }
+        }
+      }
+    },
+    "Gallery" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gallery"
+          }
         },
-        "Pseudo": {},
-        "Pseudonyme": {},
-        "round": {
-            "extractionState": "manual",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Round"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Tour"
-                    }
-                }
-            }
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Galerie"
+          }
+        }
+      }
+    },
+    "Game Over" : {
+
+    },
+    "historics" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Historics"
+          }
         },
-        "Round %lld": {},
-        "Source question": {
-            "extractionState": "manual",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "From which source would you like to take your profile picture?"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "needs_review",
-                        "value": "Depuis quelle source souhaitez-vous prendre votre photo de profil ?"
-                    }
-                }
-            }
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Historiques"
+          }
+        }
+      }
+    },
+    "Language" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Language"
+          }
         },
-        "statistics": {
-            "extractionState": "manual",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Statistics"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Statistiques"
-                    }
-                }
-            }
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Langue"
+          }
+        }
+      }
+    },
+    "Light" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Light"
+          }
         },
-        "validate": {
-            "extractionState": "manual",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "VALIDATE"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "VALIDER"
-                    }
-                }
-            }
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Clair"
+          }
+        }
+      }
+    },
+    "new_game" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "New game"
+          }
         },
-        "waiting": {
-            "extractionState": "manual",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Waiting..."
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "needs_review",
-                        "value": "En attente..."
-                    }
-                }
-            }
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nouvelle partie"
+          }
+        }
+      }
+    },
+    "Ok" : {
+
+    },
+    "options" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "options"
+          }
         },
-        "Winning reason": {},
-        "Dark": {
-            "extractionState": "manual",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Dark"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Sombre"
-                    }
-                }
-            }
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Options"
+          }
+        }
+      }
+    },
+    "Options" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Options"
+          }
+        }
+      }
+    },
+    "Partie terminée" : {
+
+    },
+    "player %lld" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Player %lld"
+          }
         },
-        "English": {
-            "extractionState": "manual",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "English"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Anglais"
-                    }
-                }
-            }
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Joueur %lld"
+          }
+        }
+      }
+    },
+    "Pseudo" : {
+
+    },
+    "Pseudonyme" : {
+
+    },
+    "round" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Round"
+          }
         },
-        "French": {
-            "extractionState": "manual",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "French"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Français"
-                    }
-                }
-            }
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tour"
+          }
+        }
+      }
+    },
+    "Round %lld" : {
+
+    },
+    "Source question" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "From which source would you like to take your profile picture?"
+          }
         },
-        "Game Over": {},
-        "Language": {
-            "extractionState": "manual",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Language"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Langue"
-                    }
-                }
-            }
+        "fr" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Depuis quelle source souhaitez-vous prendre votre photo de profil ?"
+          }
+        }
+      }
+    },
+    "statistics" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Statistics"
+          }
         },
-        "Light": {
-            "extractionState": "manual",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Light"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Clair"
-                    }
-                }
-            }
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Statistiques"
+          }
+        }
+      }
+    },
+    "System" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "System"
+          }
         },
-        "Options": {
-            "localizations": {
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Options"
-                    }
-                }
-            }
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Système"
+          }
+        }
+      }
+    },
+    "Theme" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Theme"
+          }
         },
-        "System": {
-            "extractionState": "manual",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "System"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Système"
-                    }
-                }
-            }
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Thème"
+          }
+        }
+      }
+    },
+    "validate" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "VALIDATE"
+          }
         },
-        "Theme": {
-            "extractionState": "manual",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Theme"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Thème"
-                    }
-                }
-            }
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "VALIDER"
+          }
+        }
+      }
+    },
+    "waiting" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Waiting..."
+          }
         },
-        "Win": {}
+        "fr" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "En attente..."
+          }
+        }
+      }
+    },
+    "Win" : {
+
+    },
+    "Winning reason" : {
+
     }
+  },
+  "version" : "1.0"
 }
