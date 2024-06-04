@@ -26,16 +26,9 @@ class GameViewState : ObservableObject {
 struct GameView: View {
     @Environment(\.colorScheme) var colorScheme
     
-    @StateObject var state = GameViewState()
+    @StateObject var gameState = GameViewState()
     @StateObject var gameColors = GameColors()
-    var gameScene: BoardScene {
-        BoardScene(
-            size: BoardSceneValues.GRID_SIZE,
-            colors: gameColors,
-            board: ClassicRules.createBoard(),
-            state: state
-        )
-    }
+    @State private var gameScene: BoardScene?
     
     var body: some View {
         VStack() {
@@ -56,8 +49,8 @@ struct GameView: View {
             
             HStack {
                 PlayerIndicatorCell(
-                    text: state.currentPlayer.name,
-                    color: state.currentPlayer.id.playerColor!
+                    text: gameState.currentPlayer.name,
+                    color: gameState.currentPlayer.id.playerColor!
                 )
                 
                 Spacer()
@@ -65,37 +58,51 @@ struct GameView: View {
                 MoveIndicatorCell(move: nil, animal: nil)
             }
             
-            SpriteView(scene: gameScene)
-                .border(.black, width: 3.0)
-                .aspectRatio(
-                    CGSize(
-                        width: BoardSceneValues.GRID_WIDTH,
-                        height: BoardSceneValues.GRID_HEIGHT
-                    ),
-                    contentMode: .fit
-                )
-                .padding(.all, 8)
-                .ignoresSafeArea()
-            
-            Button(action: {
-                state.currentPlayer = if (state.currentPlayer.id == .player2){
-                    player1
-                } else {
-                    player2
+            if let gameScene = gameScene {
+                SpriteView(scene: gameScene)
+                    .border(.black, width: 3.0)
+                    .aspectRatio(
+                        CGSize(
+                            width: BoardSceneValues.GRID_WIDTH,
+                            height: BoardSceneValues.GRID_HEIGHT
+                        ),
+                        contentMode: .fit
+                    )
+                    .padding(.all, 8)
+                    .ignoresSafeArea()
+                
+                Button(action: {
+                    gameScene.executeMove()
+                    gameState.currentPlayer = if (gameState.currentPlayer.id == .player2){
+                        player1
+                    } else {
+                        player2
+                    }
+                    
+                }) {
+                    Text(String(localized: "validate"))
+                        .font(.title)
+                        .fontWeight(.bold)
+                        .foregroundStyle(.white)
+                        .frame(maxWidth: .infinity, minHeight: 70)
+                        .background(gameState.currentPlayer.id.playerColor!)
                 }
-            }) {
-                Text(String(localized: "validate"))
-                    .font(.title)
-                    .fontWeight(.bold)
-                    .foregroundStyle(.white)
-                    .frame(maxWidth: .infinity, minHeight: 70)
-                    .background(state.currentPlayer.id.playerColor!)
+                .background()
+                .padding(.bottom, 24)
             }
-            .background()
-            .padding(.bottom, 24)
+        
         }
         .padding(.vertical, 20)
         .background(DSQColors.backgroundColor)
+        .onAppear {
+            if gameScene == nil {
+                gameScene = BoardScene(
+                    colors: gameColors,
+                    board: ClassicRules.createBoard(),
+                    currentPlayer: { gameState.currentPlayer }
+                )
+            }
+        }
     }
 }
 

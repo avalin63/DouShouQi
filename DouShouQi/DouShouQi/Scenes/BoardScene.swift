@@ -11,17 +11,17 @@ import SwiftUI
 import DouShouQiModel
 
 class BoardScene: SKScene {
-    @ObservedObject var state: GameViewState
+    var currentPlayer: () -> Player
     private let board: Board
     private var pieces: [(piece: Piece, node: SKSpriteNode)] = []
     private var moves: [(move: Move, node: SKShapeNode)] = []
-    private var selectedMove: (move: Move, line: SKShapeNode, label: SKLabelNode)? = nil
+    private var selectedMove: (move: Move, node: SKShapeNode)? = nil
     
-    init(size: CGSize, colors: GameColors, board: Board, state: GameViewState) {
+    init(colors: GameColors, board: Board, currentPlayer: @escaping () -> Player) {
         print("InitBoard")
         self.board = board
-        self.state = state
-        super.init(size: size)
+        self.currentPlayer = currentPlayer
+        super.init(size: BoardSceneValues.GRID_SIZE)
         
         scene?.size = size
         scene?.scaleMode = .fill
@@ -64,7 +64,7 @@ class BoardScene: SKScene {
     
     required init?(coder aDecoder: NSCoder) {
         self.board = ClassicRules.createBoard()
-        self.state = GameViewState()
+        self.currentPlayer = { HumanPlayer(withName: "", andId: .player1)! }
         super.init(coder: aDecoder)
     }
     
@@ -90,7 +90,7 @@ class BoardScene: SKScene {
     
     func insertPossibleMove(move: Move, x: CGFloat, y: CGFloat) {
         let shape = SKShapeNode(circleOfRadius: (BoardSceneValues.CELL_SIZE / 2) - 10)
-        let color = SKColor(named: state.currentPlayer.id.tileColor!)!
+        let color = SKColor(named: currentPlayer().id.tileColor!)!
         shape.fillColor = color
         shape.strokeColor = color
         shape.alpha = 0.5
@@ -100,6 +100,28 @@ class BoardScene: SKScene {
         
         moves.append((move, shape))
         addChild(shape)
+    }
+    
+    func executeMove() {
+        if let move = selectedMove?.move {
+            clearMoves()
+            let startPiece = findPieceNode(atX: move.columnOrigin, atY: move.rowOrigin)
+            let endPiece = findPieceNode(atX: move.columnDestination, atY: move.rowDestination)
+            
+            let xMove = Double(move.columnDestination - move.columnOrigin) * BoardSceneValues.CELL_SIZE
+            let yMove = Double(move.rowDestination - move.rowOrigin) * BoardSceneValues.CELL_SIZE
+            
+            print("m : \(move.description)")
+            print("m : \(move.columnDestination - move.rowOrigin)")
+            
+            
+            print("xm : \(xMove)")
+            print("ym : \(yMove)")
+            
+            let action = SKAction.moveBy(x: xMove, y: yMove, duration: 0.3)
+            startPiece?.node.run(action)
+            endPiece?.node.removeFromParent()
+        }
     }
 
     private func toRealCoordinates(atX x: Int, atY y: Int) -> (x: Double, y: Double) {
@@ -112,9 +134,18 @@ class BoardScene: SKScene {
         (Int(x / BoardSceneValues.CELL_SIZE), Int(y / BoardSceneValues.CELL_SIZE))
     }
 
+    private func refreshPieces() {
+        pieces.forEach { (_, node) in
+            node.size = CGSize(
+                width: BoardSceneValues.CELL_SIZE,
+                height: BoardSceneValues.CELL_SIZE
+            )
+        }
+    }
+    
     private func refreshMoves() {
         moves.forEach { (_, node) in
-            let color = SKColor(named: state.currentPlayer.id.tileColor!)!
+            let color = SKColor(named: currentPlayer().id.tileColor!)!
             node.alpha = 0.5
             node.fillColor = color
             node.strokeColor = color
@@ -135,18 +166,17 @@ class BoardScene: SKScene {
     
     private func clearSelectedMove() {
         if let move = selectedMove {
-            move.label.removeFromParent()
-            move.line.removeFromParent()
+            move.node.removeFromParent()
         }
         
         selectedMove = nil
     }
     
-    private func findPieceNode(atX x: Int, atY y: Int, ofPlayer owner: Owner) -> (Piece, SKSpriteNode)? {
+    private func findPieceNode(atX x: Int, atY y: Int, ofPlayer owner: Owner? = nil) -> (piece: Piece, node: SKSpriteNode)? {
         return pieces.first(where: { (piece, node) in
             let pos = node.position
             let (posX, posY) = getBoardCoordinates(atX: pos.x, atY: pos.y)
-            return (posX == x) && (posY == y) && (piece.owner == owner)
+            return (posX == x) && (posY == y) && (owner == nil || (piece.owner == owner))
         })
     }
     
@@ -162,8 +192,8 @@ class BoardScene: SKScene {
         for touch in touches {
             let location = touch.location(in: self)
             let (tileX, tileY) = getBoardCoordinates(atX: location.x, atY: location.y)
-            
-            if let (_, node) = findPieceNode(atX: tileX, atY: tileY, ofPlayer: state.currentPlayer.id) {
+            refreshPieces()
+            if let (_, node) = findPieceNode(atX: tileX, atY: tileY, ofPlayer: currentPlayer().id) {
                 node.size = CGSize(
                     width: BoardSceneValues.CELL_SIZE + 10,
                     height: BoardSceneValues.CELL_SIZE + 10
@@ -178,16 +208,11 @@ class BoardScene: SKScene {
             let location = touch.location(in: self)
             let (tileX, tileY) = getBoardCoordinates(atX: location.x, atY: location.y)
             
-            if let (_, node) = findPieceNode(atX: tileX, atY: tileY, ofPlayer: state.currentPlayer.id) {
-                node.size = CGSize(
-                    width: BoardSceneValues.CELL_SIZE,
-                    height: BoardSceneValues.CELL_SIZE
-                )
-                
+            if let (_, _) = findPieceNode(atX: tileX, atY: tileY, ofPlayer: currentPlayer().id) {
                 clearMoves()
                 ClassicRules().getMoves(
                     in: board,
-                    of: state.currentPlayer.id,
+                    of: currentPlayer().id,
                     fromRow: tileY,
                     andColumn: tileX
                 ).forEach { move in
@@ -214,7 +239,7 @@ class BoardScene: SKScene {
                 
                 line.path = path
                 
-                line.strokeColor = SKColor(named: state.currentPlayer.id.tileColor!)!
+                line.strokeColor = SKColor(named: currentPlayer().id.tileColor!)!
                 line.lineWidth = 5
                 
                 addChild(line)
@@ -228,7 +253,7 @@ class BoardScene: SKScene {
                 
                 node.addChild(label)
                 
-                selectedMove = (move, line, label)
+                self.selectedMove = (move, line)
             } else {
                 clearMoves()
             }
