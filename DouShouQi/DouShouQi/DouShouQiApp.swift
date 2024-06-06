@@ -9,12 +9,16 @@ import SwiftUI
 
 @main
 struct DouShouQiApp: App {
+    @StateObject var themeManager = ThemeManager()
+    @StateObject var languageManager = LanguageManager()
     var body: some Scene {
         WindowGroup {
             NavigationView {
                 GameView()
-                    .environment(\.locale, .init(identifier: "en"))
             }
+            .preferredColorScheme(themeManager.selectedTheme.colorScheme)
+            .environmentObject(themeManager)
+            .environmentObject(languageManager)
         }
     }
 }

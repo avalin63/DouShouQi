@@ -24,8 +24,8 @@ class GameViewState : ObservableObject {
 }
 
 struct GameView: View {
+
     @Environment(\.colorScheme) var colorScheme
-    
     @StateObject var gameState = GameViewState()
     @StateObject var gameColors = GameColors()
     @State private var gameScene: BoardScene?

@@ -43,7 +43,7 @@ struct HomeView: View {
                         Image(systemName: "gearshape.fill")
                     },
                     label: String(localized: "options"),
-                    destination: { StartGameView() }
+                    destination: { OptionsView() }
                 )
             }
             .padding(.top, 100)
