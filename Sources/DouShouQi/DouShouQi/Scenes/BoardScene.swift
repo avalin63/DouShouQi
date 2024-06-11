@@ -12,12 +12,12 @@ import DouShouQiModel
 
 class BoardScene: SKScene {
     var currentPlayer: () -> Player
-    private let board: Board
+    public var selectedMove: (move: Move, node: SKShapeNode)? = nil
+    private let board: () -> Board
     private var pieces: [(piece: Piece, node: SKSpriteNode)] = []
     private var moves: [(move: Move, node: SKShapeNode)] = []
-    private var selectedMove: (move: Move, node: SKShapeNode)? = nil
     
-    init(colors: GameColors, board: Board, currentPlayer: @escaping () -> Player) {
+    init(colors: GameColors, board: @escaping () -> Board, currentPlayer: @escaping () -> Player) {
         print("InitBoard")
         self.board = board
         self.currentPlayer = currentPlayer
@@ -27,7 +27,7 @@ class BoardScene: SKScene {
         scene?.scaleMode = .fill
         scene?.backgroundColor = colors.boardColor
         
-        board.grid.enumerated().forEach { (y, row) in
+        board().grid.enumerated().forEach { (y, row) in
             row.enumerated().forEach { (x, cell) in
                 let (xpos, ypos) = toRealCoordinates(atX: x, atY: y)
                 
@@ -63,7 +63,7 @@ class BoardScene: SKScene {
     }
     
     required init?(coder aDecoder: NSCoder) {
-        self.board = ClassicRules.createBoard()
+        self.board = { ClassicRules.createBoard() }
         self.currentPlayer = { HumanPlayer(withName: "", andId: .player1)! }
         super.init(coder: aDecoder)
     }
@@ -102,26 +102,17 @@ class BoardScene: SKScene {
         addChild(shape)
     }
     
-    func executeMove() {
-        if let move = selectedMove?.move {
-            clearMoves()
-            let startPiece = findPieceNode(atX: move.columnOrigin, atY: move.rowOrigin)
-            let endPiece = findPieceNode(atX: move.columnDestination, atY: move.rowDestination)
-            
-            let xMove = Double(move.columnDestination - move.columnOrigin) * BoardSceneValues.CELL_SIZE
-            let yMove = Double(move.rowDestination - move.rowOrigin) * BoardSceneValues.CELL_SIZE
-            
-            print("m : \(move.description)")
-            print("m : \(move.columnDestination - move.rowOrigin)")
-            
-            
-            print("xm : \(xMove)")
-            print("ym : \(yMove)")
-            
-            let action = SKAction.moveBy(x: xMove, y: yMove, duration: 0.3)
-            startPiece?.node.run(action)
-            endPiece?.node.removeFromParent()
-        }
+    func executeMove(move: Move) {
+        clearMoves()
+        let startPiece = findPieceNode(atX: move.columnOrigin, atY: move.rowOrigin)
+        let endPiece = findPieceNode(atX: move.columnDestination, atY: move.rowDestination)
+        
+        let xMove = Double(move.columnDestination - move.columnOrigin) * BoardSceneValues.CELL_SIZE
+        let yMove = Double(move.rowDestination - move.rowOrigin) * BoardSceneValues.CELL_SIZE
+        
+        let action = SKAction.moveBy(x: xMove, y: yMove, duration: 0.3)
+        startPiece?.node.run(action)
+        endPiece?.node.removeFromParent()
     }
 
     private func toRealCoordinates(atX x: Int, atY y: Int) -> (x: Double, y: Double) {
@@ -211,7 +202,7 @@ class BoardScene: SKScene {
             if let (_, _) = findPieceNode(atX: tileX, atY: tileY, ofPlayer: currentPlayer().id) {
                 clearMoves()
                 ClassicRules().getMoves(
-                    in: board,
+                    in: board(),
                     of: currentPlayer().id,
                     fromRow: tileY,
                     andColumn: tileX

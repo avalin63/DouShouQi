@@ -9,33 +9,15 @@ import SwiftUI
 import SpriteKit
 import DouShouQiModel
 
-let player1: Player = HumanPlayer(
-    withName: "Dave",
-    andId: .player1
-)!
-
-let player2: Player = HumanPlayer(
-    withName: "Lucas",
-    andId: .player2
-)!
-
-class GameViewState : ObservableObject {
-    @Published var currentPlayer: Player = player1
-}
-
 struct GameView: View {
 
-    @Environment(\.colorScheme) var colorScheme
-    @StateObject var gameState = GameViewState()
-    @StateObject var gameColors = GameColors()
-    @State private var gameScene: BoardScene?
     @EnvironmentObject var gameVM: GameVM
     @State private var navigateToSummary = false
     
     var body: some View {
         VStack() {
             HStack {
-                Text(String(localized: "Round \(gameVM.nbRoundsPlayed/2)"))
+                Text(String(localized: "Round \(gameVM.nbRoundsPlayed / 2)"))
                     .font(.title)
                     .fontWeight(.bold)
                     .foregroundStyle(DSQColors.titleColor)
@@ -51,8 +33,8 @@ struct GameView: View {
             
             HStack {
                 PlayerIndicatorCell(
-                    text: gameState.currentPlayer.name,
-                    color: gameState.currentPlayer.id.playerColor!
+                    text: gameVM.currentPlayer?.name ?? "",
+                    color: gameVM.currentPlayer?.id.playerColor ?? DSQColors.player1
                 )
                 
                 Spacer()
@@ -60,7 +42,7 @@ struct GameView: View {
                 MoveIndicatorCell(move: nil, animal: nil)
             }
             
-            if let gameScene = gameScene {
+            if let gameScene = gameVM.gameScene {
                 SpriteView(scene: gameScene)
                     .border(.black, width: 3.0)
                     .aspectRatio(
@@ -74,20 +56,18 @@ struct GameView: View {
                     .ignoresSafeArea()
                 
                 Button(action: {
-                    gameScene.executeMove()
-                    gameState.currentPlayer = if (gameState.currentPlayer.id == .player2){
-                        player1
-                    } else {
-                        player2
+                    if let move = gameScene.selectedMove?.move {
+                        Task {
+                            try await gameVM.game?.onPlayed(with: move, from: gameVM.currentPlayer!)
+                        }
                     }
-                    
                 }) {
                     Text(String(localized: "validate"))
                         .font(.title)
                         .fontWeight(.bold)
                         .foregroundStyle(.white)
                         .frame(maxWidth: .infinity, minHeight: 70)
-                        .background(gameState.currentPlayer.id.playerColor!)
+                        .background(gameVM.currentPlayer?.id.playerColor ?? DSQColors.player1)
                 }
                 .background()
                 .padding(.bottom, 24)
@@ -110,15 +90,7 @@ struct GameView: View {
         )
         .padding(.vertical, 20)
         .background(DSQColors.backgroundColor)
-        .onAppear {
-            if gameScene == nil {
-                gameScene = BoardScene(
-                    colors: gameColors,
-                    board: ClassicRules.createBoard(),
-                    currentPlayer: { gameState.currentPlayer }
-                )
-            }
-        }
+
     }
 }
 

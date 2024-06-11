@@ -18,14 +18,16 @@ class GameVM: ObservableObject {
     @Published var currentPlayer: Player?
     @Published var isOver: Bool = false
     @Published var defeatReason: String = ""
-    @Published var nbRoundsPlayed: Int = 0
+    @Published var nbRoundsPlayed: Int = 2
+    @Published var gameColors = GameColors()
+    @Published var gameScene: BoardScene? = nil
     
     func startGame() {
         let firstPlayer = HumanPlayer(withName: firstUser.name, andId: .player1)
         var secondPlayer: Player?
         
         if isVersusAI {
-            secondPlayer = IAPlayer(withName: "Bot", andId: .player2)
+            secondPlayer = RandomPlayer(withName: "Bot", andId: .player2)
         } else {
             secondPlayer = HumanPlayer(withName: secondUser.name, andId: .player2)
         }
@@ -35,6 +37,17 @@ class GameVM: ObservableObject {
             game?.addGameStartedListener(updateStartGame)
             game?.addPlayerNotifiedListener(updateCurrentPlayer)
             game?.addGameOverListener(updateGameOver)
+            game?.addMoveChosenCallbacksListener { (board, move, player) in
+                self.nbRoundsPlayed += 1
+                self.gameScene?.executeMove(move: move)
+            }
+            
+            gameScene = BoardScene(
+                colors: gameColors,
+                board: { self.game!.board },
+                currentPlayer: { self.currentPlayer! }
+            )
+            
             Task {
                 try await game?.start()
             }
@@ -50,6 +63,10 @@ class GameVM: ObservableObject {
     
     func updateCurrentPlayer(board: Board, player: Player) async throws {
         currentPlayer = player
+        
+        if !(self.currentPlayer is HumanPlayer) {
+            try await self.currentPlayer?.chooseMove(in: board, with: ClassicRules())
+        }
     }
     
     func updateGameOver(board: Board, result: Result, player: Player?) {
