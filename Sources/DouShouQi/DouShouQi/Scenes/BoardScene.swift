@@ -245,6 +245,7 @@ class BoardScene: SKScene {
                 node.addChild(label)
                 
                 self.selectedMove = (move, line)
+                print("SelectedMove : \(String(describing: selectedMove?.move))")
             } else {
                 clearMoves()
             }
