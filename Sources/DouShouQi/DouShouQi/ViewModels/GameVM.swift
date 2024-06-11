@@ -21,6 +21,7 @@ class GameVM: ObservableObject {
     @Published var nbRoundsPlayed: Int = 2
     @Published var gameColors = GameColors()
     @Published var gameScene: BoardScene? = nil
+    @Published var winPlayer: Player? = nil
     
     func startGame() {
         let firstPlayer = HumanPlayer(withName: firstUser.name, andId: .player1)
@@ -71,6 +72,7 @@ class GameVM: ObservableObject {
     
     func updateGameOver(board: Board, result: Result, player: Player?) {
         isOver = true
+        winPlayer = player
         switch result {
             case .notFinished:
                 print("**********************************")

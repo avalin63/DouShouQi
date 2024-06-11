@@ -22,6 +22,7 @@ struct GameView: View {
         return String(format: "%02d:%02d", minutes, seconds)
     }
     
+    
     var body: some View {
         GeometryReader{ geo in
             ZStack{
@@ -92,15 +93,6 @@ struct GameView: View {
                     }
                     
                 }
-                .alert(isPresented: $gameVM.isOver) {
-                    Alert(
-                        title: Text("Partie terminée"),
-                        message: Text(gameVM.defeatReason),
-                        dismissButton: .default(Text("Ok")) {
-                            navigateToSummary = true
-                        }
-                    )
-                }
                 .background(
                     NavigationLink(destination: HomeView().navigationBarHidden(true), isActive: $navigateToSummary) {
                         EmptyView()
@@ -108,9 +100,20 @@ struct GameView: View {
                 )
                 .padding(.vertical, 20)
                 .background(DSQColors.backgroundColor)
+                .safeAreaPadding(.top, 50)
             }
+            VStack(spacing: -5){
+                GameOverStatus(isWinner: gameVM.winPlayer == gameVM.game?.players.values.first).frame(width: geo.size.width,height: geo.size.height * (1/2))
+                    .animation(.spring(), value: gameVM.isOver)
+                Spacer()
+                GameOverStatus(isWinner: gameVM.winPlayer != gameVM.game?.players.values.first).frame(width: geo.size.width,height: geo.size.height * (1/2))
+                    .animation(.spring(), value: gameVM.isOver)
+            }
+            .frame(height: gameVM.isOver ? geo.size.height : geo.size.height * 2)
+            .padding(.top,gameVM.isOver ? 0 : -geo.size.height * (1/2))
             
-        }
+            
+        }.ignoresSafeArea(.all)
     }
 }
 
