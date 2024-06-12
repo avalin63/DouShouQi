@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct PreparationTwoPlayersView: View {
+struct StartTwoPlayersView: View {
     @EnvironmentObject var gameVM: GameVM
     @State var isReadyFirst = false
     @State var isReadySecond = false
@@ -90,12 +90,12 @@ struct PreparationTwoPlayersView: View {
 }
 
 #Preview("Light") {
-    PreparationTwoPlayersView()
+    StartTwoPlayersView()
         .environmentObject(GameVM())
 }
 
 #Preview("Dark") {
-    PreparationTwoPlayersView()
+    StartTwoPlayersView()
         .preferredColorScheme(/*@START_MENU_TOKEN@*/.dark/*@END_MENU_TOKEN@*/)
         .environmentObject(GameVM())
 }
