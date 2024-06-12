@@ -12,6 +12,7 @@ import DouShouQiModel
 struct GameView: View {
     
     @EnvironmentObject var gameVM: GameVM
+    @Environment(\.dismiss) var dismiss
     @State private var navigateToSummary = false
     @State private var elapsedTime: TimeInterval = 0
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
@@ -93,11 +94,12 @@ struct GameView: View {
                     }
                     
                 }
-                .background(
-                    NavigationLink(destination: HomeView().navigationBarHidden(true), isActive: $navigateToSummary) {
-                        EmptyView()
+                .onChange(of: gameVM.isOver) {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
+                        dismiss()
+                        dismiss()
                     }
-                )
+                }
                 .padding(.vertical, 20)
                 .background(DSQColors.backgroundColor)
                 .safeAreaPadding(.top, 50)

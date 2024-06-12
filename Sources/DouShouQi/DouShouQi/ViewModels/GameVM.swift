@@ -24,17 +24,17 @@ class GameVM: ObservableObject {
     @Published var winPlayer: Player? = nil
     
     func startGame() {
-        let firstPlayer = HumanPlayer(withName: firstUser.name, andId: .player1)
-        var secondPlayer: Player?
+        let firstPlayer = HumanPlayer(withName: firstUser.name, andId: .player1)!
+        var secondPlayer: Player
         
         if isVersusAI {
-            secondPlayer = RandomPlayer(withName: "Bot", andId: .player2)
+            secondPlayer = RandomPlayer(withName: "Bot", andId: .player2)!
         } else {
-            secondPlayer = HumanPlayer(withName: secondUser.name, andId: .player2)
+            secondPlayer = HumanPlayer(withName: secondUser.name, andId: .player2)!
         }
         
         do {
-            game = try Game(withRules: ClassicRules(), andPlayer1: firstPlayer!, andPlayer2: secondPlayer!)
+            game = try Game(withRules: ClassicRules(), andPlayer1: firstPlayer, andPlayer2: secondPlayer)
             game?.addGameStartedListener(updateStartGame)
             game?.addPlayerNotifiedListener(updateCurrentPlayer)
             game?.addGameOverListener(updateGameOver)
@@ -42,12 +42,6 @@ class GameVM: ObservableObject {
                 self.nbRoundsPlayed += 1
                 self.gameScene?.executeMove(move: move)
             }
-            
-            gameScene = BoardScene(
-                colors: gameColors,
-                board: { self.game!.board },
-                currentPlayer: { self.currentPlayer! }
-            )
             
             Task {
                 try await game?.start()
@@ -60,6 +54,11 @@ class GameVM: ObservableObject {
     
     func updateStartGame(board: Board) {
         startGameDate = .now
+        gameScene = BoardScene(
+            colors: gameColors,
+            board: { self.game?.board ?? board },
+            currentPlayer: { self.currentPlayer! }
+        )
     }
     
     func updateCurrentPlayer(board: Board, player: Player) async throws {
