@@ -12,7 +12,6 @@ import DouShouQiModel
 struct GameView: View {
     
     @EnvironmentObject var gameVM: GameVM
-    @State private var navigateToSummary = false
     @State private var elapsedTime: TimeInterval = 0
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
@@ -94,7 +93,7 @@ struct GameView: View {
                     
                 }
                 .background(
-                    NavigationLink(destination: HomeView().navigationBarHidden(true), isActive: $navigateToSummary) {
+                    NavigationLink(destination: StartGameView().navigationBarHidden(true), isActive: $gameVM.navigateToSummary) {
                         EmptyView()
                     }
                 )

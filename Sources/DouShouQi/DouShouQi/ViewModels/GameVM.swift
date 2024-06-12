@@ -7,6 +7,7 @@
 
 import Foundation
 import DouShouQiModel
+import CoreData
 
 class GameVM: ObservableObject {
     
@@ -22,6 +23,17 @@ class GameVM: ObservableObject {
     @Published var gameColors = GameColors()
     @Published var gameScene: BoardScene? = nil
     @Published var winPlayer: Player? = nil
+    @Published var gameHistory: [GameEntity] = []
+    @Published var endGameDate: Date? = nil
+    
+    @Published var navigateToSummary = false
+    
+    
+    init() {
+        loadGameHistory()
+    }
+    
+    private let dataManager = DataManager.shared
     
     func startGame() {
         let firstPlayer = HumanPlayer(withName: firstUser.name, andId: .player1)
@@ -72,35 +84,74 @@ class GameVM: ObservableObject {
     
     func updateGameOver(board: Board, result: Result, player: Player?) {
         isOver = true
+        endGameDate = Date()
         winPlayer = player
+        saveCurrentGame()
         switch result {
-            case .notFinished:
+        case .notFinished:
+            print("**********************************")
+            print("Partie non terminée.")
+            print("**********************************")
+        case .even:
+            print("**********************************")
+            print("Partie terminée avec égalité !")
+            print("**********************************")
+        case let .winner(owner, reason):
+            switch reason {
+            case .denReached:
                 print("**********************************")
-                print("Partie non terminée.")
+                print("Partie terminée !!!\nEt le gagnant est... Player \(owner) !\nTanière atteinte !")
                 print("**********************************")
-            case .even:
+            case .noMorePieces:
                 print("**********************************")
-                print("Partie terminée avec égalité !")
+                print("Partie terminée !!!\nEt le gagnant est... Player \(owner) !\nPlus de pièces !")
                 print("**********************************")
-            case let .winner(owner, reason):
-                switch reason {
-                case .denReached:
-                    print("**********************************")
-                    print("Partie terminée !!!\nEt le gagnant est... Player \(owner) !\nTanière atteinte !")
-                    print("**********************************")
-                case .noMorePieces:
-                    print("**********************************")
-                    print("Partie terminée !!!\nEt le gagnant est... Player \(owner) !\nPlus de pièces !")
-                    print("**********************************")
-                case .noMovesLeft:
-                    print("**********************************")
-                    print("Partie terminée !!!\nEt le gagnant est... Player \(owner) !\nAucun coup possible !")
-                    print("**********************************")
-                case .tooManyOccurences:
-                    print("**********************************")
-                    print("Partie terminée !!!\nEt le gagnant est... Player \(owner) !\nTrop d'occurrences !")
-                    print("**********************************")
-                }
+            case .noMovesLeft:
+                print("**********************************")
+                print("Partie terminée !!!\nEt le gagnant est... Player \(owner) !\nAucun coup possible !")
+                print("**********************************")
+            case .tooManyOccurences:
+                print("**********************************")
+                print("Partie terminée !!!\nEt le gagnant est... Player \(owner) !\nTrop d'occurrences !")
+                print("**********************************")
             }
+        }
+        delayNavigateToSummary()
+    }
+    
+    private func saveCurrentGame() {
+        let context = dataManager.context
+        let newGame = GameEntity(context: context)
+        newGame.id = UUID()
+        newGame.startGameDate = startGameDate
+        newGame.endGameDate = endGameDate
+        newGame.isVersusAI = isVersusAI
+        newGame.firstUserName = firstUser.name
+        newGame.secondUserName = secondUser.name
+        newGame.isOver = isOver
+        newGame.defeatReason = defeatReason
+        newGame.nbRoundsPlayed = Int16(nbRoundsPlayed)
+        newGame.winPlayerName = winPlayer?.name
+        dataManager.saveContext()
+        print("Game saved: \(newGame)")
+        loadGameHistory()
+    }
+    
+    private func loadGameHistory() {
+        let context = dataManager.context
+        let fetchRequest: NSFetchRequest<GameEntity> = GameEntity.fetchRequest()
+        
+        do {
+            self.gameHistory = try context.fetch(fetchRequest)
+            print("Games load: \(gameHistory)")
+        } catch {
+            print("Failed to fetch game history: \(error)")
+        }
+    }
+    
+    private func delayNavigateToSummary() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            self.navigateToSummary = true
+        }
     }
 }

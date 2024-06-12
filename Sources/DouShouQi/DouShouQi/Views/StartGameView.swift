@@ -36,14 +36,13 @@ struct StartGameView: View {
                     .foregroundStyle(DSQColors.titleColor)
                     .padding(.horizontal, 30)
                 ScrollView{
-                    PartyResumeCell()
-                    PartyResumeCell()
-                    PartyResumeCell()
-                    PartyResumeCell()
-                    PartyResumeCell()
-                    PartyResumeCell()
-                    PartyResumeCell()
-                    PartyResumeCell()
+                    ForEach(gameVM.gameHistory, id: \.self) { game in
+                                        VStack(alignment: .leading) {
+                                            PartyResumeCell(pseudo: game.winPlayerName ?? "NaN", startDate: game.startGameDate, endDate: game.endGameDate,
+                                                            defeatReason: game.defeatReason ?? "NaN")
+                                        }
+                                    }
+
                 }
                 .fadeOutTop(fadeLength: 30)
             }
@@ -57,9 +56,11 @@ struct StartGameView: View {
 
 #Preview("Light") {
     StartGameView()
+        .environmentObject(GameVM())
 }
 
 #Preview("Dark"){
     StartGameView()
+        .environmentObject(GameVM())
         .preferredColorScheme(/*@START_MENU_TOKEN@*/.dark/*@END_MENU_TOKEN@*/)
 }
