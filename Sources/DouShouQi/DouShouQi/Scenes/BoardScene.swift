@@ -87,11 +87,11 @@ class BoardScene: SKScene {
         let pieceNode = PieceSprite(withPiece: piece)
         pieceNode.position.x = x
         pieceNode.position.y = y
-        pieceNode.zPosition = 10.0
+        pieceNode.zPosition = 10
         if (piece.owner == .player2) {
             pieceNode.zRotation = .pi
         }
-        pieceNode.userData = ["type": NodeType.piece, "piece": piece]
+        pieceNode.userData = ["type": NodeType.piece, "piece": piece, "selected": false]
         
         addChild(pieceNode)
     }
@@ -105,6 +105,8 @@ class BoardScene: SKScene {
     }
     
     func insertPossibleMove(move: Move, x: CGFloat, y: CGFloat) {
+        let (xpos, ypos) = toRealCoordinates(atX: move.columnDestination, atY: move.rowDestination)
+        
         let shape = SKShapeNode(circleOfRadius: (BoardSceneValues.CELL_SIZE / 2) - 10)
         let color = SKColor(named: currentPlayer().id.tileColor!)!
         shape.fillColor = color
@@ -113,6 +115,8 @@ class BoardScene: SKScene {
         shape.position.x = x
         shape.position.y = y
         shape.zPosition = 15.0
+        
+        shape.run(SKAction.move(to: CGPoint(x: xpos, y: ypos), duration: 0.15))
         
         shape.userData = ["type": NodeType.possibleMove, "move": move]
         addChild(shape)
@@ -157,13 +161,17 @@ class BoardScene: SKScene {
     }
 
     private func refreshPieces() {
-        pieceNodes.forEach { node in
-            node.run(SKAction.resize(
-                toWidth: BoardSceneValues.CELL_SIZE,
-                height: BoardSceneValues.CELL_SIZE,
-                duration: 0.2
-            ))
-        }
+        pieceNodes
+            .filter { $0.getUserData(key: "selected") == true }
+            .forEach { node in
+                node.run(SKAction.resize(
+                    toWidth: BoardSceneValues.CELL_SIZE,
+                    height: BoardSceneValues.CELL_SIZE,
+                    duration: 0.2
+                ))
+                node.zPosition = 10
+                node.userData?["selected"] = false
+            }
     }
     
     private func refreshMoves() {
@@ -223,25 +231,27 @@ class BoardScene: SKScene {
                 let (tileX, tileY) = getBoardCoordinates(atX: location.x, atY: location.y)
                                 
                 if let (_, node) = findPieceNode(atX: tileX, atY: tileY, ofPlayer: currentPlayer().id) {
-                    refreshPieces()
-                    node.run(SKAction.resize(
-                        toWidth: BoardSceneValues.CELL_SIZE + 10,
-                        height: BoardSceneValues.CELL_SIZE + 10,
-                        duration: 0.2
-                    ))
-                    
-                    clearMoves()
-                    rules.getMoves(
-                        in: board(),
-                        of: currentPlayer().id,
-                        fromRow: tileY,
-                        andColumn: tileX
-                    ).forEach { move in
-                        print("Move : \(move.description)")
-                        let (xpos, ypos) = toRealCoordinates(atX: move.columnDestination, atY: move.rowDestination)
-                        insertPossibleMove(move: move, x: xpos, y: ypos)
+                    if (node.getUserData(key: "selected") == false) {
+                        refreshPieces()
+                        node.run(SKAction.resize(
+                            toWidth: BoardSceneValues.CELL_SIZE + 10,
+                            height: BoardSceneValues.CELL_SIZE + 10,
+                            duration: 0.2
+                        ))
+                        node.zPosition = 23
+                        node.userData?["selected"] = true
+                        
+                        clearMoves()
+                        rules.getMoves(
+                            in: board(),
+                            of: currentPlayer().id,
+                            fromRow: tileY,
+                            andColumn: tileX
+                        ).forEach { move in
+                            print("Move : \(move.description)")
+                            insertPossibleMove(move: move, x: node.position.x, y: node.position.y)
+                        }
                     }
-                    
                 } else if let (move, node) = findMoveNode(atX: tileX, atY: tileY) {
                     
                     if move == selectedMove?.move {
@@ -266,6 +276,7 @@ class BoardScene: SKScene {
                         
                         line.strokeColor = SKColor(named: currentPlayer().id.tileColor!)!
                         line.lineWidth = 5
+                        line.zPosition = 20
                         
                         addChild(line)
                         
