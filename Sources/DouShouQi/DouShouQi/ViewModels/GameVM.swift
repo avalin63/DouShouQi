@@ -10,6 +10,7 @@ import DouShouQiModel
 
 class GameVM: ObservableObject {
     
+    @Published var rules: Rules = ClassicRules()
     @Published var game: Game?
     @Published var startGameDate: Date = .now
     @Published var isVersusAI: Bool = false
@@ -19,10 +20,9 @@ class GameVM: ObservableObject {
     @Published var isOver: Bool = false
     @Published var defeatReason: String = ""
     @Published var nbRoundsPlayed: Int = 2
-    @Published var gameColors = GameColors()
     @Published var gameScene: BoardScene? = nil
     @Published var winPlayer: Player? = nil
-    
+        
     func startGame() {
         let firstPlayer = HumanPlayer(withName: firstUser.name, andId: .player1)!
         var secondPlayer: Player
@@ -34,7 +34,7 @@ class GameVM: ObservableObject {
         }
         
         do {
-            game = try Game(withRules: ClassicRules(), andPlayer1: firstPlayer, andPlayer2: secondPlayer)
+            game = try Game(withRules: rules, andPlayer1: firstPlayer, andPlayer2: secondPlayer)
             game?.addGameStartedListener(updateStartGame)
             game?.addPlayerNotifiedListener(updateCurrentPlayer)
             game?.addGameOverListener(updateGameOver)
@@ -54,10 +54,10 @@ class GameVM: ObservableObject {
     
     func updateStartGame(board: Board) {
         startGameDate = .now
-        gameScene = BoardScene(
-            colors: gameColors,
+        gameScene = BoardScene(            
             board: { self.game?.board ?? board },
-            currentPlayer: { self.currentPlayer! }
+            currentPlayer: { self.currentPlayer! },
+            rules: rules
         )
     }
     
@@ -65,7 +65,8 @@ class GameVM: ObservableObject {
         currentPlayer = player
         
         if !(self.currentPlayer is HumanPlayer) {
-            try await self.currentPlayer?.chooseMove(in: board, with: ClassicRules())
+            try await Task.sleep(nanoseconds: 1_000_000_000)
+            try await self.currentPlayer?.chooseMove(in: board, with: rules)
         }
     }
     

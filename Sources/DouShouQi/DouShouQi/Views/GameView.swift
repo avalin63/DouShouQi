@@ -13,6 +13,8 @@ struct GameView: View {
     
     @EnvironmentObject var gameVM: GameVM
     @Environment(\.dismiss) var dismiss
+    @Environment(\.colorScheme) var colorScheme: ColorScheme
+    
     @State private var navigateToSummary = false
     @State private var elapsedTime: TimeInterval = 0
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
@@ -67,13 +69,20 @@ struct GameView: View {
                             .border(.black, width: 3.0)
                             .aspectRatio(
                                 CGSize(
-                                    width: BoardSceneValues.GRID_WIDTH,
-                                    height: BoardSceneValues.GRID_HEIGHT
+                                    width: gameVM.game?.board.gridWidth ?? 0,
+                                    height: gameVM.game?.board.gridHeight ?? 0
                                 ),
                                 contentMode: .fit
                             )
                             .padding(.all, 8)
+                            .frame(maxHeight: .infinity)
                             .ignoresSafeArea()
+                            .onAppear {
+                                gameScene.updateColor(colors: GameColors())
+                            }
+                            .onChange(of: colorScheme) {
+                                gameScene.updateColor(colors: GameColors())
+                            }
                         
                         Button(action: {
                             if let move = gameScene.selectedMove?.move {
@@ -87,9 +96,12 @@ struct GameView: View {
                                 .fontWeight(.bold)
                                 .foregroundStyle(.white)
                                 .frame(maxWidth: .infinity, minHeight: 70)
-                                .background(gameVM.currentPlayer?.id.playerColor ?? DSQColors.player1)
+                                .background(
+                                    gameVM.gameScene?.selectedMove == nil ? DSQColors.moveCellBackgroundColor : gameVM.currentPlayer?.id.playerColor ?? DSQColors.player1
+                                )
                         }
                         .background()
+                        .disabled(gameVM.gameScene?.selectedMove == nil)
                         .padding(.bottom, 24)
                     }
                     
@@ -120,12 +132,16 @@ struct GameView: View {
 }
 
 #Preview("Light") {
-    GameView()
-        .environmentObject(GameVM())
+    let vm = GameVM()
+    vm.startGame()
+    return GameView()
+        .environmentObject(vm)
 }
 
 #Preview("Dark"){
-    GameView()
+    let vm = GameVM()
+    vm.startGame()
+    return GameView()
         .preferredColorScheme(/*@START_MENU_TOKEN@*/.dark/*@END_MENU_TOKEN@*/)
-        .environmentObject(GameVM())
+        .environmentObject(vm)
 }

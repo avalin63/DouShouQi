@@ -55,6 +55,9 @@
 		BDD97D812C087E6E002B1B9E /* CellType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD97D802C087E6E002B1B9E /* CellType.swift */; };
 		BDD97D832C087F4E002B1B9E /* GameColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD97D822C087F4E002B1B9E /* GameColors.swift */; };
 		BDD97D862C088582002B1B9E /* Move.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD97D852C088582002B1B9E /* Move.swift */; };
+		BDDBC0CC2C1C34FF00DBE5C9 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDDBC0CB2C1C34FF00DBE5C9 /* Board.swift */; };
+		BDDBC0CF2C1C42CF00DBE5C9 /* NodeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDDBC0CE2C1C42CF00DBE5C9 /* NodeType.swift */; };
+		BDDBC0D12C1C42E600DBE5C9 /* SKNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDDBC0D02C1C42E600DBE5C9 /* SKNode.swift */; };
 		C961249A2BFE7B4C00E1E55C /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96124992BFE7B4C00E1E55C /* GameView.swift */; };
 		C961249C2BFF33F000E1E55C /* PlayerIndicatorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C961249B2BFF33F000E1E55C /* PlayerIndicatorCell.swift */; };
 		C961249E2BFF33FC00E1E55C /* MoveIndicatorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C961249D2BFF33FC00E1E55C /* MoveIndicatorCell.swift */; };
@@ -144,6 +147,9 @@
 		BDD97D802C087E6E002B1B9E /* CellType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellType.swift; sourceTree = "<group>"; };
 		BDD97D822C087F4E002B1B9E /* GameColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameColors.swift; sourceTree = "<group>"; };
 		BDD97D852C088582002B1B9E /* Move.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Move.swift; sourceTree = "<group>"; };
+		BDDBC0CB2C1C34FF00DBE5C9 /* Board.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
+		BDDBC0CE2C1C42CF00DBE5C9 /* NodeType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeType.swift; sourceTree = "<group>"; };
+		BDDBC0D02C1C42E600DBE5C9 /* SKNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKNode.swift; sourceTree = "<group>"; };
 		C96124992BFE7B4C00E1E55C /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
 		C961249B2BFF33F000E1E55C /* PlayerIndicatorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerIndicatorCell.swift; sourceTree = "<group>"; };
 		C961249D2BFF33FC00E1E55C /* MoveIndicatorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveIndicatorCell.swift; sourceTree = "<group>"; };
@@ -298,6 +304,8 @@
 				126AB5B72C09F68F001555CD /* StylesCell.swift */,
 				12F35C932C09A4A4005566B2 /* Strings.swift */,
 				1251D1AD2C18F5CF00BCDF5F /* Player.swift */,
+				BDDBC0CB2C1C34FF00DBE5C9 /* Board.swift */,
+				BDDBC0D02C1C42E600DBE5C9 /* SKNode.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -317,6 +325,7 @@
 			children = (
 				12972BB42C05F43300FB6BA0 /* Theme.swift */,
 				12972BB92C06027100FB6BA0 /* Language.swift */,
+				BDDBC0CE2C1C42CF00DBE5C9 /* NodeType.swift */,
 			);
 			path = enums;
 			sourceTree = "<group>";
@@ -512,12 +521,14 @@
 				C961249C2BFF33F000E1E55C /* PlayerIndicatorCell.swift in Sources */,
 				1221D89B2BF2401D00CB5EB9 /* HomeView.swift in Sources */,
 				120475012BFE14590044AD97 /* UsernameTextInput.swift in Sources */,
+				BDDBC0CF2C1C42CF00DBE5C9 /* NodeType.swift in Sources */,
 				122FD9B52BF6A377000B6D0A /* BorderEdge.swift in Sources */,
 				C9940B552C0885230016CE9F /* GameVM.swift in Sources */,
 				1221D8A22BF2431600CB5EB9 /* Colors.swift in Sources */,
 				1251D1AE2C18F5CF00BCDF5F /* Player.swift in Sources */,
 				BDD97D7F2C087E57002B1B9E /* Animal.swift in Sources */,
 				1221D8AB2BF260E700CB5EB9 /* OptionsLeftButton.swift in Sources */,
+				BDDBC0CC2C1C34FF00DBE5C9 /* Board.swift in Sources */,
 				BDD97D7D2C087E42002B1B9E /* Owner.swift in Sources */,
 				120475032BFE1B7C0044AD97 /* PicturePicker.swift in Sources */,
 				1221D8AB2BF260E700CB5EB9 /* OptionsLeftButton.swift in Sources */,
@@ -533,6 +544,7 @@
 				C961249E2BFF33FC00E1E55C /* MoveIndicatorCell.swift in Sources */,
 				1221D89F2BF2416600CB5EB9 /* GenericLeftButton.swift in Sources */,
 				12972BBA2C06027100FB6BA0 /* Language.swift in Sources */,
+				BDDBC0D12C1C42E600DBE5C9 /* SKNode.swift in Sources */,
 				C961249A2BFE7B4C00E1E55C /* GameView.swift in Sources */,
 				12A9E4922C06268300AB8677 /* MenuCell.swift in Sources */,
 				1221D8702BF1EFF600CB5EB9 /* DouShouQiApp.swift in Sources */,
