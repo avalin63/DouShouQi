@@ -12,8 +12,9 @@ import DouShouQiModel
 
 class BoardScene: SKScene {
     private let rules: Rules
-    var currentPlayer: () -> Player
+    private let currentPlayer: () -> Player
     private let board: () -> Board
+    let onValidateMove: (Move) -> Void
     
     public var selectedMove: (move: Move, node: SKShapeNode)? = nil
     private var pieceNodes: [PieceSprite] { get { filterNodes(type: .piece) } }
@@ -25,11 +26,12 @@ class BoardScene: SKScene {
         scene?.children.filter { $0.hasType(type: type) && $0 is T }.map { ($0 as! T) } ?? [T]()
     }
     
-    init(board: @escaping () -> Board, currentPlayer: @escaping () -> Player, rules: Rules) {
+    init(board: @escaping () -> Board, currentPlayer: @escaping () -> Player, rules: Rules, onValidateMove: @escaping (Move) -> Void) {
         let colors = GameColors()
         self.board = board
         self.rules = rules
         self.currentPlayer = currentPlayer
+        self.onValidateMove = onValidateMove
         super.init(size: board().gridSize)
         
         scene?.size = size
@@ -77,6 +79,7 @@ class BoardScene: SKScene {
         self.rules = ClassicRules()
         self.board = { ClassicRules.createBoard() }
         self.currentPlayer = { HumanPlayer(withName: "", andId: .player1)! }
+        self.onValidateMove = { _ in }
         super.init(coder: aDecoder)
     }
     
@@ -116,6 +119,7 @@ class BoardScene: SKScene {
     }
     
     func executeMove(move: Move) {
+        refreshPieces()
         clearMoves()
         let startPiece = findPieceNode(atX: move.columnOrigin, atY: move.rowOrigin)
         let endPiece = findPieceNode(atX: move.columnDestination, atY: move.rowDestination)
@@ -123,9 +127,11 @@ class BoardScene: SKScene {
         let xMove = Double(move.columnDestination - move.columnOrigin) * BoardSceneValues.CELL_SIZE
         let yMove = Double(move.rowDestination - move.rowOrigin) * BoardSceneValues.CELL_SIZE
         
-        let action = SKAction.moveBy(x: xMove, y: yMove, duration: 0.3)
-        startPiece?.node.run(action)
-        endPiece?.node.removeFromParent()
+        startPiece?.node.run(SKAction.moveBy(x: xMove, y: yMove, duration: 0.3))
+        endPiece?.node.run(SKAction.scale(by: 0, duration: 0.15))
+        endPiece?.node.run(SKAction.fadeOut(withDuration: 0.15)) {
+            endPiece?.node.removeFromParent()
+        }
     }
     
     func updateColor(colors: GameColors) {
@@ -152,10 +158,11 @@ class BoardScene: SKScene {
 
     private func refreshPieces() {
         pieceNodes.forEach { node in
-            node.size = CGSize(
-                width: BoardSceneValues.CELL_SIZE,
-                height: BoardSceneValues.CELL_SIZE
-            )
+            node.run(SKAction.resize(
+                toWidth: BoardSceneValues.CELL_SIZE,
+                height: BoardSceneValues.CELL_SIZE,
+                duration: 0.2
+            ))
         }
     }
     
@@ -208,31 +215,21 @@ class BoardScene: SKScene {
         }
     }
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if currentPlayer() is HumanPlayer {
-            for touch in touches {
-                let location = touch.location(in: self)
-                let (tileX, tileY) = getBoardCoordinates(atX: location.x, atY: location.y)
-                refreshPieces()
-                if let (_, node) = findPieceNode(atX: tileX, atY: tileY, ofPlayer: currentPlayer().id) {
-                    node.size = CGSize(
-                        width: BoardSceneValues.CELL_SIZE + 10,
-                        height: BoardSceneValues.CELL_SIZE + 10
-                    )
-                }
-            }
-        }
-    }
-    
-    
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         if currentPlayer() is HumanPlayer {
             for touch in touches {
                 print("Touch \(touch.timestamp)")
                 let location = touch.location(in: self)
                 let (tileX, tileY) = getBoardCoordinates(atX: location.x, atY: location.y)
-                
-                if let (_, _) = findPieceNode(atX: tileX, atY: tileY, ofPlayer: currentPlayer().id) {
+                                
+                if let (_, node) = findPieceNode(atX: tileX, atY: tileY, ofPlayer: currentPlayer().id) {
+                    refreshPieces()
+                    node.run(SKAction.resize(
+                        toWidth: BoardSceneValues.CELL_SIZE + 10,
+                        height: BoardSceneValues.CELL_SIZE + 10,
+                        duration: 0.2
+                    ))
+                    
                     clearMoves()
                     rules.getMoves(
                         in: board(),
@@ -246,40 +243,46 @@ class BoardScene: SKScene {
                     }
                     
                 } else if let (move, node) = findMoveNode(atX: tileX, atY: tileY) {
-                    refreshMoves()
-                    clearSelectedMove()
-                    node.alpha = 1.0
                     
-                    let (xposStart, yposStart) = toRealCoordinates(atX: move.columnOrigin, atY: move.rowOrigin)
-                    let (xposEnd, yposEnd) = toRealCoordinates(atX: move.columnDestination, atY: move.rowDestination)
-                    
-                    let startPoint = CGPoint(x: xposStart, y: yposStart)
-                    let endPoint = CGPoint(x: xposEnd, y: yposEnd)
-                    
-                    let line = SKShapeNode()
-                    let path = CGMutablePath()
-                    path.move(to: startPoint)
-                    path.addLine(to: endPoint)
-                    
-                    line.path = path
-                    
-                    line.strokeColor = SKColor(named: currentPlayer().id.tileColor!)!
-                    line.lineWidth = 5
-                    
-                    addChild(line)
-                    
-                    let label = SKLabelNode(text: move.label)
-                    label.fontName = "Helvetica-Bold"
-                    label.fontSize = 15
-                    label.fontColor = SKColor.white
-                    label.verticalAlignmentMode = .center
-                    label.zPosition = 20
-                    
-                    node.addChild(label)
-                    
-                    self.selectedMove = (move, line)
-                    print("SelectedMove : \(String(describing: selectedMove?.move))")
+                    if move == selectedMove?.move {
+                        onValidateMove(move)
+                    } else {
+                        refreshMoves()
+                        clearSelectedMove()
+                        node.alpha = 1.0
+                        
+                        let (xposStart, yposStart) = toRealCoordinates(atX: move.columnOrigin, atY: move.rowOrigin)
+                        let (xposEnd, yposEnd) = toRealCoordinates(atX: move.columnDestination, atY: move.rowDestination)
+                        
+                        let startPoint = CGPoint(x: xposStart, y: yposStart)
+                        let endPoint = CGPoint(x: xposEnd, y: yposEnd)
+                        
+                        let line = SKShapeNode()
+                        let path = CGMutablePath()
+                        path.move(to: startPoint)
+                        path.addLine(to: endPoint)
+                        
+                        line.path = path
+                        
+                        line.strokeColor = SKColor(named: currentPlayer().id.tileColor!)!
+                        line.lineWidth = 5
+                        
+                        addChild(line)
+                        
+                        let label = SKLabelNode(text: move.label)
+                        label.fontName = "Helvetica-Bold"
+                        label.fontSize = 15
+                        label.fontColor = SKColor.white
+                        label.verticalAlignmentMode = .center
+                        label.zPosition = 20
+                        
+                        node.addChild(label)
+                        
+                        self.selectedMove = (move, line)
+                        print("SelectedMove : \(String(describing: selectedMove?.move))")
+                    }
                 } else {
+                    refreshPieces()
                     clearMoves()
                 }
             }

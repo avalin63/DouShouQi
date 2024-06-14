@@ -57,7 +57,12 @@ class GameVM: ObservableObject {
         gameScene = BoardScene(            
             board: { self.game?.board ?? board },
             currentPlayer: { self.currentPlayer! },
-            rules: rules
+            rules: rules,
+            onValidateMove: { move in
+                Task {
+                    try await self.game?.onPlayed(with: move, from: self.currentPlayer!)
+                }
+            }
         )
     }
     

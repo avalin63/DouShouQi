@@ -86,9 +86,7 @@ struct GameView: View {
                         
                         Button(action: {
                             if let move = gameScene.selectedMove?.move {
-                                Task {
-                                    try await gameVM.game?.onPlayed(with: move, from: gameVM.currentPlayer!)
-                                }
+                                gameScene.onValidateMove(move)
                             }
                         }) {
                             Text(String(localized: "validate"))
