@@ -24,7 +24,7 @@ struct StartGameView: View {
                     leading: { Image("icTwoPlayers") },
                     label: String(localized: "\(2) player"),
                     destination: {
-                        PreparationTwoPlayersView()
+                        StartTwoPlayersView()
                     }
                 )
             }

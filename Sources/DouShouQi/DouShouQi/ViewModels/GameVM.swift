@@ -10,6 +10,7 @@ import DouShouQiModel
 
 class GameVM: ObservableObject {
     
+    @Published var rules: Rules = ClassicRules()
     @Published var game: Game?
     @Published var startGameDate: Date = .now
     @Published var isVersusAI: Bool = false
@@ -18,23 +19,30 @@ class GameVM: ObservableObject {
     @Published var currentPlayer: Player?
     @Published var isOver: Bool = false
     @Published var defeatReason: String = ""
-    @Published var nbRoundsPlayed: Int = 0
-    
+    @Published var nbRoundsPlayed: Int = 2
+    @Published var gameScene: BoardScene? = nil
+    @Published var winPlayer: Player? = nil
+        
     func startGame() {
-        let firstPlayer = HumanPlayer(withName: firstUser.name, andId: .player1)
-        var secondPlayer: Player?
+        let firstPlayer = HumanPlayer(withName: firstUser.name, andId: .player1)!
+        var secondPlayer: Player
         
         if isVersusAI {
-            secondPlayer = IAPlayer(withName: "Bot", andId: .player2)
+            secondPlayer = RandomPlayer(withName: "Bot", andId: .player2)!
         } else {
-            secondPlayer = HumanPlayer(withName: secondUser.name, andId: .player2)
+            secondPlayer = HumanPlayer(withName: secondUser.name, andId: .player2)!
         }
         
         do {
-            game = try Game(withRules: ClassicRules(), andPlayer1: firstPlayer!, andPlayer2: secondPlayer!)
+            game = try Game(withRules: rules, andPlayer1: firstPlayer, andPlayer2: secondPlayer)
             game?.addGameStartedListener(updateStartGame)
             game?.addPlayerNotifiedListener(updateCurrentPlayer)
             game?.addGameOverListener(updateGameOver)
+            game?.addMoveChosenCallbacksListener { (board, move, player) in
+                self.nbRoundsPlayed += 1
+                self.gameScene?.executeMove(move: move)
+            }
+            
             Task {
                 try await game?.start()
             }
@@ -46,14 +54,30 @@ class GameVM: ObservableObject {
     
     func updateStartGame(board: Board) {
         startGameDate = .now
+        gameScene = BoardScene(            
+            board: { self.game?.board ?? board },
+            currentPlayer: { self.currentPlayer! },
+            rules: rules,
+            onValidateMove: { move in
+                Task {
+                    try await self.game?.onPlayed(with: move, from: self.currentPlayer!)
+                }
+            }
+        )
     }
     
     func updateCurrentPlayer(board: Board, player: Player) async throws {
         currentPlayer = player
+        
+        if !(self.currentPlayer is HumanPlayer) {
+            try await Task.sleep(nanoseconds: 1_000_000_000)
+            try await self.currentPlayer?.chooseMove(in: board, with: rules)
+        }
     }
     
     func updateGameOver(board: Board, result: Result, player: Player?) {
         isOver = true
+        winPlayer = player
         switch result {
             case .notFinished:
                 print("**********************************")

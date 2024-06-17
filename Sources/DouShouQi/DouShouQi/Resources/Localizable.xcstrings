@@ -161,7 +161,15 @@
       }
     },
     "Game Over" : {
-
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You loose !"
+          }
+        }
+      }
     },
     "historics" : {
       "extractionState" : "manual",
@@ -231,21 +239,18 @@
         }
       }
     },
-    "Ok" : {
-
-    },
     "options" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "options"
+            "value" : "Options"
           }
         },
         "fr" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "Options"
           }
         }
@@ -260,9 +265,6 @@
           }
         }
       }
-    },
-    "Partie terminée" : {
-
     },
     "player %lld" : {
       "extractionState" : "manual",
@@ -410,9 +412,36 @@
       }
     },
     "Win" : {
-
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You Win !"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gagné !"
+          }
+        }
+      }
     },
     "Winning reason" : {
+
+    },
+    "You Loosed !" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You Lost !"
+          }
+        }
+      }
+    },
+    "You Won !" : {
 
     }
   },

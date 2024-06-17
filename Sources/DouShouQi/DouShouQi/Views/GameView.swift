@@ -9,126 +9,137 @@ import SwiftUI
 import SpriteKit
 import DouShouQiModel
 
-let player1: Player = HumanPlayer(
-    withName: "Dave",
-    andId: .player1
-)!
-
-let player2: Player = HumanPlayer(
-    withName: "Lucas",
-    andId: .player2
-)!
-
-class GameViewState : ObservableObject {
-    @Published var currentPlayer: Player = player1
-}
-
 struct GameView: View {
-
-    @Environment(\.colorScheme) var colorScheme
-    @StateObject var gameState = GameViewState()
-    @StateObject var gameColors = GameColors()
-    @State private var gameScene: BoardScene?
+    
     @EnvironmentObject var gameVM: GameVM
+    @Environment(\.dismiss) var dismiss
+    @Environment(\.colorScheme) var colorScheme: ColorScheme
+    
     @State private var navigateToSummary = false
+    @State private var elapsedTime: TimeInterval = 0
+    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+    
+    private func timeString(time: TimeInterval) -> String {
+        let minutes = Int(time) / 60
+        let seconds = Int(time) % 60
+        return String(format: "%02d:%02d", minutes, seconds)
+    }
+    
     
     var body: some View {
-        VStack() {
-            HStack {
-                Text(String(localized: "Round \(gameVM.nbRoundsPlayed/2)"))
-                    .font(.title)
-                    .fontWeight(.bold)
-                    .foregroundStyle(DSQColors.titleColor)
-                
-                Spacer()
-                
-                Text("12min34s")
-                    .font(.title3)
-                    .fontWeight(.light)
-                    .foregroundStyle(DSQColors.titleColor)
-            }
-            .padding([.leading, .trailing], 30)
-            
-            HStack {
-                PlayerIndicatorCell(
-                    text: gameState.currentPlayer.name,
-                    color: gameState.currentPlayer.id.playerColor!
-                )
-                
-                Spacer()
-                
-                MoveIndicatorCell(move: nil, animal: nil)
-            }
-            
-            if let gameScene = gameScene {
-                SpriteView(scene: gameScene)
-                    .border(.black, width: 3.0)
-                    .aspectRatio(
-                        CGSize(
-                            width: BoardSceneValues.GRID_WIDTH,
-                            height: BoardSceneValues.GRID_HEIGHT
-                        ),
-                        contentMode: .fit
-                    )
-                    .padding(.all, 8)
-                    .ignoresSafeArea()
-                
-                Button(action: {
-                    gameScene.executeMove()
-                    gameState.currentPlayer = if (gameState.currentPlayer.id == .player2){
-                        player1
-                    } else {
-                        player2
+        GeometryReader{ geo in
+            ZStack{
+                VStack() {
+                    HStack {
+                        Text(String(localized: "Round \(gameVM.nbRoundsPlayed / 2)"))
+                            .font(.title)
+                            .fontWeight(.bold)
+                            .foregroundStyle(DSQColors.titleColor)
+                        
+                        Spacer()
+                        
+                        Text(timeString(time: elapsedTime))
+                            .font(.title3)
+                            .fontWeight(.light)
+                            .foregroundStyle(DSQColors.titleColor)
+                            .onReceive(timer) { _ in
+                                elapsedTime += 1
+                            }
+                    }
+                    .padding([.leading, .trailing], 30)
+                    
+                    HStack {
+                        PlayerIndicatorCell(
+                            text: gameVM.currentPlayer?.name ?? "",
+                            color: gameVM.currentPlayer?.id.playerColor ?? DSQColors.player1
+                        )
+                        Spacer()
+                        if gameVM.gameScene?.selectedMove?.move != nil{
+                            if let animal = gameVM.game?.board.grid[gameVM.gameScene?.selectedMove?.move.rowOrigin ?? 0][gameVM.gameScene?.selectedMove?.move.columnOrigin ?? 0].piece?.animal {
+                                MoveIndicatorCell(move: gameVM.gameScene?.selectedMove?.move, animal: animal)
+                            }
+                        }
+                        else{
+                            MoveIndicatorCell(move: gameVM.gameScene?.selectedMove?.move, animal: nil)
+                        }
                     }
                     
-                }) {
-                    Text(String(localized: "validate"))
-                        .font(.title)
-                        .fontWeight(.bold)
-                        .foregroundStyle(.white)
-                        .frame(maxWidth: .infinity, minHeight: 70)
-                        .background(gameState.currentPlayer.id.playerColor!)
+                    if let gameScene = gameVM.gameScene {
+                        SpriteView(scene: gameScene)
+                            .border(.black, width: 3.0)
+                            .aspectRatio(
+                                CGSize(
+                                    width: gameVM.game?.board.gridWidth ?? 0,
+                                    height: gameVM.game?.board.gridHeight ?? 0
+                                ),
+                                contentMode: .fit
+                            )
+                            .padding(.all, 8)
+                            .frame(maxHeight: .infinity)
+                            .ignoresSafeArea()
+                            .onAppear {
+                                gameScene.updateColor(colors: GameColors())
+                            }
+                            .onChange(of: colorScheme) {
+                                gameScene.updateColor(colors: GameColors())
+                            }
+                        
+                        Button(action: {
+                            if let move = gameScene.selectedMove?.move {
+                                gameScene.onValidateMove(move)
+                            }
+                        }) {
+                            Text(String(localized: "validate"))
+                                .font(.title)
+                                .fontWeight(.bold)
+                                .foregroundStyle(.white)
+                                .frame(maxWidth: .infinity, minHeight: 70)
+                                .background(
+                                    gameVM.gameScene?.selectedMove == nil ? DSQColors.moveCellBackgroundColor : gameVM.currentPlayer?.id.playerColor ?? DSQColors.player1
+                                )
+                        }
+                        .background()
+                        .disabled(gameVM.gameScene?.selectedMove == nil)
+                        .padding(.bottom, 24)
+                    }
+                    
                 }
-                .background()
-                .padding(.bottom, 24)
-            }
-        
-        }
-        .alert(isPresented: $gameVM.isOver) {
-            Alert(
-                title: Text("Partie terminée"),
-                message: Text(gameVM.defeatReason),
-                dismissButton: .default(Text("Ok")) {
-                    navigateToSummary = true
+                .onChange(of: gameVM.isOver) {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
+                        dismiss()
+                        dismiss()
+                    }
                 }
-            )
-        }
-        .background(
-            NavigationLink(destination: HomeView().navigationBarHidden(true), isActive: $navigateToSummary) {
-                EmptyView()
+                .padding(.vertical, 20)
+                .background(DSQColors.backgroundColor)
+                .safeAreaPadding(.top, 50)
             }
-        )
-        .padding(.vertical, 20)
-        .background(DSQColors.backgroundColor)
-        .onAppear {
-            if gameScene == nil {
-                gameScene = BoardScene(
-                    colors: gameColors,
-                    board: ClassicRules.createBoard(),
-                    currentPlayer: { gameState.currentPlayer }
-                )
+            VStack(spacing: -5){
+                GameOverStatus(isWinner: gameVM.winPlayer == gameVM.game?.players.values.first).frame(width: geo.size.width,height: geo.size.height * (1/2))
+                    .animation(.spring(), value: gameVM.isOver)
+                Spacer()
+                GameOverStatus(isWinner: gameVM.winPlayer != gameVM.game?.players.values.first).frame(width: geo.size.width,height: geo.size.height * (1/2))
+                    .animation(.spring(), value: gameVM.isOver)
             }
-        }
+            .frame(height: gameVM.isOver ? geo.size.height : geo.size.height * 2)
+            .padding(.top,gameVM.isOver ? 0 : -geo.size.height * (1/2))
+            
+            
+        }.ignoresSafeArea(.all)
     }
 }
 
 #Preview("Light") {
-    GameView()
-        .environmentObject(GameVM())
+    let vm = GameVM()
+    vm.startGame()
+    return GameView()
+        .environmentObject(vm)
 }
 
 #Preview("Dark"){
-    GameView()
+    let vm = GameVM()
+    vm.startGame()
+    return GameView()
         .preferredColorScheme(/*@START_MENU_TOKEN@*/.dark/*@END_MENU_TOKEN@*/)
-        .environmentObject(GameVM())
+        .environmentObject(vm)
 }
