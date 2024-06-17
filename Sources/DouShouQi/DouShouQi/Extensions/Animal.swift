@@ -31,4 +31,27 @@ extension Animal {
             ""
         }
     }
+    
+    public var pieceObject: String {
+        switch(self) {
+        case .rat:
+            "rat"
+        case .cat:
+            "cat"
+        case .dog:
+            "dog"
+        case .wolf:
+            "wolf"
+        case .leopard:
+            "leopard"
+        case .tiger:
+            "tiger"
+        case .lion:
+            "lion"
+        case .elephant:
+            "elephant"
+        @unknown default:
+            ""
+        }
+    }
 }

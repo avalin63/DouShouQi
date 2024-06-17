@@ -15,6 +15,7 @@ struct GameView: View {
     @State private var navigateToSummary = false
     @State private var elapsedTime: TimeInterval = 0
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+    @State var isARKit = false
     
     private func timeString(time: TimeInterval) -> String {
         let minutes = Int(time) / 60
@@ -51,6 +52,13 @@ struct GameView: View {
                             color: gameVM.currentPlayer?.id.playerColor ?? DSQColors.player1
                         )
                         Spacer()
+                        
+                        HStack{
+                            RoundedButton(function: { isARKit.toggle() }, systemName: "flag.checkered.2.crossed", foregroundColor: .white, backgroundColor: DSQColors.primaryColor)
+                        }
+                        
+                        Spacer()
+                        
                         if gameVM.gameScene?.selectedMove?.move != nil{
                             if let animal = gameVM.game?.board.grid[gameVM.gameScene?.selectedMove?.move.rowOrigin ?? 0][gameVM.gameScene?.selectedMove?.move.columnOrigin ?? 0].piece?.animal {
                                 MoveIndicatorCell(move: gameVM.gameScene?.selectedMove?.move, animal: animal)
@@ -61,35 +69,39 @@ struct GameView: View {
                         }
                     }
                     
-                    if let gameScene = gameVM.gameScene {
-                        SpriteView(scene: gameScene)
-                            .border(.black, width: 3.0)
-                            .aspectRatio(
-                                CGSize(
-                                    width: BoardSceneValues.GRID_WIDTH,
-                                    height: BoardSceneValues.GRID_HEIGHT
-                                ),
-                                contentMode: .fit
-                            )
-                            .padding(.all, 8)
-                            .ignoresSafeArea()
-                        
-                        Button(action: {
-                            if let move = gameScene.selectedMove?.move {
-                                Task {
-                                    try await gameVM.game?.onPlayed(with: move, from: gameVM.currentPlayer!)
+                    if isARKit {
+                        GameARViewReprensentable()
+                    } else {
+                        if let gameScene = gameVM.gameScene {
+                            SpriteView(scene: gameScene)
+                                .border(.black, width: 3.0)
+                                .aspectRatio(
+                                    CGSize(
+                                        width: BoardSceneValues.GRID_WIDTH,
+                                        height: BoardSceneValues.GRID_HEIGHT
+                                    ),
+                                    contentMode: .fit
+                                )
+                                .padding(.all, 8)
+                                .ignoresSafeArea()
+                            
+                            Button(action: {
+                                if let move = gameScene.selectedMove?.move {
+                                    Task {
+                                        try await gameVM.game?.onPlayed(with: move, from: gameVM.currentPlayer!)
+                                    }
                                 }
+                            }) {
+                                Text(String(localized: "validate"))
+                                    .font(.title)
+                                    .fontWeight(.bold)
+                                    .foregroundStyle(.white)
+                                    .frame(maxWidth: .infinity, minHeight: 70)
+                                    .background(gameVM.currentPlayer?.id.playerColor ?? DSQColors.player1)
                             }
-                        }) {
-                            Text(String(localized: "validate"))
-                                .font(.title)
-                                .fontWeight(.bold)
-                                .foregroundStyle(.white)
-                                .frame(maxWidth: .infinity, minHeight: 70)
-                                .background(gameVM.currentPlayer?.id.playerColor ?? DSQColors.player1)
+                            .background()
+                            .padding(.bottom, 24)
                         }
-                        .background()
-                        .padding(.bottom, 24)
                     }
                     
                 }

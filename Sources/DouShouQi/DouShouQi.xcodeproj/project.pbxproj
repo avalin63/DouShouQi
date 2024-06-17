@@ -58,8 +58,21 @@
 		C961249A2BFE7B4C00E1E55C /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96124992BFE7B4C00E1E55C /* GameView.swift */; };
 		C961249C2BFF33F000E1E55C /* PlayerIndicatorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C961249B2BFF33F000E1E55C /* PlayerIndicatorCell.swift */; };
 		C961249E2BFF33FC00E1E55C /* MoveIndicatorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C961249D2BFF33FC00E1E55C /* MoveIndicatorCell.swift */; };
+		C96DF7762C1DA4E7003D752B /* cat.usdz in Resources */ = {isa = PBXBuildFile; fileRef = C96DF76D2C1DA4E7003D752B /* cat.usdz */; };
+		C96DF7772C1DA4E7003D752B /* rat.usdz in Resources */ = {isa = PBXBuildFile; fileRef = C96DF76E2C1DA4E7003D752B /* rat.usdz */; };
+		C96DF7782C1DA4E7003D752B /* tiger.usdz in Resources */ = {isa = PBXBuildFile; fileRef = C96DF76F2C1DA4E7003D752B /* tiger.usdz */; };
+		C96DF7792C1DA4E7003D752B /* board.usdz in Resources */ = {isa = PBXBuildFile; fileRef = C96DF7702C1DA4E7003D752B /* board.usdz */; };
+		C96DF77A2C1DA4E7003D752B /* dog.usdz in Resources */ = {isa = PBXBuildFile; fileRef = C96DF7712C1DA4E7003D752B /* dog.usdz */; };
+		C96DF77B2C1DA4E7003D752B /* leopard.usdz in Resources */ = {isa = PBXBuildFile; fileRef = C96DF7722C1DA4E7003D752B /* leopard.usdz */; };
+		C96DF77C2C1DA4E7003D752B /* lion.usdz in Resources */ = {isa = PBXBuildFile; fileRef = C96DF7732C1DA4E7003D752B /* lion.usdz */; };
+		C96DF77D2C1DA4E7003D752B /* wolf.usdz in Resources */ = {isa = PBXBuildFile; fileRef = C96DF7742C1DA4E7003D752B /* wolf.usdz */; };
+		C96DF77E2C1DA4E7003D752B /* elephant.usdz in Resources */ = {isa = PBXBuildFile; fileRef = C96DF7752C1DA4E7003D752B /* elephant.usdz */; };
+		C96DF7802C201B9F003D752B /* ARPiece.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96DF77F2C201B9F003D752B /* ARPiece.swift */; };
+		C96DF7822C201BD4003D752B /* ARBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96DF7812C201BD4003D752B /* ARBoard.swift */; };
 		C9940B552C0885230016CE9F /* GameVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9940B542C0885230016CE9F /* GameVM.swift */; };
 		C9940B572C0CF7D30016CE9F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9940B562C0CF7D30016CE9F /* User.swift */; };
+		C9FE18AC2C19D1340066DD85 /* GameARViewReprensentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9FE18AB2C19D1340066DD85 /* GameARViewReprensentable.swift */; };
+		C9FE18AE2C19D1490066DD85 /* GameARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9FE18AD2C19D1490066DD85 /* GameARView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -147,9 +160,22 @@
 		C96124992BFE7B4C00E1E55C /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
 		C961249B2BFF33F000E1E55C /* PlayerIndicatorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerIndicatorCell.swift; sourceTree = "<group>"; };
 		C961249D2BFF33FC00E1E55C /* MoveIndicatorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveIndicatorCell.swift; sourceTree = "<group>"; };
+		C96DF76D2C1DA4E7003D752B /* cat.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = cat.usdz; sourceTree = "<group>"; };
+		C96DF76E2C1DA4E7003D752B /* rat.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = rat.usdz; sourceTree = "<group>"; };
+		C96DF76F2C1DA4E7003D752B /* tiger.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = tiger.usdz; sourceTree = "<group>"; };
+		C96DF7702C1DA4E7003D752B /* board.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = board.usdz; sourceTree = "<group>"; };
+		C96DF7712C1DA4E7003D752B /* dog.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = dog.usdz; sourceTree = "<group>"; };
+		C96DF7722C1DA4E7003D752B /* leopard.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = leopard.usdz; sourceTree = "<group>"; };
+		C96DF7732C1DA4E7003D752B /* lion.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = lion.usdz; sourceTree = "<group>"; };
+		C96DF7742C1DA4E7003D752B /* wolf.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = wolf.usdz; sourceTree = "<group>"; };
+		C96DF7752C1DA4E7003D752B /* elephant.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = elephant.usdz; sourceTree = "<group>"; };
+		C96DF77F2C201B9F003D752B /* ARPiece.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARPiece.swift; sourceTree = "<group>"; };
+		C96DF7812C201BD4003D752B /* ARBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARBoard.swift; sourceTree = "<group>"; };
 		C9940B4F2C0881D60016CE9F /* DSQ.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = DSQ.xcframework; path = ../DSQ.xcframework; sourceTree = "<group>"; };
 		C9940B542C0885230016CE9F /* GameVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameVM.swift; sourceTree = "<group>"; };
 		C9940B562C0CF7D30016CE9F /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		C9FE18AB2C19D1340066DD85 /* GameARViewReprensentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameARViewReprensentable.swift; sourceTree = "<group>"; };
+		C9FE18AD2C19D1490066DD85 /* GameARView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameARView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -202,6 +228,7 @@
 		1221D86E2BF1EFF600CB5EB9 /* DouShouQi */ = {
 			isa = PBXGroup;
 			children = (
+				C9FE18AA2C19D1160066DD85 /* ARComponents */,
 				C9940B532C0882840016CE9F /* ViewModels */,
 				12972BB22C05F42000FB6BA0 /* Model */,
 				BD6B02C22C024B5C006838AF /* Scenes */,
@@ -277,6 +304,7 @@
 		1221D8A02BF2430600CB5EB9 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				C96DF69D2C1C3D47003D752B /* ARObjects */,
 				1221D8A12BF2431600CB5EB9 /* Colors.swift */,
 				1221D8A62BF24D4E00CB5EB9 /* Styles.swift */,
 				12C9C5872BF7846D00BB5B39 /* Localizable.xcstrings */,
@@ -351,12 +379,39 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		C96DF69D2C1C3D47003D752B /* ARObjects */ = {
+			isa = PBXGroup;
+			children = (
+				C96DF7702C1DA4E7003D752B /* board.usdz */,
+				C96DF76D2C1DA4E7003D752B /* cat.usdz */,
+				C96DF7712C1DA4E7003D752B /* dog.usdz */,
+				C96DF7752C1DA4E7003D752B /* elephant.usdz */,
+				C96DF7722C1DA4E7003D752B /* leopard.usdz */,
+				C96DF7732C1DA4E7003D752B /* lion.usdz */,
+				C96DF76E2C1DA4E7003D752B /* rat.usdz */,
+				C96DF76F2C1DA4E7003D752B /* tiger.usdz */,
+				C96DF7742C1DA4E7003D752B /* wolf.usdz */,
+			);
+			path = ARObjects;
+			sourceTree = "<group>";
+		};
 		C9940B532C0882840016CE9F /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
 				C9940B542C0885230016CE9F /* GameVM.swift */,
 			);
 			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		C9FE18AA2C19D1160066DD85 /* ARComponents */ = {
+			isa = PBXGroup;
+			children = (
+				C9FE18AB2C19D1340066DD85 /* GameARViewReprensentable.swift */,
+				C9FE18AD2C19D1490066DD85 /* GameARView.swift */,
+				C96DF77F2C201B9F003D752B /* ARPiece.swift */,
+				C96DF7812C201BD4003D752B /* ARBoard.swift */,
+			);
+			path = ARComponents;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -465,9 +520,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C96DF77D2C1DA4E7003D752B /* wolf.usdz in Resources */,
+				C96DF7762C1DA4E7003D752B /* cat.usdz in Resources */,
+				C96DF77E2C1DA4E7003D752B /* elephant.usdz in Resources */,
 				1221D8772BF1EFF600CB5EB9 /* Preview Assets.xcassets in Resources */,
 				12C9C5882BF7846D00BB5B39 /* Localizable.xcstrings in Resources */,
 				1221D8742BF1EFF600CB5EB9 /* Assets.xcassets in Resources */,
+				C96DF7792C1DA4E7003D752B /* board.usdz in Resources */,
+				C96DF7772C1DA4E7003D752B /* rat.usdz in Resources */,
+				C96DF77A2C1DA4E7003D752B /* dog.usdz in Resources */,
+				C96DF77C2C1DA4E7003D752B /* lion.usdz in Resources */,
+				C96DF7782C1DA4E7003D752B /* tiger.usdz in Resources */,
+				C96DF77B2C1DA4E7003D752B /* leopard.usdz in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -493,9 +557,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				12972BB82C06004D00FB6BA0 /* ThemeManager.swift in Sources */,
+				C96DF7802C201B9F003D752B /* ARPiece.swift in Sources */,
+				C9FE18AE2C19D1490066DD85 /* GameARView.swift in Sources */,
 				1221D8A52BF244E500CB5EB9 /* RoundedCorner.swift in Sources */,
 				120475052BFE8B600044AD97 /* Effects.swift in Sources */,
 				123F31D92C0E229F009B6D65 /* RoundedButton.swift in Sources */,
+				C96DF7822C201BD4003D752B /* ARBoard.swift in Sources */,
 				BD6B02C62C024B9B006838AF /* PieceSprite.swift in Sources */,
 				BD6B02CF2C0254E7006838AF /* TileSprite.swift in Sources */,
 				12A9E4902C06059200AB8677 /* LanguageManager.swift in Sources */,
@@ -535,6 +602,7 @@
 				12972BBA2C06027100FB6BA0 /* Language.swift in Sources */,
 				C961249A2BFE7B4C00E1E55C /* GameView.swift in Sources */,
 				12A9E4922C06268300AB8677 /* MenuCell.swift in Sources */,
+				C9FE18AC2C19D1340066DD85 /* GameARViewReprensentable.swift in Sources */,
 				1221D8702BF1EFF600CB5EB9 /* DouShouQiApp.swift in Sources */,
 				120474FD2BFE13F60044AD97 /* StartTwoPlayersView.swift in Sources */,
 			);
@@ -704,7 +772,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"DouShouQi/Preview Content\"";
-				DEVELOPMENT_TEAM = 35KQ5BDC64;
+				DEVELOPMENT_TEAM = P39ZK4GA2T;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSCameraUsageDescription = "use camera";
@@ -718,7 +786,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = IOS.DouShouQi;
+				PRODUCT_BUNDLE_IDENTIFIER = Apple.DouShouQi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -734,7 +802,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"DouShouQi/Preview Content\"";
-				DEVELOPMENT_TEAM = 35KQ5BDC64;
+				DEVELOPMENT_TEAM = P39ZK4GA2T;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSCameraUsageDescription = "use camera";
@@ -748,7 +816,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = IOS.DouShouQi;
+				PRODUCT_BUNDLE_IDENTIFIER = Apple.DouShouQi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

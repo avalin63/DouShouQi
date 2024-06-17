@@ -15,7 +15,8 @@ struct DouShouQiApp: App {
     var body: some Scene {
         WindowGroup {
             NavigationView {
-                HomeView()
+                GameARViewReprensentable()
+                    .ignoresSafeArea()
             }
             .environmentObject(gameVM)
             .preferredColorScheme(themeManager.selectedTheme.colorScheme)

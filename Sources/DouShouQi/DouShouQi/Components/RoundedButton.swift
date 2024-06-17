@@ -19,7 +19,8 @@ struct RoundedButton: View {
         label: {
             ZStack{
             Circle().foregroundColor(backgroundColor)
-            Image(systemName: systemName).foregroundColor(foregroundColor)
+            Image(systemName: systemName)
+                    .foregroundColor(foregroundColor)
         }
         .frame(width: 40)
         }
