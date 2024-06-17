@@ -7,7 +7,7 @@
 
 import Foundation
 import DouShouQiModel
-import CoreData
+
 
 class GameVM: ObservableObject {
     
@@ -24,7 +24,6 @@ class GameVM: ObservableObject {
     @Published var gameColors = GameColors()
     @Published var gameScene: BoardScene? = nil
     @Published var winPlayer: Player? = nil
-    @Published var gameHistory: [GameEntity] = []
     
     @Published var navigateToSummary = false
     
@@ -33,10 +32,8 @@ class GameVM: ObservableObject {
         self.firstUser = firstUser
         self.secondUser = secondUser
         self.rules = ClassicRules()
-        loadGameHistory()
     }
     
-    private let dataManager = DataManager.shared
     
     var isVersusAI: Bool { secondUser == nil }
     
@@ -95,7 +92,6 @@ class GameVM: ObservableObject {
         isOver = true
         endGameDate = Date()
         winPlayer = player
-        saveCurrentGame()
         switch result {
         case .notFinished:
             print("**********************************")
@@ -128,35 +124,6 @@ class GameVM: ObservableObject {
         delayNavigateToSummary()
     }
     
-    private func saveCurrentGame() {
-        let context = dataManager.context
-        let newGame = GameEntity(context: context)
-        newGame.id = UUID()
-        newGame.startGameDate = startGameDate
-        newGame.endGameDate = endGameDate
-        newGame.isVersusAI = isVersusAI
-        newGame.firstUserName = firstUser.name
-        newGame.secondUserName = secondUser?.name
-        newGame.isOver = isOver
-        newGame.defeatReason = defeatReason
-        newGame.nbRoundsPlayed = Int16(nbRoundsPlayed)
-        newGame.winPlayerName = winPlayer?.name
-        dataManager.saveContext()
-        print("Game saved: \(newGame)")
-        loadGameHistory()
-    }
-    
-    private func loadGameHistory() {
-        let context = dataManager.context
-        let fetchRequest: NSFetchRequest<GameEntity> = GameEntity.fetchRequest()
-        
-        do {
-            self.gameHistory = try context.fetch(fetchRequest)
-            print("Games load: \(gameHistory)")
-        } catch {
-            print("Failed to fetch game history: \(error)")
-        }
-    }
     
     private func delayNavigateToSummary() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {

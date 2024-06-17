@@ -13,6 +13,7 @@ struct GameView: View {
     
     var gameVM: GameVM
     @Environment(\.colorScheme) var colorScheme: ColorScheme
+    @EnvironmentObject var historicVM: HistoricVM
     
     @State private var navigateToSummary = false
     @State private var elapsedTime: TimeInterval = 0
@@ -106,6 +107,7 @@ struct GameView: View {
                 }
                 .onChange(of: gameVM.isOver) {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
+                        historicVM.saveCurrentGame(startGameDate: gameVM.startGameDate, endGameDate: gameVM.endGameDate, isVersusAI: gameVM.isVersusAI, firstUser: gameVM.firstUser, secondUser: gameVM.secondUser, isOver: gameVM.isOver, defeatReason: gameVM.defeatReason, nbRoundsPlayed: gameVM.nbRoundsPlayed, winPlayer: gameVM.winPlayer)
                         path = []
                     }
                 }
