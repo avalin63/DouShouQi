@@ -42,6 +42,12 @@
         }
       }
     },
+    "11/05/2024" : {
+
+    },
+    "12min34s" : {
+
+    },
     "Camera" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -239,12 +245,12 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "options"
+            "value" : "Options"
           }
         },
         "fr" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "Options"
           }
         }
@@ -421,6 +427,19 @@
     },
     "You Loosed !" : {
 
+    },
+    "You Won !" : {
+
+    },
+    "You Loosed !" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You Lost !"
+          }
+        }
+      }
     },
     "You Won !" : {
 

@@ -11,10 +11,12 @@ import DouShouQiModel
 
 struct GameView: View {
     
-    @EnvironmentObject var gameVM: GameVM
-    @Environment(\.dismiss) var dismiss
+    var gameVM: GameVM
+    @Environment(\.colorScheme) var colorScheme: ColorScheme
+    
     @State private var navigateToSummary = false
     @State private var elapsedTime: TimeInterval = 0
+    @Binding var path: [Route]
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
     private func timeString(time: TimeInterval) -> String {
@@ -67,19 +69,24 @@ struct GameView: View {
                             .border(.black, width: 3.0)
                             .aspectRatio(
                                 CGSize(
-                                    width: BoardSceneValues.GRID_WIDTH,
-                                    height: BoardSceneValues.GRID_HEIGHT
+                                    width: gameVM.game?.board.gridWidth ?? 0,
+                                    height: gameVM.game?.board.gridHeight ?? 0
                                 ),
                                 contentMode: .fit
                             )
                             .padding(.all, 8)
+                            .frame(maxHeight: .infinity)
                             .ignoresSafeArea()
+                            .onAppear {
+                                gameScene.updateColor(colors: GameColors())
+                            }
+                            .onChange(of: colorScheme) {
+                                gameScene.updateColor(colors: GameColors())
+                            }
                         
                         Button(action: {
                             if let move = gameScene.selectedMove?.move {
-                                Task {
-                                    try await gameVM.game?.onPlayed(with: move, from: gameVM.currentPlayer!)
-                                }
+                                gameScene.onValidateMove(move)
                             }
                         }) {
                             Text(String(localized: "validate"))
@@ -87,17 +94,19 @@ struct GameView: View {
                                 .fontWeight(.bold)
                                 .foregroundStyle(.white)
                                 .frame(maxWidth: .infinity, minHeight: 70)
-                                .background(gameVM.currentPlayer?.id.playerColor ?? DSQColors.player1)
+                                .background(
+                                    gameVM.gameScene?.selectedMove == nil ? DSQColors.moveCellBackgroundColor : gameVM.currentPlayer?.id.playerColor ?? DSQColors.player1
+                                )
                         }
                         .background()
+                        .disabled(gameVM.gameScene?.selectedMove == nil)
                         .padding(.bottom, 24)
                     }
                     
                 }
                 .onChange(of: gameVM.isOver) {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
-                        dismiss()
-                        dismiss()
+                        path = []
                     }
                 }
                 .padding(.vertical, 20)
@@ -115,17 +124,22 @@ struct GameView: View {
             .padding(.top,gameVM.isOver ? 0 : -geo.size.height * (1/2))
             
             
-        }.ignoresSafeArea(.all)
+        }
+        .navigationBarBackButtonHidden(true)
+        .ignoresSafeArea(.all)
     }
 }
 
 #Preview("Light") {
-    GameView()
-        .environmentObject(GameVM())
+    let vm = GameVM(firstUser: User(), secondUser: nil)
+    vm.startGame()
+    return GameView(gameVM: vm, path: State(initialValue: [Route]()).projectedValue)
 }
 
 #Preview("Dark"){
-    GameView()
+    let vm = GameVM(firstUser: User(), secondUser: nil)
+    vm.startGame()
+    return GameView(gameVM: vm, path: State(initialValue: [Route]()).projectedValue)
         .preferredColorScheme(/*@START_MENU_TOKEN@*/.dark/*@END_MENU_TOKEN@*/)
-        .environmentObject(GameVM())
+        .environmentObject(vm)
 }
