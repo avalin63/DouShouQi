@@ -11,12 +11,12 @@ import DouShouQiModel
 
 struct GameView: View {
     
-    @EnvironmentObject var gameVM: GameVM
-    @Environment(\.dismiss) var dismiss
+    var gameVM: GameVM
     @Environment(\.colorScheme) var colorScheme: ColorScheme
     
     @State private var navigateToSummary = false
     @State private var elapsedTime: TimeInterval = 0
+    @Binding var path: [Route]
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
     private func timeString(time: TimeInterval) -> String {
@@ -106,8 +106,7 @@ struct GameView: View {
                 }
                 .onChange(of: gameVM.isOver) {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
-                        dismiss()
-                        dismiss()
+                        path = []
                     }
                 }
                 .padding(.vertical, 20)
@@ -125,21 +124,21 @@ struct GameView: View {
             .padding(.top,gameVM.isOver ? 0 : -geo.size.height * (1/2))
             
             
-        }.ignoresSafeArea(.all)
+        }
+        .navigationBarBackButtonHidden(true)
+        .ignoresSafeArea(.all)
     }
 }
 
 #Preview("Light") {
-    let vm = GameVM()
+    let vm = GameVM(firstUser: User(), secondUser: nil)
     vm.startGame()
-    return GameView()
-        .environmentObject(vm)
+    return GameView(gameVM: vm, path: State(initialValue: [Route]()).projectedValue)
 }
 
 #Preview("Dark"){
-    let vm = GameVM()
+    let vm = GameVM(firstUser: User(), secondUser: nil)
     vm.startGame()
-    return GameView()
+    return GameView(gameVM: vm, path: State(initialValue: [Route]()).projectedValue)
         .preferredColorScheme(/*@START_MENU_TOKEN@*/.dark/*@END_MENU_TOKEN@*/)
-        .environmentObject(vm)
 }

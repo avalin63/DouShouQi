@@ -8,27 +8,26 @@
 import SwiftUI
 
 struct StartTwoPlayersView: View {
-    @EnvironmentObject var gameVM: GameVM
     @State var isReadyFirst = false
     @State var isReadySecond = false
     @State var isConfirm = false
-    
-    @State private var isGameStarted = false
+    @State var firstUser = User()
+    @State var secondUser = User()
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-    
+    @Binding var path: [Route]
     
     var body: some View {
         GeometryReader{ geo in
             ZStack{
                 VStack(spacing: 0) {
                     VStack{
-                        PlayerPreparation(style:.defaultStyle, textInputStyle: TopUsernameTextInputStyle(), isReady: $isReadyFirst, username: $gameVM.firstUser.name)
+                        PlayerPreparation(style:.defaultStyle, textInputStyle: TopUsernameTextInputStyle(), isReady: $isReadyFirst, username: $firstUser.name)
                     }
                     .frame(width: geo.size.width,height: geo.size.height * (1/2))
                     .background(DSQColors.topUserContaierBackgroundColor)
                     VStack{
-                        PlayerPreparation(style: .variant, textInputStyle: BottomUsernameTextInputStyle(), isReady: $isReadySecond, username: $gameVM.secondUser.name)
+                        PlayerPreparation(style: .variant, textInputStyle: BottomUsernameTextInputStyle(), isReady: $isReadySecond, username: $secondUser.name)
                     }
                     .frame(width: geo.size.width,height: geo.size.height * (1/2))
                     .background(DSQColors.bottomUserContainerBackgroundColor)
@@ -65,37 +64,20 @@ struct StartTwoPlayersView: View {
                 .padding(.horizontal, 20)
             }
         }
-        .onAppear() {
-            gameVM.isVersusAI = false
-        }
         .onChange(of: isConfirm) {
-            check()
+            if isConfirm {                
+                path.append(.game(user1: firstUser, user2: secondUser))
+            }
         }
-        .onChange(of: isConfirm) {
-            check()
-        }
-        .background(
-            NavigationLink(destination: GameView().navigationBarHidden(true), isActive: $isGameStarted) {
-                EmptyView()
-            }.navigationBarBackButtonHidden(true)
-        )
-    }
-    
-    private func check() {
-        if isConfirm {
-            gameVM.startGame()
-            isGameStarted = true
-        }
+        .navigationBarBackButtonHidden(true)
     }
 }
 
 #Preview("Light") {
-    StartTwoPlayersView()
-        .environmentObject(GameVM())
+    StartTwoPlayersView(path: State(initialValue: [Route]()).projectedValue)
 }
 
 #Preview("Dark") {
-    StartTwoPlayersView()
+    StartTwoPlayersView(path: State(initialValue: [Route]()).projectedValue)
         .preferredColorScheme(/*@START_MENU_TOKEN@*/.dark/*@END_MENU_TOKEN@*/)
-        .environmentObject(GameVM())
 }
