@@ -92,35 +92,6 @@ class GameVM: ObservableObject {
         isOver = true
         endGameDate = Date()
         winPlayer = player
-        switch result {
-        case .notFinished:
-            print("**********************************")
-            print("Partie non terminée.")
-            print("**********************************")
-        case .even:
-            print("**********************************")
-            print("Partie terminée avec égalité !")
-            print("**********************************")
-        case let .winner(owner, reason):
-            switch reason {
-            case .denReached:
-                print("**********************************")
-                print("Partie terminée !!!\nEt le gagnant est... Player \(owner) !\nTanière atteinte !")
-                print("**********************************")
-            case .noMorePieces:
-                print("**********************************")
-                print("Partie terminée !!!\nEt le gagnant est... Player \(owner) !\nPlus de pièces !")
-                print("**********************************")
-            case .noMovesLeft:
-                print("**********************************")
-                print("Partie terminée !!!\nEt le gagnant est... Player \(owner) !\nAucun coup possible !")
-                print("**********************************")
-            case .tooManyOccurences:
-                print("**********************************")
-                print("Partie terminée !!!\nEt le gagnant est... Player \(owner) !\nTrop d'occurrences !")
-                print("**********************************")
-            }
-        }
         delayNavigateToSummary()
     }
     

@@ -26,7 +26,6 @@ class HistoricVM: ObservableObject {
         
         do {
             self.gameHistory = try context.fetch(fetchRequest)
-            print("Games load: \(gameHistory)")
         } catch {
             print("Failed to fetch game history: \(error)")
         }
@@ -46,7 +45,6 @@ class HistoricVM: ObservableObject {
         newGame.nbRoundsPlayed = Int16(nbRoundsPlayed)
         newGame.winPlayerName = winPlayer?.name
         dataManager.saveContext()
-        print("Game saved: \(newGame)")
         loadGameHistory()
     }
 }
