@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct StartTwoPlayersView: View {
-    @EnvironmentObject var gameVM: GameVM
     @State var isReadyFirst = false
     @State var isReadySecond = false
     @State var isConfirm = false

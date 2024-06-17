@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct StartGameView: View {
-    @EnvironmentObject var gameVM: GameVM
     @Binding var path: [Route]
     
     var body: some View {
