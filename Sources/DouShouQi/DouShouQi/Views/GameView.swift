@@ -141,5 +141,4 @@ struct GameView: View {
     vm.startGame()
     return GameView(gameVM: vm, path: State(initialValue: [Route]()).projectedValue)
         .preferredColorScheme(/*@START_MENU_TOKEN@*/.dark/*@END_MENU_TOKEN@*/)
-        .environmentObject(vm)
 }
