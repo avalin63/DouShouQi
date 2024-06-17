@@ -16,6 +16,7 @@ class GameVM: ObservableObject {
     @Published var secondUser: User?
     @Published var game: Game?
     @Published var startGameDate: Date = .now
+    @Published var endGameDate: Date?
     @Published var currentPlayer: Player?
     @Published var isOver: Bool = false
     @Published var defeatReason: String = ""
@@ -23,17 +24,26 @@ class GameVM: ObservableObject {
     @Published var gameColors = GameColors()
     @Published var gameScene: BoardScene? = nil
     @Published var winPlayer: Player? = nil
+    @Published var gameHistory: [GameEntity] = []
+    
+    @Published var navigateToSummary = false
+    
+    
+    init(firstUser: User, secondUser: User? = nil) {
+        self.firstUser = firstUser
+        self.secondUser = secondUser
+        self.rules = ClassicRules()
+        loadGameHistory()
+    }
+    
+    private let dataManager = DataManager.shared
     
     var isVersusAI: Bool { secondUser == nil }
     
-    init(firstUser: User, secondUser: User?) {
-        self.firstUser = firstUser
-        self.secondUser = secondUser
-    }
-        
+    
     func startGame() {
         let firstPlayer = HumanPlayer(withName: firstUser.name, andId: .player1)!
-        var secondPlayer: Player =  if let secondUser {
+        let secondPlayer: Player =  if let secondUser {
             HumanPlayer(withName: secondUser.name, andId: .player2)!
         } else {
             RandomPlayer(withName: "Bot", andId: .player2)!
@@ -126,7 +136,7 @@ class GameVM: ObservableObject {
         newGame.endGameDate = endGameDate
         newGame.isVersusAI = isVersusAI
         newGame.firstUserName = firstUser.name
-        newGame.secondUserName = secondUser.name
+        newGame.secondUserName = secondUser?.name
         newGame.isOver = isOver
         newGame.defeatReason = defeatReason
         newGame.nbRoundsPlayed = Int16(nbRoundsPlayed)

@@ -42,12 +42,6 @@
         }
       }
     },
-    "11/05/2024" : {
-
-    },
-    "12min34s" : {
-
-    },
     "Camera" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -427,19 +421,6 @@
     },
     "You Loosed !" : {
 
-    },
-    "You Won !" : {
-
-    },
-    "You Loosed !" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "You Lost !"
-          }
-        }
-      }
     },
     "You Won !" : {
 
