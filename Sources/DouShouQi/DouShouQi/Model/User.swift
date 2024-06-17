@@ -7,7 +7,12 @@
 
 import Foundation
 
-public struct User {
+public struct User : Hashable {
     var image: String
     var name: String
+    
+    init() {
+        self.image = ""
+        self.name = ""
+    }
 }

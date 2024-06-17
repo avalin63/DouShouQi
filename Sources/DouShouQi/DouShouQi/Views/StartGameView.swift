@@ -9,23 +9,22 @@ import SwiftUI
 
 struct StartGameView: View {
     @EnvironmentObject var gameVM: GameVM
+    @Binding var path: [Route]
     
     var body: some View {
         VStack(alignment: .leading){
             VStack{
+                
                 PrimaryLeftButton(
                     leading: { Image("icSingleplayer") },
                     label: String(localized: "\(1) player"),
-                    destination: { 
-                        StartOnePlayerView()
-                    }
+                    action: { path.append(.startGameOnePlayer) }
                 )
+                                           
                 PrimaryLeftButton(
                     leading: { Image("icTwoPlayers") },
                     label: String(localized: "\(2) player"),
-                    destination: {
-                        StartTwoPlayersView()
-                    }
+                    action: { path.append(.startGameTwoPlayers) }
                 )
             }
             .padding(.bottom, 30)
@@ -56,10 +55,10 @@ struct StartGameView: View {
 }
 
 #Preview("Light") {
-    StartGameView()
+    StartGameView(path: State(initialValue: [Route]()).projectedValue)
 }
 
 #Preview("Dark"){
-    StartGameView()
+    StartGameView(path: State(initialValue: [Route]()).projectedValue)
         .preferredColorScheme(/*@START_MENU_TOKEN@*/.dark/*@END_MENU_TOKEN@*/)
 }

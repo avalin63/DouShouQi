@@ -11,26 +11,30 @@ import DouShouQiModel
 class GameVM: ObservableObject {
     
     @Published var rules: Rules = ClassicRules()
+    @Published var firstUser: User
+    @Published var secondUser: User?
     @Published var game: Game?
     @Published var startGameDate: Date = .now
-    @Published var isVersusAI: Bool = false
-    @Published var firstUser: User = User(image: "", name: "")
-    @Published var secondUser: User = User(image: "", name: "")
     @Published var currentPlayer: Player?
     @Published var isOver: Bool = false
     @Published var defeatReason: String = ""
     @Published var nbRoundsPlayed: Int = 2
     @Published var gameScene: BoardScene? = nil
     @Published var winPlayer: Player? = nil
+    
+    var isVersusAI: Bool { secondUser == nil }
+    
+    init(firstUser: User, secondUser: User?) {
+        self.firstUser = firstUser
+        self.secondUser = secondUser
+    }
         
     func startGame() {
         let firstPlayer = HumanPlayer(withName: firstUser.name, andId: .player1)!
-        var secondPlayer: Player
-        
-        if isVersusAI {
-            secondPlayer = RandomPlayer(withName: "Bot", andId: .player2)!
+        var secondPlayer: Player =  if let secondUser {
+            HumanPlayer(withName: secondUser.name, andId: .player2)!
         } else {
-            secondPlayer = HumanPlayer(withName: secondUser.name, andId: .player2)!
+            RandomPlayer(withName: "Bot", andId: .player2)!
         }
         
         do {
