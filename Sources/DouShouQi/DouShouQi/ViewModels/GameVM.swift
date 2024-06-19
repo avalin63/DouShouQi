@@ -19,8 +19,10 @@ class GameVM: ObservableObject {
     @Published var isOver: Bool = false
     @Published var defeatReason: String = ""
     @Published var nbRoundsPlayed: Int = 2
-    @Published var gameScene: BoardScene? = nil
     @Published var winPlayer: Player? = nil
+    @Published var selectedMove: Move? = nil
+    
+    var gameScene: BoardScene? = nil
     
     var isVersusAI: Bool { secondUser == nil }
     
@@ -66,7 +68,9 @@ class GameVM: ObservableObject {
                 Task {
                     try await self.game?.onPlayed(with: move, from: self.currentPlayer!)
                 }
-            }
+            },
+            setSelectedMove: { move in self.selectedMove = move },
+            selectedMove: { self.selectedMove }
         )
     }
     

@@ -11,7 +11,7 @@ import DouShouQiModel
 
 struct GameView: View {
     
-    var gameVM: GameVM
+    @ObservedObject var gameVM: GameVM
     @Environment(\.colorScheme) var colorScheme: ColorScheme
     
     @State private var navigateToSummary = false
@@ -54,13 +54,13 @@ struct GameView: View {
                             color: gameVM.currentPlayer?.id.playerColor ?? DSQColors.player1
                         )
                         Spacer()
-                        if gameVM.gameScene?.selectedMove?.move != nil{
-                            if let animal = gameVM.game?.board.grid[gameVM.gameScene?.selectedMove?.move.rowOrigin ?? 0][gameVM.gameScene?.selectedMove?.move.columnOrigin ?? 0].piece?.animal {
-                                MoveIndicatorCell(move: gameVM.gameScene?.selectedMove?.move, animal: animal)
+                        if let move = gameVM.selectedMove {
+                            if let animal = gameVM.game?.board.grid[move.rowOrigin][move.columnOrigin].piece?.animal {
+                                MoveIndicatorCell(move: move, animal: animal)
                             }
                         }
                         else{
-                            MoveIndicatorCell(move: gameVM.gameScene?.selectedMove?.move, animal: nil)
+                            MoveIndicatorCell(move: nil, animal: nil)
                         }
                     }
                     
@@ -85,7 +85,7 @@ struct GameView: View {
                             }
                         
                         Button(action: {
-                            if let move = gameScene.selectedMove?.move {
+                            if let move = gameVM.selectedMove {
                                 gameScene.onValidateMove(move)
                             }
                         }) {
@@ -95,11 +95,11 @@ struct GameView: View {
                                 .foregroundStyle(.white)
                                 .frame(maxWidth: .infinity, minHeight: 70)
                                 .background(
-                                    gameVM.gameScene?.selectedMove == nil ? DSQColors.moveCellBackgroundColor : gameVM.currentPlayer?.id.playerColor ?? DSQColors.player1
+                                    gameVM.selectedMove == nil ? DSQColors.moveCellBackgroundColor : gameVM.currentPlayer?.id.playerColor ?? DSQColors.player1
                                 )
                         }
                         .background()
-                        .disabled(gameVM.gameScene?.selectedMove == nil)
+                        .disabled(gameVM.selectedMove == nil)
                         .padding(.bottom, 24)
                     }
                     
