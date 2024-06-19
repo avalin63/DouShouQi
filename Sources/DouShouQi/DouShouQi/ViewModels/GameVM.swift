@@ -31,7 +31,7 @@ class GameVM: ObservableObject {
         
     func startGame() {
         let firstPlayer = HumanPlayer(withName: firstUser.name, andId: .player1)!
-        var secondPlayer: Player =  if let secondUser {
+        let secondPlayer: Player =  if let secondUser {
             HumanPlayer(withName: secondUser.name, andId: .player2)!
         } else {
             RandomPlayer(withName: "Bot", andId: .player2)!
