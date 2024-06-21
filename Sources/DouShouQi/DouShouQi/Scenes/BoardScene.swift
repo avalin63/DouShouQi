@@ -14,24 +14,35 @@ class BoardScene: SKScene {
     private let rules: Rules
     private let currentPlayer: () -> Player
     private let board: () -> Board
+    private let setSelectedMove: (Move?) -> Void
+    private let selectedMove: () -> Move?
     let onValidateMove: (Move) -> Void
     
-    public var selectedMove: (move: Move, node: SKShapeNode)? = nil
     private var pieceNodes: [PieceSprite] { get { filterNodes(type: .piece) } }
     private var gridNodes: [SKShapeNode] { get { filterNodes(type: .grid) } }
     private var waterNodes: [SKShapeNode] { get { filterNodes(type: .water) } }
     private var moveNodes: [SKShapeNode] { get { filterNodes(type: .possibleMove) } }
+    private var selectedMoveNodes: [SKShapeNode] { get { filterNodes(type: .selectedMove) } }
     
     private func filterNodes<T: SKNode>(type: NodeType) -> [T] {
         scene?.children.filter { $0.hasType(type: type) && $0 is T }.map { ($0 as! T) } ?? [T]()
     }
     
-    init(board: @escaping () -> Board, currentPlayer: @escaping () -> Player, rules: Rules, onValidateMove: @escaping (Move) -> Void) {
+    init(
+        board: @escaping () -> Board,
+        currentPlayer: @escaping () -> Player,
+        rules: Rules,
+        onValidateMove: @escaping (Move) -> Void,
+        setSelectedMove: @escaping (Move?) -> Void,
+        selectedMove: @escaping () -> Move?
+    ) {
         let colors = GameColors()
         self.board = board
         self.rules = rules
         self.currentPlayer = currentPlayer
         self.onValidateMove = onValidateMove
+        self.setSelectedMove = setSelectedMove
+        self.selectedMove = selectedMove
         super.init(size: board().gridSize)
         
         scene?.size = size
@@ -80,46 +91,9 @@ class BoardScene: SKScene {
         self.board = { ClassicRules.createBoard() }
         self.currentPlayer = { HumanPlayer(withName: "", andId: .player1)! }
         self.onValidateMove = { _ in }
+        self.setSelectedMove = { _ in }
+        self.selectedMove = { nil }
         super.init(coder: aDecoder)
-    }
-    
-    func insertPiece(piece: Piece, x: CGFloat, y: CGFloat) {
-        let pieceNode = PieceSprite(withPiece: piece)
-        pieceNode.position.x = x
-        pieceNode.position.y = y
-        pieceNode.zPosition = 10
-        if (piece.owner == .player2) {
-            pieceNode.zRotation = .pi
-        }
-        pieceNode.userData = ["type": NodeType.piece, "piece": piece, "selected": false]
-        
-        addChild(pieceNode)
-    }
-    
-    func insertTile(type: CellType, x: CGFloat, y: CGFloat) {
-        if let tileNode = TileSprite(withType: type) {
-            tileNode.position.x = x
-            tileNode.position.y = y
-            addChild(tileNode)
-        }
-    }
-    
-    func insertPossibleMove(move: Move, x: CGFloat, y: CGFloat) {
-        let (xpos, ypos) = toRealCoordinates(atX: move.columnDestination, atY: move.rowDestination)
-        
-        let shape = SKShapeNode(circleOfRadius: (BoardSceneValues.CELL_SIZE / 2) - 10)
-        let color = SKColor(named: currentPlayer().id.tileColor!)!
-        shape.fillColor = color
-        shape.strokeColor = color
-        shape.alpha = 0.5
-        shape.position.x = x
-        shape.position.y = y
-        shape.zPosition = 15.0
-        
-        shape.run(SKAction.move(to: CGPoint(x: xpos, y: ypos), duration: 0.15))
-        
-        shape.userData = ["type": NodeType.possibleMove, "move": move]
-        addChild(shape)
     }
     
     func executeMove(move: Move) {
@@ -148,6 +122,45 @@ class BoardScene: SKScene {
         gridNodes.forEach { rect in
             rect.strokeColor = colors.boardGridColor
         }
+    }
+    
+    private func insertPiece(piece: Piece, x: CGFloat, y: CGFloat) {
+        let pieceNode = PieceSprite(withPiece: piece)
+        pieceNode.position.x = x
+        pieceNode.position.y = y
+        pieceNode.zPosition = 10
+        if (piece.owner == .player2) {
+            pieceNode.zRotation = .pi
+        }
+        pieceNode.userData = ["type": NodeType.piece, "piece": piece, "selected": false]
+        
+        addChild(pieceNode)
+    }
+    
+    private func insertTile(type: CellType, x: CGFloat, y: CGFloat) {
+        if let tileNode = TileSprite(withType: type) {
+            tileNode.position.x = x
+            tileNode.position.y = y
+            addChild(tileNode)
+        }
+    }
+    
+    private func insertPossibleMove(move: Move, x: CGFloat, y: CGFloat) {
+        let (xpos, ypos) = toRealCoordinates(atX: move.columnDestination, atY: move.rowDestination)
+        
+        let shape = SKShapeNode(circleOfRadius: (BoardSceneValues.CELL_SIZE / 2) - 10)
+        let color = SKColor(named: currentPlayer().id.tileColor!)!
+        shape.fillColor = color
+        shape.strokeColor = color
+        shape.alpha = 0.5
+        shape.position.x = x
+        shape.position.y = y
+        shape.zPosition = 15.0
+        
+        shape.run(SKAction.move(to: CGPoint(x: xpos, y: ypos), duration: 0.15))
+        
+        shape.userData = ["type": NodeType.possibleMove, "move": move]
+        addChild(shape)
     }
 
     private func toRealCoordinates(atX x: Int, atY y: Int) -> (x: Double, y: Double) {
@@ -192,11 +205,11 @@ class BoardScene: SKScene {
     }
     
     private func clearSelectedMove() {
-        if let move = selectedMove {
-            move.node.removeFromParent()
+        selectedMoveNodes.forEach { node in
+            node.removeFromParent()
         }
         
-        selectedMove = nil
+        setSelectedMove(nil)
     }
     
     private func findPieceNode(atX x: Int, atY y: Int, ofPlayer owner: Owner? = nil) -> (piece: Piece, node: SKSpriteNode)? {
@@ -226,6 +239,7 @@ class BoardScene: SKScene {
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         if currentPlayer() is HumanPlayer {
             for touch in touches {
+                
                 let location = touch.location(in: self)
                 let (tileX, tileY) = getBoardCoordinates(atX: location.x, atY: location.y)
                                 
@@ -252,7 +266,7 @@ class BoardScene: SKScene {
                     }
                 } else if let (move, node) = findMoveNode(atX: tileX, atY: tileY) {
                     
-                    if move == selectedMove?.move {
+                    if move == selectedMove() {
                         onValidateMove(move)
                     } else {
                         refreshMoves()
@@ -275,6 +289,7 @@ class BoardScene: SKScene {
                         line.strokeColor = SKColor(named: currentPlayer().id.tileColor!)!
                         line.lineWidth = 5
                         line.zPosition = 20
+                        line.userData = ["type": NodeType.selectedMove]
                         
                         addChild(line)
                         
@@ -287,7 +302,7 @@ class BoardScene: SKScene {
                         
                         node.addChild(label)
                         
-                        self.selectedMove = (move, line)
+                        setSelectedMove(move)
                     }
                 } else {
                     refreshPieces()

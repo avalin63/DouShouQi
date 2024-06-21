@@ -21,14 +21,14 @@ class GameVM: ObservableObject {
     @Published var isOver: Bool = false
     @Published var defeatReason: String = ""
     @Published var nbRoundsPlayed: Int = 2
+    @Published var selectedMove: Move? = nil
     @Published var gameColors = GameColors()
     @Published var gameScene: BoardScene? = nil
     @Published var winUser: User? = nil
     
     @Published var navigateToSummary = false
     
-    
-    init(firstUser: User, secondUser: User? = nil) {
+    init(firstUser: User, secondUser: User?) {
         self.firstUser = firstUser
         self.secondUser = secondUser
         self.rules = ClassicRules()
@@ -75,7 +75,9 @@ class GameVM: ObservableObject {
                 Task {
                     try await self.game?.onPlayed(with: move, from: self.currentPlayer!)
                 }
-            }
+            },
+            setSelectedMove: { move in self.selectedMove = move },
+            selectedMove: { self.selectedMove }
         )
     }
     
