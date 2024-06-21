@@ -38,7 +38,7 @@ struct StartGameView: View {
                     ForEach(historicVM.gameHistory, id: \.self) { game in
                                         VStack(alignment: .leading) {
                                             PartyResumeCell(pseudo: game.winPlayerName ?? "NaN", startDate: game.startGameDate, endDate: game.endGameDate,
-                                                            defeatReason: game.defeatReason ?? "NaN")
+                                                            defeatReason: game.defeatReason ?? "NaN", playerPicture: game.winningPicture)
                                         }
                                     }
 

@@ -1,7 +1,7 @@
 {
   "images" : [
     {
-      "filename" : "template-picture.png",
+      "filename" : "defaultPicture.png",
       "idiom" : "universal",
       "scale" : "1x"
     },

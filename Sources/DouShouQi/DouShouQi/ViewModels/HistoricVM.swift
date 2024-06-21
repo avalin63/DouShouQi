@@ -8,6 +8,7 @@
 import Foundation
 import DouShouQiModel
 import CoreData
+import UIKit
 
 class HistoricVM: ObservableObject {
     
@@ -31,7 +32,7 @@ class HistoricVM: ObservableObject {
         }
     }
     
-    func saveCurrentGame(startGameDate: Date, endGameDate: Date?, isVersusAI:Bool, firstUser: User, secondUser:User?,isOver: Bool, defeatReason: String, nbRoundsPlayed: Int, winPlayer: Player? ) {
+    func saveCurrentGame(startGameDate: Date, endGameDate: Date?, isVersusAI:Bool, firstUser: User, secondUser:User?,isOver: Bool, defeatReason: String, nbRoundsPlayed: Int, winPlayer: String?, winningPicture: UIImage? ) {
         let context = dataManager.context
         let newGame = GameEntity(context: context)
         newGame.id = UUID()
@@ -43,7 +44,8 @@ class HistoricVM: ObservableObject {
         newGame.isOver = isOver
         newGame.defeatReason = defeatReason
         newGame.nbRoundsPlayed = Int16(nbRoundsPlayed)
-        newGame.winPlayerName = winPlayer?.name
+        newGame.winPlayerName = winPlayer
+        newGame.winningPicture = winningPicture?.base64
         dataManager.saveContext()
         loadGameHistory()
     }

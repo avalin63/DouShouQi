@@ -18,7 +18,7 @@ struct StartOnePlayerView: View {
     var body: some View {
         ZStack{
             VStack{
-                PlayerPreparation(style: .defaultStyle, textInputStyle: TopUsernameTextInputStyle(), isReady: $isReady, username: $user.name)
+                PlayerPreparation(style: .defaultStyle, textInputStyle: TopUsernameTextInputStyle(), isReady: $isReady, username: $user.name, image: $user.image)
             }
             .frame(
                 maxWidth: .infinity,
