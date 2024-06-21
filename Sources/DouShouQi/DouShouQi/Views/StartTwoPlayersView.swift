@@ -22,12 +22,12 @@ struct StartTwoPlayersView: View {
             ZStack{
                 VStack(spacing: 0) {
                     VStack{
-                        PlayerPreparation(style:.defaultStyle, textInputStyle: TopUsernameTextInputStyle(), isReady: $isReadyFirst, username: $firstUser.name)
+                        PlayerPreparation(style:.defaultStyle, textInputStyle: TopUsernameTextInputStyle(), isReady: $isReadyFirst, username: $firstUser.name, image: $firstUser.image)
                     }
                     .frame(width: geo.size.width,height: geo.size.height * (1/2))
                     .background(DSQColors.topUserContaierBackgroundColor)
                     VStack{
-                        PlayerPreparation(style: .variant, textInputStyle: BottomUsernameTextInputStyle(), isReady: $isReadySecond, username: $secondUser.name)
+                        PlayerPreparation(style: .variant, textInputStyle: BottomUsernameTextInputStyle(), isReady: $isReadySecond, username: $secondUser.name, image: $secondUser.image)
                     }
                     .frame(width: geo.size.width,height: geo.size.height * (1/2))
                     .background(DSQColors.bottomUserContainerBackgroundColor)

@@ -9,6 +9,7 @@ import SwiftUI
 
 struct StartGameView: View {
     @Binding var path: [Route]
+    @EnvironmentObject var historicVM: HistoricVM
     
     var body: some View {
         VStack(alignment: .leading){
@@ -34,14 +35,13 @@ struct StartGameView: View {
                     .foregroundStyle(DSQColors.titleColor)
                     .padding(.horizontal, 30)
                 ScrollView{
-                    PartyResumeCell()
-                    PartyResumeCell()
-                    PartyResumeCell()
-                    PartyResumeCell()
-                    PartyResumeCell()
-                    PartyResumeCell()
-                    PartyResumeCell()
-                    PartyResumeCell()
+                    ForEach(historicVM.gameHistory, id: \.self) { game in
+                                        VStack(alignment: .leading) {
+                                            PartyResumeCell(pseudo: game.winPlayerName ?? "NaN", startDate: game.startGameDate, endDate: game.endGameDate,
+                                                            defeatReason: game.defeatReason ?? "NaN", playerPicture: game.winningPicture)
+                                        }
+                                    }
+
                 }
                 .fadeOutTop(fadeLength: 30)
             }

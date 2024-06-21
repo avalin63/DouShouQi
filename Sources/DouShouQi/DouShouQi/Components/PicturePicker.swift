@@ -27,7 +27,7 @@ struct PicturePicker: View {
     var body: some View {
         ZStack{
             
-            if let selectedImage {
+            if let selectedImage = selectedImage{
                 Image(uiImage: selectedImage)
                     .resizable()
                     .scaledToFill()

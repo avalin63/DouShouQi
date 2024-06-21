@@ -13,6 +13,7 @@ struct GameView: View {
     
     @ObservedObject var gameVM: GameVM
     @Environment(\.colorScheme) var colorScheme: ColorScheme
+    @EnvironmentObject var historicVM: HistoricVM
     
     @State private var navigateToSummary = false
     @State private var elapsedTime: TimeInterval = 0
@@ -106,6 +107,7 @@ struct GameView: View {
                 }
                 .onChange(of: gameVM.isOver) {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
+                        historicVM.saveCurrentGame(startGameDate: gameVM.startGameDate, endGameDate: gameVM.endGameDate, isVersusAI: gameVM.isVersusAI, firstUser: gameVM.firstUser, secondUser: gameVM.secondUser, isOver: gameVM.isOver, defeatReason: gameVM.defeatReason, nbRoundsPlayed: gameVM.nbRoundsPlayed, winPlayer: gameVM.winUser?.name, winningPicture: gameVM.winUser?.image)
                         path = []
                     }
                 }
@@ -114,10 +116,10 @@ struct GameView: View {
                 .safeAreaPadding(.top, 50)
             }
             VStack(spacing: -5){
-                GameOverStatus(isWinner: gameVM.winPlayer == gameVM.game?.players.values.first).frame(width: geo.size.width,height: geo.size.height * (1/2))
+                GameOverStatus(isWinner: gameVM.winUser == gameVM.firstUser).frame(width: geo.size.width,height: geo.size.height * (1/2))
                     .animation(.spring(), value: gameVM.isOver)
                 Spacer()
-                GameOverStatus(isWinner: gameVM.winPlayer != gameVM.game?.players.values.first).frame(width: geo.size.width,height: geo.size.height * (1/2))
+                GameOverStatus(isWinner: gameVM.winUser == gameVM.secondUser).frame(width: geo.size.width,height: geo.size.height * (1/2))
                     .animation(.spring(), value: gameVM.isOver)
             }
             .frame(height: gameVM.isOver ? geo.size.height : geo.size.height * 2)
