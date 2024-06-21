@@ -32,6 +32,8 @@
 		122FD9B72BF6A71D000B6D0A /* ScrollViewFade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122FD9B62BF6A71D000B6D0A /* ScrollViewFade.swift */; };
 		123F31D92C0E229F009B6D65 /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 123F31D82C0E229F009B6D65 /* RoundedButton.swift */; };
 		1251D1AE2C18F5CF00BCDF5F /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1251D1AD2C18F5CF00BCDF5F /* Player.swift */; };
+		1251D1B32C199B1400BCDF5F /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1251D1B22C199B1400BCDF5F /* DataManager.swift */; };
+		1251D1B62C199BC900BCDF5F /* GameModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1251D1B42C199BC900BCDF5F /* GameModel.xcdatamodeld */; };
 		126AB5AF2C09A7B8001555CD /* GameOverStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 126AB5AE2C09A7B8001555CD /* GameOverStatus.swift */; };
 		126AB5B52C09EE82001555CD /* (null) in Embed Frameworks */ = {isa = PBXBuildFile; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		126AB5B82C09F68F001555CD /* StylesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 126AB5B72C09F68F001555CD /* StylesCell.swift */; };
@@ -45,6 +47,7 @@
 		12A9E4902C06059200AB8677 /* LanguageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A9E48F2C06059200AB8677 /* LanguageManager.swift */; };
 		12A9E4922C06268300AB8677 /* MenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A9E4912C06268300AB8677 /* MenuCell.swift */; };
 		12C9C5882BF7846D00BB5B39 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 12C9C5872BF7846D00BB5B39 /* Localizable.xcstrings */; };
+		12E5BA852C20370000110C7E /* HistoricVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E5BA842C20370000110C7E /* HistoricVM.swift */; };
 		12F35C942C09A4A4005566B2 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12F35C932C09A4A4005566B2 /* Strings.swift */; };
 		BD6B02C42C024B75006838AF /* BoardScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6B02C32C024B75006838AF /* BoardScene.swift */; };
 		BD6B02C62C024B9B006838AF /* PieceSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6B02C52C024B9B006838AF /* PieceSprite.swift */; };
@@ -126,6 +129,8 @@
 		122FD9B62BF6A71D000B6D0A /* ScrollViewFade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollViewFade.swift; sourceTree = "<group>"; };
 		123F31D82C0E229F009B6D65 /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
 		1251D1AD2C18F5CF00BCDF5F /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		1251D1B22C199B1400BCDF5F /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		1251D1B52C199BC900BCDF5F /* GameModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = GameModel.xcdatamodel; sourceTree = "<group>"; };
 		126AB5AE2C09A7B8001555CD /* GameOverStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverStatus.swift; sourceTree = "<group>"; };
 		126AB5B72C09F68F001555CD /* StylesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StylesCell.swift; sourceTree = "<group>"; };
 		12751D312C0E0E56001DA505 /* DSQ.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = DSQ.xcframework; path = ../../../SwiftUI_ARKit_2024/XCFramework/DSQ.xcframework; sourceTree = "<group>"; };
@@ -137,6 +142,7 @@
 		12A9E48F2C06059200AB8677 /* LanguageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageManager.swift; sourceTree = "<group>"; };
 		12A9E4912C06268300AB8677 /* MenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCell.swift; sourceTree = "<group>"; };
 		12C9C5872BF7846D00BB5B39 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		12E5BA842C20370000110C7E /* HistoricVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoricVM.swift; sourceTree = "<group>"; };
 		12F35C932C09A4A4005566B2 /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 		BD6B02C32C024B75006838AF /* BoardScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardScene.swift; sourceTree = "<group>"; };
 		BD6B02C52C024B9B006838AF /* PieceSprite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieceSprite.swift; sourceTree = "<group>"; };
@@ -187,6 +193,7 @@
 		1221D8632BF1EFF600CB5EB9 = {
 			isa = PBXGroup;
 			children = (
+				1251D1B42C199BC900BCDF5F /* GameModel.xcdatamodeld */,
 				1221D86E2BF1EFF600CB5EB9 /* DouShouQi */,
 				1221D87F2BF1EFF600CB5EB9 /* DouShouQiTests */,
 				1221D8892BF1EFF600CB5EB9 /* DouShouQiUITests */,
@@ -208,6 +215,7 @@
 		1221D86E2BF1EFF600CB5EB9 /* DouShouQi */ = {
 			isa = PBXGroup;
 			children = (
+				1251D1B12C199AF700BCDF5F /* DataPersistence */,
 				C9940B532C0882840016CE9F /* ViewModels */,
 				12972BB22C05F42000FB6BA0 /* Model */,
 				BD6B02C22C024B5C006838AF /* Scenes */,
@@ -310,6 +318,14 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		1251D1B12C199AF700BCDF5F /* DataPersistence */ = {
+			isa = PBXGroup;
+			children = (
+				1251D1B22C199B1400BCDF5F /* DataManager.swift */,
+			);
+			path = DataPersistence;
+			sourceTree = "<group>";
+		};
 		12972BB22C05F42000FB6BA0 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -364,6 +380,7 @@
 			isa = PBXGroup;
 			children = (
 				C9940B542C0885230016CE9F /* GameVM.swift */,
+				12E5BA842C20370000110C7E /* HistoricVM.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -501,11 +518,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1251D1B62C199BC900BCDF5F /* GameModel.xcdatamodeld in Sources */,
 				12972BB82C06004D00FB6BA0 /* ThemeManager.swift in Sources */,
 				1221D8A52BF244E500CB5EB9 /* RoundedCorner.swift in Sources */,
 				120475052BFE8B600044AD97 /* Effects.swift in Sources */,
 				123F31D92C0E229F009B6D65 /* RoundedButton.swift in Sources */,
 				BD6B02C62C024B9B006838AF /* PieceSprite.swift in Sources */,
+				1251D1B32C199B1400BCDF5F /* DataManager.swift in Sources */,
 				BD6B02CF2C0254E7006838AF /* TileSprite.swift in Sources */,
 				12A9E4902C06059200AB8677 /* LanguageManager.swift in Sources */,
 				126AB5AF2C09A7B8001555CD /* GameOverStatus.swift in Sources */,
@@ -547,6 +566,7 @@
 				BDDBC0D12C1C42E600DBE5C9 /* SKNode.swift in Sources */,
 				C961249A2BFE7B4C00E1E55C /* GameView.swift in Sources */,
 				12A9E4922C06268300AB8677 /* MenuCell.swift in Sources */,
+				12E5BA852C20370000110C7E /* HistoricVM.swift in Sources */,
 				1221D8702BF1EFF600CB5EB9 /* DouShouQiApp.swift in Sources */,
 				120474FD2BFE13F60044AD97 /* StartTwoPlayersView.swift in Sources */,
 			);
@@ -884,6 +904,20 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		1251D1B42C199BC900BCDF5F /* GameModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				1251D1B52C199BC900BCDF5F /* GameModel.xcdatamodel */,
+			);
+			currentVersion = 1251D1B52C199BC900BCDF5F /* GameModel.xcdatamodel */;
+			name = GameModel.xcdatamodeld;
+			path = "/Users/ludelanier/Development/School/DouShouQi-Ui/Sources/DouShouQi/GameModel.xcdatamodeld";
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 1221D8642BF1EFF600CB5EB9 /* Project object */;
 }

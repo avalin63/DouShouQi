@@ -226,7 +226,6 @@ class BoardScene: SKScene {
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         if currentPlayer() is HumanPlayer {
             for touch in touches {
-                print("Touch \(touch.timestamp)")
                 let location = touch.location(in: self)
                 let (tileX, tileY) = getBoardCoordinates(atX: location.x, atY: location.y)
                                 
@@ -248,7 +247,6 @@ class BoardScene: SKScene {
                             fromRow: tileY,
                             andColumn: tileX
                         ).forEach { move in
-                            print("Move : \(move.description)")
                             insertPossibleMove(move: move, x: node.position.x, y: node.position.y)
                         }
                     }
@@ -290,7 +288,6 @@ class BoardScene: SKScene {
                         node.addChild(label)
                         
                         self.selectedMove = (move, line)
-                        print("SelectedMove : \(String(describing: selectedMove?.move))")
                     }
                 } else {
                     refreshPieces()

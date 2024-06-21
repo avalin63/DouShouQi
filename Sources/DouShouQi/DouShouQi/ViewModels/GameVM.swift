@@ -8,6 +8,7 @@
 import Foundation
 import DouShouQiModel
 
+
 class GameVM: ObservableObject {
     
     @Published var rules: Rules = ClassicRules()
@@ -15,23 +16,31 @@ class GameVM: ObservableObject {
     @Published var secondUser: User?
     @Published var game: Game?
     @Published var startGameDate: Date = .now
+    @Published var endGameDate: Date?
     @Published var currentPlayer: Player?
     @Published var isOver: Bool = false
     @Published var defeatReason: String = ""
     @Published var nbRoundsPlayed: Int = 2
+    @Published var gameColors = GameColors()
     @Published var gameScene: BoardScene? = nil
     @Published var winPlayer: Player? = nil
     
-    var isVersusAI: Bool { secondUser == nil }
+    @Published var navigateToSummary = false
     
-    init(firstUser: User, secondUser: User?) {
+    
+    init(firstUser: User, secondUser: User? = nil) {
         self.firstUser = firstUser
         self.secondUser = secondUser
+        self.rules = ClassicRules()
     }
-        
+    
+    
+    var isVersusAI: Bool { secondUser == nil }
+    
+    
     func startGame() {
         let firstPlayer = HumanPlayer(withName: firstUser.name, andId: .player1)!
-        var secondPlayer: Player =  if let secondUser {
+        let secondPlayer: Player =  if let secondUser {
             HumanPlayer(withName: secondUser.name, andId: .player2)!
         } else {
             RandomPlayer(withName: "Bot", andId: .player2)!
@@ -81,35 +90,15 @@ class GameVM: ObservableObject {
     
     func updateGameOver(board: Board, result: Result, player: Player?) {
         isOver = true
+        endGameDate = Date()
         winPlayer = player
-        switch result {
-            case .notFinished:
-                print("**********************************")
-                print("Partie non terminée.")
-                print("**********************************")
-            case .even:
-                print("**********************************")
-                print("Partie terminée avec égalité !")
-                print("**********************************")
-            case let .winner(owner, reason):
-                switch reason {
-                case .denReached:
-                    print("**********************************")
-                    print("Partie terminée !!!\nEt le gagnant est... Player \(owner) !\nTanière atteinte !")
-                    print("**********************************")
-                case .noMorePieces:
-                    print("**********************************")
-                    print("Partie terminée !!!\nEt le gagnant est... Player \(owner) !\nPlus de pièces !")
-                    print("**********************************")
-                case .noMovesLeft:
-                    print("**********************************")
-                    print("Partie terminée !!!\nEt le gagnant est... Player \(owner) !\nAucun coup possible !")
-                    print("**********************************")
-                case .tooManyOccurences:
-                    print("**********************************")
-                    print("Partie terminée !!!\nEt le gagnant est... Player \(owner) !\nTrop d'occurrences !")
-                    print("**********************************")
-                }
-            }
+        delayNavigateToSummary()
+    }
+    
+    
+    private func delayNavigateToSummary() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            self.navigateToSummary = true
+        }
     }
 }

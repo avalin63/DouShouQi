@@ -21,6 +21,7 @@ enum Route : Hashable {
 struct DouShouQiApp: App {
     @StateObject var themeManager = ThemeManager()
     @StateObject var languageManager = LanguageManager()
+    @StateObject var historicVM = HistoricVM()
     
     @State private var path = [Route]()
     
@@ -54,6 +55,7 @@ struct DouShouQiApp: App {
             .preferredColorScheme(themeManager.selectedTheme.colorScheme)
             .environmentObject(themeManager)
             .environmentObject(languageManager)
+            .environmentObject(historicVM)
         }
     }
 }
