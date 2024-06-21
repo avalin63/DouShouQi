@@ -6,13 +6,14 @@
 //
 
 import Foundation
+import UIKit
 
 public struct User : Hashable {
-    var image: String
+    var image: UIImage?
     var name: String
     
     init() {
-        self.image = ""
+        self.image = nil
         self.name = ""
     }
 }

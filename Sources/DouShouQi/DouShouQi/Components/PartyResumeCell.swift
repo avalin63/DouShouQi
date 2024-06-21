@@ -12,13 +12,22 @@ struct PartyResumeCell: View {
     var startDate: Date?
     var endDate: Date?
     var defeatReason: String
-    var body: some View {
+    var playerPicture: String?
+        var body: some View {
         HStack{
-            Image(.template)
-                .resizable()
-                .frame(width: 50, height: 50)
-                .foregroundColor(.white)
-                .clipShape(Circle())
+            if let image = playerPicture?.imageFromBase64 {
+                            Image(uiImage: image)
+                                .resizable()
+                                .frame(width: 50, height: 50)
+                                .foregroundColor(.white)
+                                .clipShape(Circle())
+                        } else {
+                            Image(.template)
+                                .resizable()
+                                .frame(width: 50, height: 50)
+                                .foregroundColor(.white)
+                                .clipShape(Circle())
+                        }
             VStack(alignment: .leading){
                 Text(pseudo)
                     .font(.title3)
@@ -66,5 +75,5 @@ struct PartyResumeCell: View {
 }
 
 #Preview {
-    PartyResumeCell(pseudo: "lucas", startDate: Date(), endDate: Date().addingTimeInterval(3000000), defeatReason: "Den reached")
+    PartyResumeCell(pseudo: "lucas", startDate: Date(), endDate: Date().addingTimeInterval(3000000), defeatReason: "Den reached", playerPicture: "")
 }

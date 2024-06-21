@@ -23,7 +23,7 @@ class GameVM: ObservableObject {
     @Published var nbRoundsPlayed: Int = 2
     @Published var gameColors = GameColors()
     @Published var gameScene: BoardScene? = nil
-    @Published var winPlayer: Player? = nil
+    @Published var winUser: User? = nil
     
     @Published var navigateToSummary = false
     
@@ -67,7 +67,7 @@ class GameVM: ObservableObject {
     
     func updateStartGame(board: Board) {
         startGameDate = .now
-        gameScene = BoardScene(            
+        gameScene = BoardScene(
             board: { self.game?.board ?? board },
             currentPlayer: { self.currentPlayer! },
             rules: rules,
@@ -91,7 +91,7 @@ class GameVM: ObservableObject {
     func updateGameOver(board: Board, result: Result, player: Player?) {
         isOver = true
         endGameDate = Date()
-        winPlayer = player
+        winUser = firstUser.name == player?.name ? firstUser : secondUser
         delayNavigateToSummary()
     }
     
