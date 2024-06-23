@@ -35,8 +35,6 @@
 		126AB5AF2C09A7B8001555CD /* GameOverStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 126AB5AE2C09A7B8001555CD /* GameOverStatus.swift */; };
 		126AB5B52C09EE82001555CD /* (null) in Embed Frameworks */ = {isa = PBXBuildFile; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		126AB5B82C09F68F001555CD /* StylesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 126AB5B72C09F68F001555CD /* StylesCell.swift */; };
-		12751D322C0E0E56001DA505 /* DSQ.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12751D312C0E0E56001DA505 /* DSQ.xcframework */; };
-		12751D332C0E0E56001DA505 /* DSQ.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 12751D312C0E0E56001DA505 /* DSQ.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		12972BAF2C05D24900FB6BA0 /* OptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12972BAE2C05D24900FB6BA0 /* OptionsView.swift */; };
 		12972BB12C05D2B400FB6BA0 /* OptionsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12972BB02C05D2B400FB6BA0 /* OptionsButton.swift */; };
 		12972BB52C05F43300FB6BA0 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12972BB42C05F43300FB6BA0 /* Theme.swift */; };
@@ -71,6 +69,8 @@
 		C96DF7822C201BD4003D752B /* ARBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96DF7812C201BD4003D752B /* ARBoard.swift */; };
 		C9940B552C0885230016CE9F /* GameVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9940B542C0885230016CE9F /* GameVM.swift */; };
 		C9940B572C0CF7D30016CE9F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9940B562C0CF7D30016CE9F /* User.swift */; };
+		C9F3CCCB2C28A895000845FF /* DSQ.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9F3CCC82C28A757000845FF /* DSQ.xcframework */; };
+		C9F3CCCC2C28A895000845FF /* DSQ.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C9F3CCC82C28A757000845FF /* DSQ.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C9FE18AC2C19D1340066DD85 /* GameARViewReprensentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9FE18AB2C19D1340066DD85 /* GameARViewReprensentable.swift */; };
 		C9FE18AE2C19D1490066DD85 /* GameARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9FE18AD2C19D1490066DD85 /* GameARView.swift */; };
 /* End PBXBuildFile section */
@@ -99,7 +99,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				12751D332C0E0E56001DA505 /* DSQ.xcframework in Embed Frameworks */,
+				C9F3CCCC2C28A895000845FF /* DSQ.xcframework in Embed Frameworks */,
 				126AB5B52C09EE82001555CD /* (null) in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -138,7 +138,6 @@
 		1251D1AD2C18F5CF00BCDF5F /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		126AB5AE2C09A7B8001555CD /* GameOverStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverStatus.swift; sourceTree = "<group>"; };
 		126AB5B72C09F68F001555CD /* StylesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StylesCell.swift; sourceTree = "<group>"; };
-		12751D312C0E0E56001DA505 /* DSQ.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = DSQ.xcframework; path = ../../../SwiftUI_ARKit_2024/XCFramework/DSQ.xcframework; sourceTree = "<group>"; };
 		12972BAE2C05D24900FB6BA0 /* OptionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsView.swift; sourceTree = "<group>"; };
 		12972BB02C05D2B400FB6BA0 /* OptionsButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsButton.swift; sourceTree = "<group>"; };
 		12972BB42C05F43300FB6BA0 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
@@ -171,9 +170,9 @@
 		C96DF7752C1DA4E7003D752B /* elephant.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = elephant.usdz; sourceTree = "<group>"; };
 		C96DF77F2C201B9F003D752B /* ARPiece.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARPiece.swift; sourceTree = "<group>"; };
 		C96DF7812C201BD4003D752B /* ARBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARBoard.swift; sourceTree = "<group>"; };
-		C9940B4F2C0881D60016CE9F /* DSQ.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = DSQ.xcframework; path = ../DSQ.xcframework; sourceTree = "<group>"; };
 		C9940B542C0885230016CE9F /* GameVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameVM.swift; sourceTree = "<group>"; };
 		C9940B562C0CF7D30016CE9F /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		C9F3CCC82C28A757000845FF /* DSQ.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = DSQ.xcframework; path = ../../../Projects/SwiftUI_ARKit_2024/XCFramework/DSQ.xcframework; sourceTree = "<group>"; };
 		C9FE18AB2C19D1340066DD85 /* GameARViewReprensentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameARViewReprensentable.swift; sourceTree = "<group>"; };
 		C9FE18AD2C19D1490066DD85 /* GameARView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameARView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -183,7 +182,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				12751D322C0E0E56001DA505 /* DSQ.xcframework in Frameworks */,
+				C9F3CCCB2C28A895000845FF /* DSQ.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -373,8 +372,7 @@
 		BD6B02C92C024ED7006838AF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				12751D312C0E0E56001DA505 /* DSQ.xcframework */,
-				C9940B4F2C0881D60016CE9F /* DSQ.xcframework */,
+				C9F3CCC82C28A757000845FF /* DSQ.xcframework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";

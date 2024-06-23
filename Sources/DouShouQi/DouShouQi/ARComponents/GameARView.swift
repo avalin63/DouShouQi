@@ -68,14 +68,17 @@ class GameARView: ARView {
     
     func movePiece(board: Board, move: Move, goodMove: Bool) {
         
-        print("movePiece called with move: \(move)")
-        print(goodMove)
-        let cell = board.grid[move.rowOrigin][move.columnOrigin]
+        guard move.rowOrigin >= 0 && move.rowOrigin < board.nbRows && move.columnOrigin >= 0 && move.columnOrigin < board.nbColumns else {
+            print("Move origin is out of range.")
+            reorderBoard(board: board)
+            return
+        }
         
-        print("cell : \(cell)")
+        let cell = board.grid[move.rowOrigin][move.columnOrigin]
         
         guard let piece = cell.piece else {
             print("No piece found in the cell.")
+            reorderBoard(board: board)
             return
         }
         
@@ -91,6 +94,22 @@ class GameARView: ARView {
         arPiece.move(to: newTransform, relativeTo: arPiece.parent, duration: 1)
         
         selectedMove = nil
+    }
+    
+    func reorderBoard(board: Board) {
+        board.grid.enumerated().forEach { (y, row) in
+            row.enumerated().forEach { (x, cell) in
+                let (xpos, ypos) = toRealCoordinates(atX: x, atY: y)
+                
+                if let piece = cell.piece {
+                    let arPiece = pieces[piece.owner]?[piece.animal]
+                    var newTransform = arPiece?.transform
+                    newTransform?.translation = SIMD3<Float>(xpos, 0.02, ypos)
+                    
+                    arPiece?.move(to: newTransform!, relativeTo: arPiece?.parent, duration: 1)
+                }
+            }
+        }
     }
     
     func removePiece(piece: Piece) {
