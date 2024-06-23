@@ -8,7 +8,6 @@
 import RealityKit
 
 class ARBoard: Entity {
-    let CELL_SIZE: Float = 0.1145
     
     required init(image: String) {
         super.init()
@@ -19,11 +18,5 @@ class ARBoard: Entity {
     
     @MainActor required init() {
         fatalError("init() has not been implemented")
-    }
-    
-    func toRealCoordinates(atX x: Int, atY y: Int, nbColumns: Int, nbRows: Int) -> (x: Float, y: Float) {
-        let xpos = Float(x - nbColumns / 2) * CELL_SIZE
-        let ypos = Float(y - nbRows / 2) * CELL_SIZE
-        return (xpos, ypos)
     }
 }

@@ -21,6 +21,7 @@ class GameVM: ObservableObject {
     @Published var nbRoundsPlayed: Int = 2
     @Published var gameColors = GameColors()
     @Published var gameScene: BoardScene? = nil
+    @Published var gameARView: GameARView? = nil
     @Published var winPlayer: Player? = nil
     
     func startGame() {
@@ -38,14 +39,27 @@ class GameVM: ObservableObject {
             game?.addGameStartedListener(updateStartGame)
             game?.addPlayerNotifiedListener(updateCurrentPlayer)
             game?.addGameOverListener(updateGameOver)
-            game?.addMoveChosenCallbacksListener { (board, move, player) in
-                self.nbRoundsPlayed += 1
-                self.gameScene?.executeMove(move: move)
+            
+            game?.addInvalidMoveCallbacksListener { (board, move, player, bool) in
+                if bool {
+                    self.nbRoundsPlayed += 1
+                    self.gameScene?.executeMove(move: move)
+                }
+                self.gameARView?.movePiece(board: board, move: move, goodMove: bool)
+            }
+            
+            game?.addPieceRemovedListener { (raw, column, piece) in
+                self.gameARView?.removePiece(piece: piece)
             }
             
             gameScene = BoardScene(
                 colors: gameColors,
                 board: { self.game!.board },
+                currentPlayer: { self.currentPlayer! }
+            )
+            
+            gameARView = GameARView(
+                board: self.game!.board,
                 currentPlayer: { self.currentPlayer! }
             )
             
@@ -74,33 +88,33 @@ class GameVM: ObservableObject {
         isOver = true
         winPlayer = player
         switch result {
-            case .notFinished:
+        case .notFinished:
+            print("**********************************")
+            print("Partie non terminée.")
+            print("**********************************")
+        case .even:
+            print("**********************************")
+            print("Partie terminée avec égalité !")
+            print("**********************************")
+        case let .winner(owner, reason):
+            switch reason {
+            case .denReached:
                 print("**********************************")
-                print("Partie non terminée.")
+                print("Partie terminée !!!\nEt le gagnant est... Player \(owner) !\nTanière atteinte !")
                 print("**********************************")
-            case .even:
+            case .noMorePieces:
                 print("**********************************")
-                print("Partie terminée avec égalité !")
+                print("Partie terminée !!!\nEt le gagnant est... Player \(owner) !\nPlus de pièces !")
                 print("**********************************")
-            case let .winner(owner, reason):
-                switch reason {
-                case .denReached:
-                    print("**********************************")
-                    print("Partie terminée !!!\nEt le gagnant est... Player \(owner) !\nTanière atteinte !")
-                    print("**********************************")
-                case .noMorePieces:
-                    print("**********************************")
-                    print("Partie terminée !!!\nEt le gagnant est... Player \(owner) !\nPlus de pièces !")
-                    print("**********************************")
-                case .noMovesLeft:
-                    print("**********************************")
-                    print("Partie terminée !!!\nEt le gagnant est... Player \(owner) !\nAucun coup possible !")
-                    print("**********************************")
-                case .tooManyOccurences:
-                    print("**********************************")
-                    print("Partie terminée !!!\nEt le gagnant est... Player \(owner) !\nTrop d'occurrences !")
-                    print("**********************************")
-                }
+            case .noMovesLeft:
+                print("**********************************")
+                print("Partie terminée !!!\nEt le gagnant est... Player \(owner) !\nAucun coup possible !")
+                print("**********************************")
+            case .tooManyOccurences:
+                print("**********************************")
+                print("Partie terminée !!!\nEt le gagnant est... Player \(owner) !\nTrop d'occurrences !")
+                print("**********************************")
             }
+        }
     }
 }

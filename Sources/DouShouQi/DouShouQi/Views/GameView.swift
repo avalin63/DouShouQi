@@ -54,23 +54,38 @@ struct GameView: View {
                         Spacer()
                         
                         HStack{
-                            RoundedButton(function: { isARKit.toggle() }, systemName: "flag.checkered.2.crossed", foregroundColor: .white, backgroundColor: DSQColors.primaryColor)
+                            RoundedButton(function: {
+                                isARKit.toggle()
+                                
+                            },
+                                          systemName: "flag.checkered.2.crossed",
+                                          foregroundColor: .white,
+                                          backgroundColor: DSQColors.primaryColor)
                         }
                         
                         Spacer()
                         
-                        if gameVM.gameScene?.selectedMove?.move != nil{
+                        if gameVM.gameScene?.selectedMove?.move != nil {
                             if let animal = gameVM.game?.board.grid[gameVM.gameScene?.selectedMove?.move.rowOrigin ?? 0][gameVM.gameScene?.selectedMove?.move.columnOrigin ?? 0].piece?.animal {
                                 MoveIndicatorCell(move: gameVM.gameScene?.selectedMove?.move, animal: animal)
                             }
                         }
-                        else{
+                        else {
                             MoveIndicatorCell(move: gameVM.gameScene?.selectedMove?.move, animal: nil)
                         }
                     }
                     
                     if isARKit {
-                        GameARViewReprensentable()
+                        if let gameARView = gameVM.gameARView {
+                            GameARViewReprensentable(gameARView: gameARView)
+                                .onChange(of: gameARView.selectedMove) {
+                                    if let move = gameARView.selectedMove {
+                                        Task {
+                                            try await gameVM.game?.onPlayed(with: move, from: gameVM.currentPlayer!)
+                                        }
+                                    }
+                                }
+                        }
                     } else {
                         if let gameScene = gameVM.gameScene {
                             SpriteView(scene: gameScene)

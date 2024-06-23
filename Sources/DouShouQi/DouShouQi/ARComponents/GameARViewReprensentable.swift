@@ -10,8 +10,10 @@ import DouShouQiModel
 
 struct GameARViewReprensentable: UIViewRepresentable {
     
+    var gameARView: GameARView
+    
     func makeUIView(context: Context) -> GameARView {
-        return GameARView(board: ClassicRules.createBoard())
+        return gameARView
     }
 
     func updateUIView(_ uiView: GameARView, context: Context) {}

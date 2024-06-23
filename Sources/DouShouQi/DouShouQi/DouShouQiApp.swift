@@ -12,11 +12,11 @@ struct DouShouQiApp: App {
     @StateObject var gameVM = GameVM()
     @StateObject var themeManager = ThemeManager()
     @StateObject var languageManager = LanguageManager()
+    
     var body: some Scene {
         WindowGroup {
             NavigationView {
-                GameARViewReprensentable()
-                    .ignoresSafeArea()
+                HomeView()
             }
             .environmentObject(gameVM)
             .preferredColorScheme(themeManager.selectedTheme.colorScheme)
