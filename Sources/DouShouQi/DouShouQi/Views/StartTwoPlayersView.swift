@@ -4,6 +4,7 @@
 //
 //  Created by Lucas Delanier on 22/05/2024.
 //
+
 import SwiftUI
 
 struct StartTwoPlayersView: View {
@@ -12,7 +13,6 @@ struct StartTwoPlayersView: View {
     @State var isConfirm = false
     @State var customFirstUser = User()
     @State var customSecondUser = User()
-    @State var showError = false
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @Binding var path: [Route]
@@ -80,7 +80,7 @@ struct StartTwoPlayersView: View {
                                         .padding(.bottom, 20)
                                 }
                                 Text(user.name)
-                                    .foregroundStyle(.white)
+                                    .foregroundStyle(.black)
                             }
                             .tag(index + 1)
                         }
@@ -135,7 +135,6 @@ struct StartTwoPlayersView: View {
                 selectedFirstUser = userVM.users[newValue - 1]
                 isReadyFirst = true
             }
-            checkIfSameUser()
         }
         .onChange(of: selectedTabBottom) { newValue in
             if newValue == 0 {
@@ -149,8 +148,8 @@ struct StartTwoPlayersView: View {
             } else {
                 selectedSecondUser = userVM.users[newValue - 1]
                 isReadySecond = true
+
             }
-            checkIfSameUser()
         }
         .onChange(of:customFirstUser){
             selectedFirstUser = customFirstUser
@@ -172,11 +171,7 @@ struct StartTwoPlayersView: View {
                     }
                 }
                 if let firstUser = selectedFirstUser, let secondUser = selectedSecondUser {
-                    if firstUser.id != secondUser.id {
-                        path.append(.game(user1: firstUser, user2: secondUser))
-                    } else {
-                        showError = true
-                    }
+                    path.append(.game(user1: firstUser, user2: secondUser))
                 }
             }
         }
@@ -186,19 +181,6 @@ struct StartTwoPlayersView: View {
             UINavigationBar.appearance().barTintColor = .systemRed
         }
         .navigationBarBackButtonHidden(true)
-        .alert(isPresented: $showError) {
-            Alert(title: Text("Error"), message: Text("The two players cannot be the same."), dismissButton: .default(Text("OK")))
-        }
-    }
-    
-    private func checkIfSameUser() {
-        if let firstUser = selectedFirstUser, let secondUser = selectedSecondUser, firstUser.id == secondUser.id {
-            showError = true
-            isReadyFirst = false
-            isReadySecond = false
-        } else {
-            showError = false
-        }
     }
 }
 

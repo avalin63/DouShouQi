@@ -154,9 +154,6 @@
         }
       }
     },
-    "Error" : {
-
-    },
     "French" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -285,9 +282,6 @@
           }
         }
       }
-    },
-    "OK" : {
-
     },
     "options" : {
       "extractionState" : "manual",
@@ -423,9 +417,6 @@
           }
         }
       }
-    },
-    "The two players cannot be the same." : {
-
     },
     "Theme" : {
       "extractionState" : "manual",
