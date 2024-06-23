@@ -8,7 +8,7 @@
 import Foundation
 import DouShouQiModel
 import CoreData
-import UIKit
+import PhotosUI
 
 class HistoricVM: ObservableObject {
     
@@ -16,7 +16,7 @@ class HistoricVM: ObservableObject {
     
     init(){
         loadGameHistory()
-
+        
     }
     
     private let dataManager = DataManager.shared
@@ -32,21 +32,71 @@ class HistoricVM: ObservableObject {
         }
     }
     
-    func saveCurrentGame(startGameDate: Date, endGameDate: Date?, isVersusAI:Bool, firstUser: User, secondUser:User?,isOver: Bool, defeatReason: String, nbRoundsPlayed: Int, winPlayer: String?, winningPicture: UIImage? ) {
+    
+    func saveCurrentGame(startGameDate: Date, endGameDate: Date?, isVersusAI:Bool, firstUser: User, secondUser:User?,isOver: Bool, defeatReason: String, nbRoundsPlayed: Int, winPlayer: User) {
         let context = dataManager.context
         let newGame = GameEntity(context: context)
         newGame.id = UUID()
         newGame.startGameDate = startGameDate
         newGame.endGameDate = endGameDate
         newGame.isVersusAI = isVersusAI
-        newGame.firstUserName = firstUser.name
-        newGame.secondUserName = secondUser?.name
+        newGame.firstUserId = firstUser.id
+        newGame.secondUserId = secondUser?.id
         newGame.isOver = isOver
         newGame.defeatReason = defeatReason
         newGame.nbRoundsPlayed = Int16(nbRoundsPlayed)
-        newGame.winPlayerName = winPlayer
-        newGame.winningPicture = winningPicture?.base64
+        newGame.winPlayerId = winPlayer.id
         dataManager.saveContext()
         loadGameHistory()
     }
+    
+    func deleteAllGames() {
+        let context = dataManager.context
+        let fetchRequest: NSFetchRequest<NSFetchRequestResult> = GameEntity.fetchRequest()
+        let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+        
+        do {
+            try context.execute(deleteRequest)
+            dataManager.saveContext()
+            loadGameHistory()
+        } catch {
+            print("Failed to delete all games: \(error)")
+        }
+    }
+    
+    func getWinLossStatistics() -> [UUID: (wins: Int, losses: Int)] {
+            var statistics: [UUID: (wins: Int, losses: Int)] = [:]
+            
+            for game in gameHistory {
+                guard let winnerId = game.winPlayerId else { continue }
+                let firstUserId = game.firstUserId
+                let secondUserId = game.secondUserId
+                
+                // Update win count for the winner
+                if let currentStats = statistics[winnerId] {
+                    statistics[winnerId] = (wins: currentStats.wins + 1, losses: currentStats.losses)
+                } else {
+                    statistics[winnerId] = (wins: 1, losses: 0)
+                }
+                
+                // Update loss count for the loser
+                if let firstUserId = firstUserId, firstUserId != winnerId {
+                    if let currentStats = statistics[firstUserId] {
+                        statistics[firstUserId] = (wins: currentStats.wins, losses: currentStats.losses + 1)
+                    } else {
+                        statistics[firstUserId] = (wins: 0, losses: 1)
+                    }
+                }
+                
+                if let secondUserId = secondUserId, secondUserId != winnerId {
+                    if let currentStats = statistics[secondUserId] {
+                        statistics[secondUserId] = (wins: currentStats.wins, losses: currentStats.losses + 1)
+                    } else {
+                        statistics[secondUserId] = (wins: 0, losses: 1)
+                    }
+                }
+            }
+            
+            return statistics
+        }
 }

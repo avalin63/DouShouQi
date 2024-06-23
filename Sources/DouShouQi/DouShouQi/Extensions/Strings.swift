@@ -14,7 +14,13 @@ extension String {
                 return bundle.localizedString(forKey: self, value: self, table: nil)
             }
         }
-    
+        
         return self
+    }
+    
+    func normalized() -> String {
+        return self.lowercased()
+            .folding(options: .diacriticInsensitive, locale: .current)
+            .trimmingCharacters(in: .whitespacesAndNewlines)
     }
 }

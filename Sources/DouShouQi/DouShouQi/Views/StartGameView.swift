@@ -10,6 +10,7 @@ import SwiftUI
 struct StartGameView: View {
     @Binding var path: [Route]
     @EnvironmentObject var historicVM: HistoricVM
+    @EnvironmentObject var userVM: UserVM
     
     var body: some View {
         VStack(alignment: .leading){
@@ -20,7 +21,7 @@ struct StartGameView: View {
                     label: String(localized: "\(1) player"),
                     action: { path.append(.startGameOnePlayer) }
                 )
-                                           
+                
                 PrimaryLeftButton(
                     leading: { Image("icTwoPlayers") },
                     label: String(localized: "\(2) player"),
@@ -36,12 +37,14 @@ struct StartGameView: View {
                     .padding(.horizontal, 30)
                 ScrollView{
                     ForEach(historicVM.gameHistory, id: \.self) { game in
-                                        VStack(alignment: .leading) {
-                                            PartyResumeCell(pseudo: game.winPlayerName ?? "NaN", startDate: game.startGameDate, endDate: game.endGameDate,
-                                                            defeatReason: game.defeatReason ?? "NaN", playerPicture: game.winningPicture)
-                                        }
-                                    }
-
+                        let user = userVM.getUser(by: game.winPlayerId!)
+                        VStack(alignment: .leading) {
+                            PartyResumeCell(pseudo: user?.name ?? String(localized: "Deleted"), startDate: game.startGameDate, endDate: game.endGameDate,
+                                            defeatReason: game.defeatReason ?? "NaN", playerPicture: user?.image)
+                        }
+                        
+                    }
+                    
                 }
                 .fadeOutTop(fadeLength: 30)
             }

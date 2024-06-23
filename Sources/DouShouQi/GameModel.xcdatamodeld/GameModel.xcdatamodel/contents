@@ -2,15 +2,19 @@
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22757" systemVersion="23E214" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithSwiftData="YES" userDefinedModelVersionIdentifier="">
     <entity name="GameEntity" representedClassName="GameEntity" syncable="YES" codeGenerationType="class">
         <attribute name="defeatReason" optional="YES" attributeType="String"/>
-        <attribute name="endGameDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="firstUserName" optional="YES" attributeType="String"/>
-        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
-        <attribute name="isOver" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
-        <attribute name="isVersusAI" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
-        <attribute name="nbRoundsPlayed" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="secondUserName" optional="YES" attributeType="String"/>
-        <attribute name="startGameDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="winningPicture" optional="YES" attributeType="String"/>
-        <attribute name="winPlayerName" optional="YES" attributeType="String"/>
+        <attribute name="endGameDate" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="firstUserId" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="isOver" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="isVersusAI" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="nbRoundsPlayed" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="secondUserId" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="startGameDate" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="winPlayerId" attributeType="UUID" usesScalarValueType="YES"/>
+    </entity>
+    <entity name="UserEntity" representedClassName="UserEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="picture" attributeType="String"/>
+        <attribute name="username" attributeType="String"/>
     </entity>
 </model>

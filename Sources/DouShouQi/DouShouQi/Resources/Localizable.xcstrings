@@ -42,6 +42,23 @@
         }
       }
     },
+    "Add" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ajouter"
+          }
+        }
+      }
+    },
     "Camera" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -93,6 +110,23 @@
         }
       }
     },
+    "Deleted" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Deleted"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Supprimé"
+          }
+        }
+      }
+    },
     "DouShouQi" : {
       "localizations" : {
         "fr" : {
@@ -119,6 +153,9 @@
           }
         }
       }
+    },
+    "Error" : {
+
     },
     "French" : {
       "extractionState" : "manual",
@@ -216,6 +253,22 @@
         }
       }
     },
+    "Losses" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Losses"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Défaites"
+          }
+        }
+      }
+    },
     "new_game" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -232,6 +285,9 @@
           }
         }
       }
+    },
+    "OK" : {
+
     },
     "options" : {
       "extractionState" : "manual",
@@ -300,6 +356,23 @@
     "Round %lld" : {
 
     },
+    "Savedplayers" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Saved players"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Joueurs enregistrés"
+          }
+        }
+      }
+    },
     "Source question" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -350,6 +423,9 @@
           }
         }
       }
+    },
+    "The two players cannot be the same." : {
+
     },
     "Theme" : {
       "extractionState" : "manual",
@@ -415,6 +491,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Gagné !"
+          }
+        }
+      }
+    },
+    "Wins" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wins"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Victoires"
           }
         }
       }
