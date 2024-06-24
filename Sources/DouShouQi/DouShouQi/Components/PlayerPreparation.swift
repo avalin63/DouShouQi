@@ -13,8 +13,7 @@ struct PlayerPreparation<TextStyle: TextFieldStyle>: View {
     var textInputStyle: TextStyle
     @Binding var isReady: Bool
     @Binding var username: String
-    
-    @State var image: UIImage? = nil
+    @Binding var image: UIImage?
     
     var body: some View {
         ZStack{
@@ -58,10 +57,10 @@ struct PlayerPreparationStyle {
 }
 
 #Preview("Light") {
-    PlayerPreparation(style: .defaultStyle, textInputStyle: TopUsernameTextInputStyle(), isReady: .constant(false), username: .constant("DefaultUser"))
+    PlayerPreparation(style: .defaultStyle, textInputStyle: TopUsernameTextInputStyle(), isReady: .constant(false), username: .constant("DefaultUser"), image: .constant(nil))
 }
 
 #Preview("Dark") {
-    PlayerPreparation(style: .variant, textInputStyle: BottomUsernameTextInputStyle(), isReady: .constant(false), username: .constant("DefaultUser"))
+    PlayerPreparation(style: .variant, textInputStyle: BottomUsernameTextInputStyle(), isReady: .constant(false), username: .constant("DefaultUser"), image: .constant(nil))
         .preferredColorScheme(/*@START_MENU_TOKEN@*/.dark/*@END_MENU_TOKEN@*/)
 }

@@ -19,14 +19,15 @@ struct PicturePicker: View {
     func loadImage() {
         Task {
             guard let imageData = try await selectedItem?.loadTransferable(type: Data.self) else { return }
-            selectedImage = UIImage(data: imageData)
+            selectedImage = UIImage(data: imageData)?.faceCrop()
+            
         }
     }
     
     var body: some View {
         ZStack{
             
-            if let selectedImage {
+            if let selectedImage = selectedImage{
                 Image(uiImage: selectedImage)
                     .resizable()
                     .scaledToFill()

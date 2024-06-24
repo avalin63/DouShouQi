@@ -9,7 +9,8 @@ import SwiftUI
 
 struct HomeView: View {
     @Environment(\.colorScheme) var colorScheme
-    
+    @Binding var path: [Route]
+
     var body: some View {
         ZStack{
             Image(.background)
@@ -24,26 +25,29 @@ struct HomeView: View {
                     .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
                     .foregroundStyle(DSQColors.titleColor)
                 Spacer()
+            
                 PrimaryLeftButton(
                     leading: {
                         Image(systemName: "gamecontroller.fill")
                     },
                     label: String(localized: "new_game"),
-                    destination: { StartGameView() }
+                    action: { path.append(.startGame) }
                 )
+                                
                 OptionsLeftButton(
                     leading: {
                         Image(systemName: "chart.pie.fill")
                     },
                     label: String(localized: "statistics"),
-                    destination: { StartGameView() }
+                    action: { path.append(.statistics) }
                 )
+                                
                 OptionsLeftButton(
                     leading: {
                         Image(systemName: "gearshape.fill")
                     },
                     label: String(localized: "options"),
-                    destination: { OptionsView() }
+                    action: { path.append(.options) }
                 )
             }
             .padding(.top, 100)
@@ -54,10 +58,12 @@ struct HomeView: View {
 }
 
 #Preview("Light"){
-    HomeView()
+    @State var path = [Route]()
+    return HomeView(path: $path)
 }
 
 #Preview("Dark") {
-    HomeView()
+    @State var path = [Route]()
+    return HomeView(path: $path)
         .preferredColorScheme(/*@START_MENU_TOKEN@*/.dark/*@END_MENU_TOKEN@*/)
 }

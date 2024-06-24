@@ -11,9 +11,13 @@ import DouShouQiModel
 
 struct GameView: View {
     
-    @EnvironmentObject var gameVM: GameVM
+    @ObservedObject var gameVM: GameVM
+    @Environment(\.colorScheme) var colorScheme: ColorScheme
+    @EnvironmentObject var historicVM: HistoricVM
+    
     @State private var navigateToSummary = false
     @State private var elapsedTime: TimeInterval = 0
+    @Binding var path: [Route]
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     @State var isARKit = false
     
@@ -52,7 +56,7 @@ struct GameView: View {
                             color: gameVM.currentPlayer?.id.playerColor ?? DSQColors.player1
                         )
                         Spacer()
-                        
+
                         HStack{
                             RoundedButton(function: {
                                 isARKit.toggle()
@@ -65,13 +69,13 @@ struct GameView: View {
                         
                         Spacer()
                         
-                        if gameVM.gameScene?.selectedMove?.move != nil {
-                            if let animal = gameVM.game?.board.grid[gameVM.gameScene?.selectedMove?.move.rowOrigin ?? 0][gameVM.gameScene?.selectedMove?.move.columnOrigin ?? 0].piece?.animal {
-                                MoveIndicatorCell(move: gameVM.gameScene?.selectedMove?.move, animal: animal)
+                        if let move = gameVM.selectedMove {
+                            if let animal = gameVM.game?.board.grid[move.rowOrigin][move.columnOrigin].piece?.animal {
+                                MoveIndicatorCell(move: move, animal: animal)
                             }
                         }
-                        else {
-                            MoveIndicatorCell(move: gameVM.gameScene?.selectedMove?.move, animal: nil)
+                        else{
+                            MoveIndicatorCell(move: nil, animal: nil)
                         }
                     }
                     
@@ -92,19 +96,24 @@ struct GameView: View {
                                 .border(.black, width: 3.0)
                                 .aspectRatio(
                                     CGSize(
-                                        width: BoardSceneValues.GRID_WIDTH,
-                                        height: BoardSceneValues.GRID_HEIGHT
+                                        width: gameVM.game?.board.gridWidth ?? 0,
+                                        height: gameVM.game?.board.gridHeight ?? 0
                                     ),
                                     contentMode: .fit
                                 )
                                 .padding(.all, 8)
+                                .frame(maxHeight: .infinity)
                                 .ignoresSafeArea()
+                                .onAppear {
+                                    gameScene.updateColor(colors: GameColors())
+                                }
+                                .onChange(of: colorScheme) {
+                                    gameScene.updateColor(colors: GameColors())
+                                }
                             
                             Button(action: {
-                                if let move = gameScene.selectedMove?.move {
-                                    Task {
-                                        try await gameVM.game?.onPlayed(with: move, from: gameVM.currentPlayer!)
-                                    }
+                                if let move = gameVM.selectedMove {
+                                    gameScene.onValidateMove(move)
                                 }
                             }) {
                                 Text(String(localized: "validate"))
@@ -112,45 +121,54 @@ struct GameView: View {
                                     .fontWeight(.bold)
                                     .foregroundStyle(.white)
                                     .frame(maxWidth: .infinity, minHeight: 70)
-                                    .background(gameVM.currentPlayer?.id.playerColor ?? DSQColors.player1)
+                                    .background(
+                                        gameVM.selectedMove == nil ? DSQColors.moveCellBackgroundColor : gameVM.currentPlayer?.id.playerColor ?? DSQColors.player1
+                                    )
                             }
                             .background()
+                            .disabled(gameVM.selectedMove == nil)
                             .padding(.bottom, 24)
                         }
                     }
-                    
                 }
-                .background(
-                    NavigationLink(destination: HomeView().navigationBarHidden(true), isActive: $navigateToSummary) {
-                        EmptyView()
+                .onChange(of: gameVM.isOver) {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
+                        if let winner = gameVM.winUser {
+                            historicVM.saveCurrentGame(startGameDate: gameVM.startGameDate, endGameDate: gameVM.endGameDate, isVersusAI: gameVM.isVersusAI, firstUser: gameVM.firstUser, secondUser: gameVM.secondUser, isOver: gameVM.isOver, defeatReason: gameVM.defeatReason, nbRoundsPlayed: gameVM.nbRoundsPlayed, winPlayer: winner)
+                        }
+                        path = []
                     }
-                )
+                }
                 .padding(.vertical, 20)
                 .background(DSQColors.backgroundColor)
                 .safeAreaPadding(.top, 50)
             }
             VStack(spacing: -5){
-                GameOverStatus(isWinner: gameVM.winPlayer == gameVM.game?.players.values.first).frame(width: geo.size.width,height: geo.size.height * (1/2))
+                GameOverStatus(isWinner: gameVM.winUser == gameVM.secondUser).frame(width: geo.size.width,height: geo.size.height * (1/2))
                     .animation(.spring(), value: gameVM.isOver)
                 Spacer()
-                GameOverStatus(isWinner: gameVM.winPlayer != gameVM.game?.players.values.first).frame(width: geo.size.width,height: geo.size.height * (1/2))
+                GameOverStatus(isWinner: gameVM.winUser == gameVM.firstUser).frame(width: geo.size.width,height: geo.size.height * (1/2))
                     .animation(.spring(), value: gameVM.isOver)
             }
             .frame(height: gameVM.isOver ? geo.size.height : geo.size.height * 2)
             .padding(.top,gameVM.isOver ? 0 : -geo.size.height * (1/2))
             
             
-        }.ignoresSafeArea(.all)
+        }
+        .navigationBarBackButtonHidden(true)
+        .ignoresSafeArea(.all)
     }
 }
 
 #Preview("Light") {
-    GameView()
-        .environmentObject(GameVM())
+    let vm = GameVM(firstUser: User(), secondUser: nil)
+    vm.startGame()
+    return GameView(gameVM: vm, path: State(initialValue: [Route]()).projectedValue)
 }
 
 #Preview("Dark"){
-    GameView()
+    let vm = GameVM(firstUser: User(), secondUser: nil)
+    vm.startGame()
+    return GameView(gameVM: vm, path: State(initialValue: [Route]()).projectedValue)
         .preferredColorScheme(/*@START_MENU_TOKEN@*/.dark/*@END_MENU_TOKEN@*/)
-        .environmentObject(GameVM())
 }

@@ -8,34 +8,47 @@
 import Foundation
 import DouShouQiModel
 
+
 class GameVM: ObservableObject {
     
+    @Published var rules: Rules = ClassicRules()
+    @Published var firstUser: User
+    @Published var secondUser: User?
     @Published var game: Game?
     @Published var startGameDate: Date = .now
-    @Published var isVersusAI: Bool = false
-    @Published var firstUser: User = User(image: "", name: "")
-    @Published var secondUser: User = User(image: "", name: "")
+    @Published var endGameDate: Date?
     @Published var currentPlayer: Player?
     @Published var isOver: Bool = false
     @Published var defeatReason: String = ""
     @Published var nbRoundsPlayed: Int = 2
+    @Published var selectedMove: Move? = nil
     @Published var gameColors = GameColors()
     @Published var gameScene: BoardScene? = nil
     @Published var gameARView: GameARView? = nil
-    @Published var winPlayer: Player? = nil
+    @Published var winUser: User? = nil
+    
+    @Published var navigateToSummary = false
+    
+    init(firstUser: User, secondUser: User?) {
+        self.firstUser = firstUser
+        self.secondUser = secondUser
+        self.rules = ClassicRules()
+    }
+    
+    
+    var isVersusAI: Bool { secondUser == nil }
+    
     
     func startGame() {
-        let firstPlayer = HumanPlayer(withName: firstUser.name, andId: .player1)
-        var secondPlayer: Player?
-        
-        if isVersusAI {
-            secondPlayer = RandomPlayer(withName: "Bot", andId: .player2)
+        let firstPlayer = HumanPlayer(withName: firstUser.name, andId: .player1)!
+        let secondPlayer: Player =  if let secondUser {
+            HumanPlayer(withName: secondUser.name, andId: .player2)!
         } else {
-            secondPlayer = HumanPlayer(withName: secondUser.name, andId: .player2)
+            RandomPlayer(withName: "Bot", andId: .player2)!
         }
         
         do {
-            game = try Game(withRules: ClassicRules(), andPlayer1: firstPlayer!, andPlayer2: secondPlayer!)
+            game = try Game(withRules: rules, andPlayer1: firstPlayer, andPlayer2: secondPlayer)
             game?.addGameStartedListener(updateStartGame)
             game?.addPlayerNotifiedListener(updateCurrentPlayer)
             game?.addGameOverListener(updateGameOver)
@@ -51,12 +64,6 @@ class GameVM: ObservableObject {
             game?.addPieceRemovedListener { (raw, column, piece) in
                 self.gameARView?.removePiece(piece: piece)
             }
-            
-            gameScene = BoardScene(
-                colors: gameColors,
-                board: { self.game!.board },
-                currentPlayer: { self.currentPlayer! }
-            )
             
             gameARView = GameARView(
                 board: self.game!.board,
@@ -74,47 +81,39 @@ class GameVM: ObservableObject {
     
     func updateStartGame(board: Board) {
         startGameDate = .now
+        gameScene = BoardScene(
+            board: { self.game?.board ?? board },
+            currentPlayer: { self.currentPlayer! },
+            rules: rules,
+            onValidateMove: { move in
+                Task {
+                    try await self.game?.onPlayed(with: move, from: self.currentPlayer!)
+                }
+            },
+            setSelectedMove: { move in self.selectedMove = move },
+            selectedMove: { self.selectedMove }
+        )
     }
     
     func updateCurrentPlayer(board: Board, player: Player) async throws {
         currentPlayer = player
         
         if !(self.currentPlayer is HumanPlayer) {
-            try await self.currentPlayer?.chooseMove(in: board, with: ClassicRules())
+            try await Task.sleep(nanoseconds: 1_000_000_000)
+            try await self.currentPlayer?.chooseMove(in: board, with: rules)
         }
     }
     
     func updateGameOver(board: Board, result: Result, player: Player?) {
         isOver = true
-        winPlayer = player
-        switch result {
-        case .notFinished:
-            print("**********************************")
-            print("Partie non terminée.")
-            print("**********************************")
-        case .even:
-            print("**********************************")
-            print("Partie terminée avec égalité !")
-            print("**********************************")
-        case let .winner(owner, reason):
-            switch reason {
-            case .denReached:
-                print("**********************************")
-                print("Partie terminée !!!\nEt le gagnant est... Player \(owner) !\nTanière atteinte !")
-                print("**********************************")
-            case .noMorePieces:
-                print("**********************************")
-                print("Partie terminée !!!\nEt le gagnant est... Player \(owner) !\nPlus de pièces !")
-                print("**********************************")
-            case .noMovesLeft:
-                print("**********************************")
-                print("Partie terminée !!!\nEt le gagnant est... Player \(owner) !\nAucun coup possible !")
-                print("**********************************")
-            case .tooManyOccurences:
-                print("**********************************")
-                print("Partie terminée !!!\nEt le gagnant est... Player \(owner) !\nTrop d'occurrences !")
-                print("**********************************")
-            }
+        endGameDate = Date()
+        winUser = firstUser.name == player?.name ? firstUser : secondUser
+        delayNavigateToSummary()
+    }
+    
+    private func delayNavigateToSummary() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            self.navigateToSummary = true
         }
     }
 }

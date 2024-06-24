@@ -7,15 +7,15 @@
 
 import SwiftUI
 
-struct OptionsLeftButton<Leading: View, Destination: View>: View {
+struct OptionsLeftButton<Leading: View>: View {
     var leading: () -> Leading
     var label: String
-    var destination: () -> Destination
+    var action: () -> Void
     
-    init(@ViewBuilder leading: @escaping () -> Leading, label: String, @ViewBuilder destination: @escaping () -> Destination) {
+    init(@ViewBuilder leading: @escaping () -> Leading, label: String, action: @escaping () -> Void = { }) {
         self.leading = leading
         self.label = label
-        self.destination = destination
+        self.action = action
     }
     
     var body: some View {
@@ -23,7 +23,7 @@ struct OptionsLeftButton<Leading: View, Destination: View>: View {
             leading: self.leading,
             label: self.label,
             backgroundColor: DSQColors.buttonBackgroundColor,
-            destination: self.destination
+            action: self.action
         )
         
     }
@@ -35,7 +35,7 @@ struct OptionsLeftButton<Leading: View, Destination: View>: View {
             Image(systemName: "chart.pie.fill")
         }, 
         label: NSLocalizedString("statistics", comment: "Statistics"),
-        destination: { StartGameView() }
+        action: { }
     )
 }
 
@@ -45,7 +45,7 @@ struct OptionsLeftButton<Leading: View, Destination: View>: View {
             Image(systemName: "chart.pie.fill")
         },
         label: NSLocalizedString("statistics", comment: "Statistics"),
-        destination: { StartGameView() }
+        action: { }
     )
     .preferredColorScheme(/*@START_MENU_TOKEN@*/.dark/*@END_MENU_TOKEN@*/)
 }

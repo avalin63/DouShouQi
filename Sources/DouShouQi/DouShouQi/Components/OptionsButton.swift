@@ -25,8 +25,8 @@ struct OptionsButton: View {
             }
             .padding(.horizontal, 20)
             .padding(.vertical, 15)
-            .background(DSQColors.buttonOptionsBackgroundColor)
             .foregroundStyle(DSQColors.buttonOptionsForegroundColor)
+            .background(DSQColors.buttonOptionsBackgroundColor)
         }
     }
 }
