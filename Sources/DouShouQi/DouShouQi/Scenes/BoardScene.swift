@@ -10,7 +10,7 @@ import SpriteKit
 import SwiftUI
 import DouShouQiModel
 
-class BoardScene: SKScene {
+class BoardScene: SKScene, GameContext {
     private let rules: Rules
     private let currentPlayer: () -> Player
     private let board: () -> Board
@@ -96,16 +96,22 @@ class BoardScene: SKScene {
         super.init(coder: aDecoder)
     }
     
-    func executeMove(move: Move) {
+    func executeMove(board: Board, move: Move, goodMove: Bool) {
         refreshPieces()
         clearMoves()
-        let startPiece = findPieceNode(atX: move.columnOrigin, atY: move.rowOrigin)
-        let endPiece = findPieceNode(atX: move.columnDestination, atY: move.rowDestination)
-        
-        let xMove = Double(move.columnDestination - move.columnOrigin) * BoardSceneValues.CELL_SIZE
-        let yMove = Double(move.rowDestination - move.rowOrigin) * BoardSceneValues.CELL_SIZE
-        
-        startPiece?.node.run(SKAction.moveBy(x: xMove, y: yMove, duration: 0.3))
+    
+        if goodMove {
+            let startPiece = findPieceNode(atX: move.columnOrigin, atY: move.rowOrigin)
+            
+            let xMove = Double(move.columnDestination - move.columnOrigin) * BoardSceneValues.CELL_SIZE
+            let yMove = Double(move.rowDestination - move.rowOrigin) * BoardSceneValues.CELL_SIZE
+            
+            startPiece?.node.run(SKAction.moveBy(x: xMove, y: yMove, duration: 0.3))
+        }
+    }
+    
+    func removePiece(row: Int, column: Int, piece: Piece) {
+        let endPiece = findPieceNode(atX: column, atY: row)
         endPiece?.node.run(SKAction.scale(by: 0, duration: 0.15))
         endPiece?.node.run(SKAction.fadeOut(withDuration: 0.15)) {
             endPiece?.node.removeFromParent()
@@ -190,9 +196,7 @@ class BoardScene: SKScene {
     private func refreshMoves() {
         moveNodes.forEach { node in
             let color = SKColor(named: currentPlayer().id.tileColor!)!
-            node.alpha = 0.5
-            node.fillColor = color
-            node.strokeColor = color
+            node.alpha = 0.5                        
             node.children.forEach { child in
                 child.removeFromParent()
             }

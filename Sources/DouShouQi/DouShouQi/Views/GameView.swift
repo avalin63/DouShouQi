@@ -49,23 +49,49 @@ struct GameView: View {
                     }
                     .padding([.leading, .trailing], 30)
                     
-                    HStack {
-                        PlayerIndicatorCell(
-                            text: gameVM.currentPlayer?.name ?? "",
-                            color: gameVM.currentPlayer?.id.playerColor ?? DSQColors.player1
-                        )
-                        Spacer()
-                        if let move = gameVM.selectedMove {
-                            if let animal = gameVM.game?.board.grid[move.rowOrigin][move.columnOrigin].piece?.animal {
-                                MoveIndicatorCell(move: move, animal: animal)
+                    
+                    ZStack {
+                        HStack {
+                            PlayerIndicatorCell(
+                                text: gameVM.currentPlayer?.name ?? "",
+                                color: gameVM.currentPlayer?.id.playerColor ?? DSQColors.player1
+                            )
+                            
+                            Spacer()
+                            
+                            
+                            if let move = gameVM.selectedMove {
+                                if let animal = gameVM.game?.board.grid[move.rowOrigin][move.columnOrigin].piece?.animal {
+                                    MoveIndicatorCell(move: move, animal: animal)
+                                }
+                            }
+                            else{
+                                MoveIndicatorCell(move: nil, animal: nil)
                             }
                         }
-                        else{
-                            MoveIndicatorCell(move: nil, animal: nil)
+                        
+                        HStack{                            
+                            RoundedButton(
+                                function: { gameVM.switchGameContext() },
+                                systemName: "flag.checkered.2.crossed",
+                                foregroundColor: .white,
+                                backgroundColor: DSQColors.primaryColor
+                            )
                         }
                     }
                     
-                    if let gameScene = gameVM.gameScene {
+                    if let gameARView = gameVM.gameContext as? GameARView {
+                        GameARViewReprensentable(gameARView: gameARView)
+                            .onChange(of: gameARView.selectedMove) {
+                                if let move = gameARView.selectedMove {
+                                    Task {
+                                        try await gameVM.game?.onPlayed(with: move, from: gameVM.currentPlayer!)
+                                    }
+                                }
+                            }
+                    
+                    } else if let gameScene = gameVM.gameContext as? BoardScene {
+                        
                         SpriteView(scene: gameScene)
                             .border(.black, width: 3.0)
                             .aspectRatio(
