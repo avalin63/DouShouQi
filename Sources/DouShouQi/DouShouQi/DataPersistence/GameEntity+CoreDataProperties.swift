@@ -2,7 +2,7 @@
 //  GameEntity+CoreDataProperties.swift
 //  
 //
-//  Created by Lucas Delanier on 22/06/2024.
+//  Created by Lucas Delanier on 23/06/2024.
 //
 //
 
@@ -18,13 +18,13 @@ extension GameEntity {
 
     @NSManaged public var defeatReason: String?
     @NSManaged public var endGameDate: Date?
+    @NSManaged public var firstUserId: UUID?
     @NSManaged public var id: UUID?
     @NSManaged public var isOver: Bool
     @NSManaged public var isVersusAI: Bool
     @NSManaged public var nbRoundsPlayed: Int16
-    @NSManaged public var startGameDate: Date?
-    @NSManaged public var firstUserId: UUID?
     @NSManaged public var secondUserId: UUID?
+    @NSManaged public var startGameDate: Date?
     @NSManaged public var winPlayerId: UUID?
 
 }

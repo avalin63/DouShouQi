@@ -2,7 +2,7 @@
 //  UserEntity+CoreDataProperties.swift
 //  
 //
-//  Created by Lucas Delanier on 22/06/2024.
+//  Created by Lucas Delanier on 23/06/2024.
 //
 //
 
@@ -17,7 +17,7 @@ extension UserEntity {
     }
 
     @NSManaged public var id: UUID?
-    @NSManaged public var username: String?
     @NSManaged public var picture: String?
+    @NSManaged public var username: String?
 
 }
