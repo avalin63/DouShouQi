@@ -19,7 +19,6 @@ struct GameView: View {
     @State private var elapsedTime: TimeInterval = 0
     @Binding var path: [Route]
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
-    @State var isARKit = false
     
     private func timeString(time: TimeInterval) -> String {
         let minutes = Int(time) / 60
@@ -50,86 +49,87 @@ struct GameView: View {
                     }
                     .padding([.leading, .trailing], 30)
                     
-                    HStack {
-                        PlayerIndicatorCell(
-                            text: gameVM.currentPlayer?.name ?? "",
-                            color: gameVM.currentPlayer?.id.playerColor ?? DSQColors.player1
-                        )
-                        Spacer()
-
-                        HStack{
-                            RoundedButton(function: {
-                                isARKit.toggle()
-                                
-                            },
-                                          systemName: "flag.checkered.2.crossed",
-                                          foregroundColor: .white,
-                                          backgroundColor: DSQColors.primaryColor)
-                        }
-                        
-                        Spacer()
-                        
-                        if let move = gameVM.selectedMove {
-                            if let animal = gameVM.game?.board.grid[move.rowOrigin][move.columnOrigin].piece?.animal {
-                                MoveIndicatorCell(move: move, animal: animal)
+                    
+                    ZStack {
+                        HStack {
+                            PlayerIndicatorCell(
+                                text: gameVM.currentPlayer?.name ?? "",
+                                color: gameVM.currentPlayer?.id.playerColor ?? DSQColors.player1
+                            )
+                            
+                            Spacer()
+                            
+                            
+                            if let move = gameVM.selectedMove {
+                                if let animal = gameVM.game?.board.grid[move.rowOrigin][move.columnOrigin].piece?.animal {
+                                    MoveIndicatorCell(move: move, animal: animal)
+                                }
+                            }
+                            else{
+                                MoveIndicatorCell(move: nil, animal: nil)
                             }
                         }
-                        else{
-                            MoveIndicatorCell(move: nil, animal: nil)
+                        
+                        HStack{                            
+                            RoundedButton(
+                                function: { gameVM.switchGameContext() },
+                                systemName: "flag.checkered.2.crossed",
+                                foregroundColor: .white,
+                                backgroundColor: DSQColors.primaryColor
+                            )
                         }
                     }
                     
-                    if isARKit {
-                        if let gameARView = gameVM.gameARView {
-                            GameARViewReprensentable(gameARView: gameARView)
-                                .onChange(of: gameARView.selectedMove) {
-                                    if let move = gameARView.selectedMove {
-                                        Task {
-                                            try await gameVM.game?.onPlayed(with: move, from: gameVM.currentPlayer!)
-                                        }
+                    if let gameARView = gameVM.gameContext as? GameARView {
+                        GameARViewReprensentable(gameARView: gameARView)
+                            .onChange(of: gameARView.selectedMove) {
+                                if let move = gameARView.selectedMove {
+                                    Task {
+                                        try await gameVM.game?.onPlayed(with: move, from: gameVM.currentPlayer!)
                                     }
                                 }
-                        }
-                    } else {
-                        if let gameScene = gameVM.gameScene {
-                            SpriteView(scene: gameScene)
-                                .border(.black, width: 3.0)
-                                .aspectRatio(
-                                    CGSize(
-                                        width: gameVM.game?.board.gridWidth ?? 0,
-                                        height: gameVM.game?.board.gridHeight ?? 0
-                                    ),
-                                    contentMode: .fit
-                                )
-                                .padding(.all, 8)
-                                .frame(maxHeight: .infinity)
-                                .ignoresSafeArea()
-                                .onAppear {
-                                    gameScene.updateColor(colors: GameColors())
-                                }
-                                .onChange(of: colorScheme) {
-                                    gameScene.updateColor(colors: GameColors())
-                                }
-                            
-                            Button(action: {
-                                if let move = gameVM.selectedMove {
-                                    gameScene.onValidateMove(move)
-                                }
-                            }) {
-                                Text(String(localized: "validate"))
-                                    .font(.title)
-                                    .fontWeight(.bold)
-                                    .foregroundStyle(.white)
-                                    .frame(maxWidth: .infinity, minHeight: 70)
-                                    .background(
-                                        gameVM.selectedMove == nil ? DSQColors.moveCellBackgroundColor : gameVM.currentPlayer?.id.playerColor ?? DSQColors.player1
-                                    )
                             }
-                            .background()
-                            .disabled(gameVM.selectedMove == nil)
-                            .padding(.bottom, 24)
+                    
+                    } else if let gameScene = gameVM.gameContext as? BoardScene {
+                        
+                        SpriteView(scene: gameScene)
+                            .border(.black, width: 3.0)
+                            .aspectRatio(
+                                CGSize(
+                                    width: gameVM.game?.board.gridWidth ?? 0,
+                                    height: gameVM.game?.board.gridHeight ?? 0
+                                ),
+                                contentMode: .fit
+                            )
+                            .padding(.all, 8)
+                            .frame(maxHeight: .infinity)
+                            .ignoresSafeArea()
+                            .onAppear {
+                                gameScene.updateColor(colors: GameColors())
+                            }
+                            .onChange(of: colorScheme) {
+                                gameScene.updateColor(colors: GameColors())
+                            }
+                        
+                        Button(action: {
+                            if let move = gameVM.selectedMove {
+                                gameScene.onValidateMove(move)
+                            }
+                        }) {
+                            Text(String(localized: "validate"))
+                                .font(.title)
+                                .fontWeight(.bold)
+                                .foregroundStyle(.white)
+                                .frame(maxWidth: .infinity, minHeight: 70)
+                                .background(
+                                    gameVM.selectedMove == nil ? DSQColors.moveCellBackgroundColor : gameVM.currentPlayer?.id.playerColor ?? DSQColors.player1
+                                )
                         }
+                        .background()
+                        .disabled(gameVM.selectedMove == nil)
+                        .padding(.bottom, 24)
                     }
+                    
                 }
                 .onChange(of: gameVM.isOver) {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {

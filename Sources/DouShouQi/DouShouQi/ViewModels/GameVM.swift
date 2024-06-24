@@ -23,10 +23,8 @@ class GameVM: ObservableObject {
     @Published var nbRoundsPlayed: Int = 2
     @Published var selectedMove: Move? = nil
     @Published var gameColors = GameColors()
-    @Published var gameScene: BoardScene? = nil
-    @Published var gameARView: GameARView? = nil
+    @Published var gameContext: GameContext? = nil
     @Published var winUser: User? = nil
-    
     @Published var navigateToSummary = false
     
     init(firstUser: User, secondUser: User?) {
@@ -53,22 +51,16 @@ class GameVM: ObservableObject {
             game?.addPlayerNotifiedListener(updateCurrentPlayer)
             game?.addGameOverListener(updateGameOver)
             
-            game?.addInvalidMoveCallbacksListener { (board, move, player, bool) in
-                if bool {
+            game?.addInvalidMoveCallbacksListener { (board, move, player, valid) in
+                if valid {
                     self.nbRoundsPlayed += 1
-                    self.gameScene?.executeMove(move: move)
+                    self.gameContext?.executeMove(board: board, move: move, goodMove: valid)
                 }
-                self.gameARView?.movePiece(board: board, move: move, goodMove: bool)
             }
             
-            game?.addPieceRemovedListener { (raw, column, piece) in
-                self.gameARView?.removePiece(piece: piece)
+            game?.addPieceRemovedListener { (row, column, piece) in
+                self.gameContext?.removePiece(row: row, column: column, piece: piece)
             }
-            
-            gameARView = GameARView(
-                board: self.game!.board,
-                currentPlayer: { self.currentPlayer! }
-            )
             
             Task {
                 try await game?.start()
@@ -81,7 +73,19 @@ class GameVM: ObservableObject {
     
     func updateStartGame(board: Board) {
         startGameDate = .now
-        gameScene = BoardScene(
+        createSpriteBoard(board: board)
+    }
+    
+    func switchGameContext() {
+        if (gameContext is BoardScene) {
+            createARBoard(board: self.game!.board)
+        } else {
+            createSpriteBoard(board: self.game!.board)
+        }
+    }
+    
+    func createSpriteBoard(board: Board) {
+        gameContext = BoardScene(
             board: { self.game?.board ?? board },
             currentPlayer: { self.currentPlayer! },
             rules: rules,
@@ -92,6 +96,13 @@ class GameVM: ObservableObject {
             },
             setSelectedMove: { move in self.selectedMove = move },
             selectedMove: { self.selectedMove }
+        )
+    }
+ 
+    func createARBoard(board: Board) {
+        gameContext = GameARView(
+            board: self.game?.board ?? board,
+            currentPlayer: { self.currentPlayer! }
         )
     }
     

@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import DouShouQiModel
 
 enum BoardSceneValues {
     static let CELL_SIZE = 53.0

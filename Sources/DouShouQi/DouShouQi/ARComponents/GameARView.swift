@@ -10,7 +10,7 @@ import ARKit
 import RealityKit
 import DouShouQiModel
 
-class GameARView: ARView {
+class GameARView: ARView, GameContext {
     
     public var selectedMove: Move?
     var currentPlayer: () -> Player = { return Player(withName: "", andId: .noOne)! }
@@ -66,7 +66,7 @@ class GameARView: ARView {
         }
     }
     
-    func movePiece(board: Board, move: Move, goodMove: Bool) {
+    func executeMove(board: Board, move: Move, goodMove: Bool) {
         
         guard move.rowOrigin >= 0 && move.rowOrigin < board.nbRows && move.columnOrigin >= 0 && move.columnOrigin < board.nbColumns else {
             print("Move origin is out of range.")
@@ -112,7 +112,7 @@ class GameARView: ARView {
         }
     }
     
-    func removePiece(piece: Piece) {
+    func removePiece(row: Int, column: Int, piece: Piece) {
         pieces[piece.owner]?[piece.animal]?.removeFromParent()
         pieces[piece.owner]?.removeValue(forKey: piece.animal)
         print("Captured and removed piece: \(piece)")
