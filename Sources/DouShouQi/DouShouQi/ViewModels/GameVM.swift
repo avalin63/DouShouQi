@@ -54,8 +54,8 @@ class GameVM: ObservableObject {
             game?.addInvalidMoveCallbacksListener { (board, move, player, valid) in
                 if valid {
                     self.nbRoundsPlayed += 1
-                    self.gameContext?.executeMove(board: board, move: move, goodMove: valid)
                 }
+                self.gameContext?.executeMove(board: board, move: move, goodMove: valid)
             }
             
             game?.addPieceRemovedListener { (row, column, piece) in

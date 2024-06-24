@@ -49,7 +49,7 @@ class GameARView: ARView, GameContext {
                 let (xpos, ypos) = toRealCoordinates(atX: x, atY: y)
                 
                 if let piece = cell.piece {
-                    let arPiece = ARPiece(image: piece.animal.pieceObject, row: x, column: y, isPlayer1: piece.owner == .player1)
+                    let arPiece = ARPiece(image: piece.animal.pieceObject, isPlayer1: piece.owner == .player1)
                     arPiece.position = [xpos, 0.02, ypos]
                     arBoard.addChild(arPiece)
                     self.installGestures([.all], for: arPiece as Entity & HasCollision).forEach { gestureRecognizer in

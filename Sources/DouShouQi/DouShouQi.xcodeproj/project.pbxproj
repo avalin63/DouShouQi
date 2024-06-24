@@ -52,7 +52,6 @@
 		12E5BA852C20370000110C7E /* HistoricVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E5BA842C20370000110C7E /* HistoricVM.swift */; };
 		12F35C942C09A4A4005566B2 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12F35C932C09A4A4005566B2 /* Strings.swift */; };
 		BD0C968A2C29AE14006B8702 /* GameContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0C96892C29AE14006B8702 /* GameContext.swift */; };
-		BD0C968C2C29B5D7006B8702 /* DSQ.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD0C968B2C29B5D7006B8702 /* DSQ.xcframework */; };
 		BD6B02C42C024B75006838AF /* BoardScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6B02C32C024B75006838AF /* BoardScene.swift */; };
 		BD6B02C62C024B9B006838AF /* PieceSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6B02C52C024B9B006838AF /* PieceSprite.swift */; };
 		BD6B02C82C024BD7006838AF /* BoardSceneValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6B02C72C024BD7006838AF /* BoardSceneValues.swift */; };
@@ -80,6 +79,8 @@
 		C96DF77E2C1DA4E7003D752B /* elephant.usdz in Resources */ = {isa = PBXBuildFile; fileRef = C96DF7752C1DA4E7003D752B /* elephant.usdz */; };
 		C96DF7802C201B9F003D752B /* ARPiece.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96DF77F2C201B9F003D752B /* ARPiece.swift */; };
 		C96DF7822C201BD4003D752B /* ARBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96DF7812C201BD4003D752B /* ARBoard.swift */; };
+		C98C7F642C29B99D007784C7 /* DSQ.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9F3CCC82C28A757000845FF /* DSQ.xcframework */; };
+		C98C7F652C29B99D007784C7 /* DSQ.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C9F3CCC82C28A757000845FF /* DSQ.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C9940B552C0885230016CE9F /* GameVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9940B542C0885230016CE9F /* GameVM.swift */; };
 		C9940B572C0CF7D30016CE9F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9940B562C0CF7D30016CE9F /* User.swift */; };
 		C9FE18AC2C19D1340066DD85 /* GameARViewReprensentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9FE18AB2C19D1340066DD85 /* GameARViewReprensentable.swift */; };
@@ -110,6 +111,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				C98C7F652C29B99D007784C7 /* DSQ.xcframework in Embed Frameworks */,
 				126AB5B52C09EE82001555CD /* (null) in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -205,7 +207,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BD0C968C2C29B5D7006B8702 /* DSQ.xcframework in Frameworks */,
+				C98C7F642C29B99D007784C7 /* DSQ.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

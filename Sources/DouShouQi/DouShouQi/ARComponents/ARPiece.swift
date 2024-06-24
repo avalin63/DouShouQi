@@ -9,12 +9,7 @@ import RealityKit
 
 class ARPiece: Entity, HasCollision {
     
-    var row: Int
-    var column: Int
-    
-    required init(image: String, row: Int, column: Int, isPlayer1: Bool = false) {
-        self.row = row
-        self.column = column
+    required init(image: String, isPlayer1: Bool = false) {
         super.init()
         if let pieceEntity = try? Entity.loadModel(named: image) {
             self.addChild(pieceEntity)
