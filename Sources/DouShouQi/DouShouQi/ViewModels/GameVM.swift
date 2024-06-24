@@ -119,6 +119,7 @@ class GameVM: ObservableObject {
         isOver = true
         endGameDate = Date()
         winUser = firstUser.name == player?.name ? firstUser : secondUser
+        defeatReason = result.description
         delayNavigateToSummary()
     }
     

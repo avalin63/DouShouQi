@@ -48,7 +48,11 @@
 		12B306A02C26F2C500C14B82 /* StatisticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B3069F2C26F2C500C14B82 /* StatisticsView.swift */; };
 		12B306A22C27045300C14B82 /* UserVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B306A12C27045300C14B82 /* UserVM.swift */; };
 		12B306AA2C28460D00C14B82 /* StatisticsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B306A92C28460D00C14B82 /* StatisticsCell.swift */; };
+		12C595272C2974C70025FADE /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C595262C2974C70025FADE /* Result.swift */; };
+		12C595292C2975B10025FADE /* WinningReason.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C595282C2975B10025FADE /* WinningReason.swift */; };
 		12C9C5882BF7846D00BB5B39 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 12C9C5872BF7846D00BB5B39 /* Localizable.xcstrings */; };
+		12CA78882C296D4000D95719 /* DSQ.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12CA78872C296D4000D95719 /* DSQ.xcframework */; };
+		12CA78892C296D4000D95719 /* DSQ.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 12CA78872C296D4000D95719 /* DSQ.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		12E5BA852C20370000110C7E /* HistoricVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E5BA842C20370000110C7E /* HistoricVM.swift */; };
 		12F35C942C09A4A4005566B2 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12F35C932C09A4A4005566B2 /* Strings.swift */; };
 		BD0C968A2C29AE14006B8702 /* GameContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0C96892C29AE14006B8702 /* GameContext.swift */; };
@@ -112,6 +116,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				C98C7F652C29B99D007784C7 /* DSQ.xcframework in Embed Frameworks */,
+				12CA78892C296D4000D95719 /* DSQ.xcframework in Embed Frameworks */,
 				126AB5B52C09EE82001555CD /* (null) in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -163,7 +168,10 @@
 		12B3069F2C26F2C500C14B82 /* StatisticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsView.swift; sourceTree = "<group>"; };
 		12B306A12C27045300C14B82 /* UserVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserVM.swift; sourceTree = "<group>"; };
 		12B306A92C28460D00C14B82 /* StatisticsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsCell.swift; sourceTree = "<group>"; };
+		12C595262C2974C70025FADE /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
+		12C595282C2975B10025FADE /* WinningReason.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WinningReason.swift; sourceTree = "<group>"; };
 		12C9C5872BF7846D00BB5B39 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		12CA78872C296D4000D95719 /* DSQ.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = DSQ.xcframework; path = ../../../../SwiftUI_ARKit_2024/XCFramework/DSQ.xcframework; sourceTree = "<group>"; };
 		12E5BA842C20370000110C7E /* HistoricVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoricVM.swift; sourceTree = "<group>"; };
 		12F35C932C09A4A4005566B2 /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 		BD0C96892C29AE14006B8702 /* GameContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameContext.swift; sourceTree = "<group>"; };
@@ -208,6 +216,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C98C7F642C29B99D007784C7 /* DSQ.xcframework in Frameworks */,
+				12CA78882C296D4000D95719 /* DSQ.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -358,6 +367,8 @@
 				BDDBC0D02C1C42E600DBE5C9 /* SKNode.swift */,
 				BDAA61072C22CB2D00E6387B /* UIImage.swift */,
 				12B3069D2C25564700C14B82 /* Image.swift */,
+				12C595262C2974C70025FADE /* Result.swift */,
+				12C595282C2975B10025FADE /* WinningReason.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -417,6 +428,8 @@
 			children = (
 				BD0C968B2C29B5D7006B8702 /* DSQ.xcframework */,
 				C9F3CCC82C28A757000845FF /* DSQ.xcframework */,
+				12CA78872C296D4000D95719 /* DSQ.xcframework */,
+				C9940B4F2C0881D60016CE9F /* DSQ.xcframework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -606,6 +619,7 @@
 				C9FE18AE2C19D1490066DD85 /* GameARView.swift in Sources */,
 				1221D8A52BF244E500CB5EB9 /* RoundedCorner.swift in Sources */,
 				120475052BFE8B600044AD97 /* Effects.swift in Sources */,
+				12C595292C2975B10025FADE /* WinningReason.swift in Sources */,
 				123F31D92C0E229F009B6D65 /* RoundedButton.swift in Sources */,
 				C96DF7822C201BD4003D752B /* ARBoard.swift in Sources */,
 				BD6B02C62C024B9B006838AF /* PieceSprite.swift in Sources */,
@@ -624,6 +638,7 @@
 				122FD9B12BF69F1B000B6D0A /* StartGameView.swift in Sources */,
 				12F35C942C09A4A4005566B2 /* Strings.swift in Sources */,
 				1221D8A72BF24D4E00CB5EB9 /* Styles.swift in Sources */,
+				12C595272C2974C70025FADE /* Result.swift in Sources */,
 				C961249C2BFF33F000E1E55C /* PlayerIndicatorCell.swift in Sources */,
 				1221D89B2BF2401D00CB5EB9 /* HomeView.swift in Sources */,
 				120475012BFE14590044AD97 /* UsernameTextInput.swift in Sources */,
