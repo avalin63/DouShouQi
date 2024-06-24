@@ -14,6 +14,9 @@ struct PartyResumeCell: View {
     var defeatReason: String
     var playerPicture: UIImage?
         var body: some View {
+        let localizedKey = String.LocalizationValue(stringLiteral: defeatReason)
+
+
         HStack{
             if let image = playerPicture {
                             Image(uiImage: image)
@@ -33,7 +36,7 @@ struct PartyResumeCell: View {
                     .font(.title3)
                     .fontWeight(.semibold)
                     .foregroundStyle(DSQColors.titleColor)
-                Text(defeatReason)
+                Text(String(localized: localizedKey))
                     .font(.subheadline)
                     .fontWeight(.light)
                     .foregroundStyle(DSQColors.subHeadTextColor)
