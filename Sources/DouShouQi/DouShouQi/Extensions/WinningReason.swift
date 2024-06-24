@@ -21,7 +21,7 @@ extension WinningReason: CustomStringConvertible {
         case .noMovesLeft:
             return "No moves left"
         @unknown default:
-            return "Nan"
+            return "NaN"
         }
     }
 }
