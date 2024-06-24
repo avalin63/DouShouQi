@@ -127,6 +127,23 @@
         }
       }
     },
+    "Den reached" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Den reached"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tanière atteinte"
+          }
+        }
+      }
+    },
     "DouShouQi" : {
       "localizations" : {
         "fr" : {
@@ -288,6 +305,40 @@
         }
       }
     },
+    "No more pieces" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No more pieces"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plus aucune pièce"
+          }
+        }
+      }
+    },
+    "No moves left" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No moves left"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plus de déplacements"
+          }
+        }
+      }
+    },
     "options" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -423,6 +474,40 @@
         }
       }
     },
+    "The game ended in a draw." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The game ended in a draw."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La partie a fini sur une égalité."
+          }
+        }
+      }
+    },
+    "The game is not finished." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The game is not finished."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La partie n'est pas terminée."
+          }
+        }
+      }
+    },
     "Theme" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -436,6 +521,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Thème"
+          }
+        }
+      }
+    },
+    "Too many occurrences" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Too many occurrences"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Trop d'occurences"
           }
         }
       }
