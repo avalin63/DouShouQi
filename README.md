@@ -3,7 +3,6 @@
   <img src="Documentations/banner.png" >
     
 </div>
-# DouShouQi-Ui
 
 ## Présentation
 
