@@ -19,7 +19,7 @@ struct GameOverStatus: View {
                     .resizable()
                     .frame(width: 100, height: 100)
 
-                Text(isWinner ? String(localized: "You Won !") : String(localized: "You Loosed !")).font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/).fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                Text(isWinner ? String(localized: "Win") : String(localized: "Game Over")).font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/).fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
                 Spacer()
             }
             .foregroundColor(isWinner ? DSQColors.primaryColor : .white)

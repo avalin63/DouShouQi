@@ -12,10 +12,10 @@ struct PartyResumeCell: View {
     var startDate: Date?
     var endDate: Date?
     var defeatReason: String
-    var playerPicture: String?
+    var playerPicture: UIImage?
         var body: some View {
         HStack{
-            if let image = playerPicture?.imageFromBase64 {
+            if let image = playerPicture {
                             Image(uiImage: image)
                                 .resizable()
                                 .frame(width: 50, height: 50)
@@ -74,6 +74,3 @@ struct PartyResumeCell: View {
     }
 }
 
-#Preview {
-    PartyResumeCell(pseudo: "lucas", startDate: Date(), endDate: Date().addingTimeInterval(3000000), defeatReason: "Den reached", playerPicture: "")
-}

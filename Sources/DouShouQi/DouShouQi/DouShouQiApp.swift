@@ -13,6 +13,7 @@ enum Route : Hashable {
     case startGame
     case startGameOnePlayer
     case startGameTwoPlayers
+    case statistics
     case game(user1: User, user2: User? = nil)
     
 }
@@ -22,6 +23,7 @@ struct DouShouQiApp: App {
     @StateObject var themeManager = ThemeManager()
     @StateObject var languageManager = LanguageManager()
     @StateObject var historicVM = HistoricVM()
+    @StateObject var userVM = UserVM()
     
     @State private var path = [Route]()
     
@@ -49,6 +51,8 @@ struct DouShouQiApp: App {
                             
                             return GameView(gameVM: vm, path: $path)
                             }()
+                        case .statistics:
+                            StatisticsView(path: $path)
                         }
                     }
             }
@@ -56,6 +60,7 @@ struct DouShouQiApp: App {
             .environmentObject(themeManager)
             .environmentObject(languageManager)
             .environmentObject(historicVM)
+            .environmentObject(userVM)
         }
     }
 }

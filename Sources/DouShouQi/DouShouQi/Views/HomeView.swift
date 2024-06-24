@@ -39,7 +39,7 @@ struct HomeView: View {
                         Image(systemName: "chart.pie.fill")
                     },
                     label: String(localized: "statistics"),
-                    action: { path.append(.startGame) }
+                    action: { path.append(.statistics) }
                 )
                                 
                 OptionsLeftButton(

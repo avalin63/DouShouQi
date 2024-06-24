@@ -13,7 +13,6 @@ struct PlayerPreparation<TextStyle: TextFieldStyle>: View {
     var textInputStyle: TextStyle
     @Binding var isReady: Bool
     @Binding var username: String
-    
     @Binding var image: UIImage?
     
     var body: some View {
