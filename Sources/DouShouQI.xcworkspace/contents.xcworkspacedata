@@ -2,12 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:DouShouQi/DouShouQi/DataPersistence/GameEntity+CoreDataProperties.swift">
-   </FileRef>
-   <FileRef
-      location = "group:DouShouQi/DouShouQi/DataPersistence/UserEntity+CoreDataProperties.swift">
-   </FileRef>
-   <FileRef
-      location = "group:DouShouQi/DouShouQi.xcodeproj">
+      location = "container:DouShouQi/DouShouQi.xcodeproj">
    </FileRef>
 </Workspace>

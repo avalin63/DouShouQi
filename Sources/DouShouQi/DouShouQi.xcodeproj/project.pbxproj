@@ -36,6 +36,7 @@
 		126AB5AF2C09A7B8001555CD /* GameOverStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 126AB5AE2C09A7B8001555CD /* GameOverStatus.swift */; };
 		126AB5B52C09EE82001555CD /* (null) in Embed Frameworks */ = {isa = PBXBuildFile; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		126AB5B82C09F68F001555CD /* StylesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 126AB5B72C09F68F001555CD /* StylesCell.swift */; };
+		1276E8F82C2967FC001DDA16 /* GameModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1276E8F42C2966B3001DDA16 /* GameModel.xcdatamodeld */; };
 		12972BAF2C05D24900FB6BA0 /* OptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12972BAE2C05D24900FB6BA0 /* OptionsView.swift */; };
 		12972BB12C05D2B400FB6BA0 /* OptionsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12972BB02C05D2B400FB6BA0 /* OptionsButton.swift */; };
 		12972BB52C05F43300FB6BA0 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12972BB42C05F43300FB6BA0 /* Theme.swift */; };
@@ -68,8 +69,6 @@
 		C961249E2BFF33FC00E1E55C /* MoveIndicatorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C961249D2BFF33FC00E1E55C /* MoveIndicatorCell.swift */; };
 		C9940B552C0885230016CE9F /* GameVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9940B542C0885230016CE9F /* GameVM.swift */; };
 		C9940B572C0CF7D30016CE9F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9940B562C0CF7D30016CE9F /* User.swift */; };
-		C997C5422C29514800F7934E /* GameModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C997C5402C29514800F7934E /* GameModel.xcdatamodeld */; };
-		C997C5442C29516400F7934E /* DSQ.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = C997C5432C29516400F7934E /* DSQ.xcframework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -135,6 +134,7 @@
 		1251D1B22C199B1400BCDF5F /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		126AB5AE2C09A7B8001555CD /* GameOverStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverStatus.swift; sourceTree = "<group>"; };
 		126AB5B72C09F68F001555CD /* StylesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StylesCell.swift; sourceTree = "<group>"; };
+		1276E8F52C2966B3001DDA16 /* GameModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = GameModel.xcdatamodel; sourceTree = "<group>"; };
 		12972BAE2C05D24900FB6BA0 /* OptionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsView.swift; sourceTree = "<group>"; };
 		12972BB02C05D2B400FB6BA0 /* OptionsButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsButton.swift; sourceTree = "<group>"; };
 		12972BB42C05F43300FB6BA0 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
@@ -168,8 +168,6 @@
 		C9940B4F2C0881D60016CE9F /* DSQ.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = DSQ.xcframework; path = ../DSQ.xcframework; sourceTree = "<group>"; };
 		C9940B542C0885230016CE9F /* GameVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameVM.swift; sourceTree = "<group>"; };
 		C9940B562C0CF7D30016CE9F /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		C997C5412C29514800F7934E /* GameModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = GameModel.xcdatamodel; sourceTree = "<group>"; };
-		C997C5432C29516400F7934E /* DSQ.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = DSQ.xcframework; path = ../../../Projects/SwiftUI_ARKit_2024/XCFramework/DSQ.xcframework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -177,7 +175,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C997C5442C29516400F7934E /* DSQ.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -201,7 +198,7 @@
 		1221D8632BF1EFF600CB5EB9 = {
 			isa = PBXGroup;
 			children = (
-				C997C5402C29514800F7934E /* GameModel.xcdatamodeld */,
+				1276E8F42C2966B3001DDA16 /* GameModel.xcdatamodeld */,
 				1221D86E2BF1EFF600CB5EB9 /* DouShouQi */,
 				1221D87F2BF1EFF600CB5EB9 /* DouShouQiTests */,
 				1221D8892BF1EFF600CB5EB9 /* DouShouQiUITests */,
@@ -382,7 +379,6 @@
 		BD6B02C92C024ED7006838AF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				C997C5432C29516400F7934E /* DSQ.xcframework */,
 				C9940B4F2C0881D60016CE9F /* DSQ.xcframework */,
 			);
 			name = Frameworks;
@@ -531,6 +527,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1276E8F82C2967FC001DDA16 /* GameModel.xcdatamodeld in Sources */,
 				12972BB82C06004D00FB6BA0 /* ThemeManager.swift in Sources */,
 				1221D8A52BF244E500CB5EB9 /* RoundedCorner.swift in Sources */,
 				120475052BFE8B600044AD97 /* Effects.swift in Sources */,
@@ -576,7 +573,6 @@
 				126AB5B82C09F68F001555CD /* StylesCell.swift in Sources */,
 				BD6B02C82C024BD7006838AF /* BoardSceneValues.swift in Sources */,
 				BDD97D812C087E6E002B1B9E /* CellType.swift in Sources */,
-				C997C5422C29514800F7934E /* GameModel.xcdatamodeld in Sources */,
 				C961249E2BFF33FC00E1E55C /* MoveIndicatorCell.swift in Sources */,
 				1221D89F2BF2416600CB5EB9 /* GenericLeftButton.swift in Sources */,
 				12972BBA2C06027100FB6BA0 /* Language.swift in Sources */,
@@ -924,14 +920,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		C997C5402C29514800F7934E /* GameModel.xcdatamodeld */ = {
+		1276E8F42C2966B3001DDA16 /* GameModel.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				C997C5412C29514800F7934E /* GameModel.xcdatamodel */,
+				1276E8F52C2966B3001DDA16 /* GameModel.xcdatamodel */,
 			);
-			currentVersion = C997C5412C29514800F7934E /* GameModel.xcdatamodel */;
+			currentVersion = 1276E8F52C2966B3001DDA16 /* GameModel.xcdatamodel */;
 			name = GameModel.xcdatamodeld;
-			path = "/Users/imri/Desktop/DouShouQi-Ui/Sources/DouShouQi/GameModel.xcdatamodeld";
+			path = "GameModel.xcdatamodeld";
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
