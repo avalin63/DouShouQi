@@ -73,7 +73,7 @@ struct GameView: View {
                         HStack{                            
                             RoundedButton(
                                 function: { gameVM.switchGameContext() },
-                                systemName: "flag.checkered.2.crossed",
+                                systemName: "arkit",
                                 foregroundColor: .white,
                                 backgroundColor: DSQColors.primaryColor
                             )
