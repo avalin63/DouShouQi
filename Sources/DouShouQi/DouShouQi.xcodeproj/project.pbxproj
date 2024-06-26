@@ -51,8 +51,6 @@
 		12C595272C2974C70025FADE /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C595262C2974C70025FADE /* Result.swift */; };
 		12C595292C2975B10025FADE /* WinningReason.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C595282C2975B10025FADE /* WinningReason.swift */; };
 		12C9C5882BF7846D00BB5B39 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 12C9C5872BF7846D00BB5B39 /* Localizable.xcstrings */; };
-		12CA78882C296D4000D95719 /* DSQ.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12CA78872C296D4000D95719 /* DSQ.xcframework */; };
-		12CA78892C296D4000D95719 /* DSQ.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 12CA78872C296D4000D95719 /* DSQ.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		12E5BA852C20370000110C7E /* HistoricVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E5BA842C20370000110C7E /* HistoricVM.swift */; };
 		12F35C942C09A4A4005566B2 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12F35C932C09A4A4005566B2 /* Strings.swift */; };
 		BD0C968A2C29AE14006B8702 /* GameContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0C96892C29AE14006B8702 /* GameContext.swift */; };
@@ -69,6 +67,7 @@
 		BDDBC0CC2C1C34FF00DBE5C9 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDDBC0CB2C1C34FF00DBE5C9 /* Board.swift */; };
 		BDDBC0CF2C1C42CF00DBE5C9 /* NodeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDDBC0CE2C1C42CF00DBE5C9 /* NodeType.swift */; };
 		BDDBC0D12C1C42E600DBE5C9 /* SKNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDDBC0D02C1C42E600DBE5C9 /* SKNode.swift */; };
+		C910E00C2C2C5DF1003F1168 /* DSQ.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = C910E00B2C2C5DF1003F1168 /* DSQ.xcframework */; };
 		C961249A2BFE7B4C00E1E55C /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96124992BFE7B4C00E1E55C /* GameView.swift */; };
 		C961249C2BFF33F000E1E55C /* PlayerIndicatorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C961249B2BFF33F000E1E55C /* PlayerIndicatorCell.swift */; };
 		C961249E2BFF33FC00E1E55C /* MoveIndicatorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C961249D2BFF33FC00E1E55C /* MoveIndicatorCell.swift */; };
@@ -83,8 +82,6 @@
 		C96DF77E2C1DA4E7003D752B /* elephant.usdz in Resources */ = {isa = PBXBuildFile; fileRef = C96DF7752C1DA4E7003D752B /* elephant.usdz */; };
 		C96DF7802C201B9F003D752B /* ARPiece.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96DF77F2C201B9F003D752B /* ARPiece.swift */; };
 		C96DF7822C201BD4003D752B /* ARBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96DF7812C201BD4003D752B /* ARBoard.swift */; };
-		C98C7F642C29B99D007784C7 /* DSQ.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9F3CCC82C28A757000845FF /* DSQ.xcframework */; };
-		C98C7F652C29B99D007784C7 /* DSQ.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C9F3CCC82C28A757000845FF /* DSQ.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C9940B552C0885230016CE9F /* GameVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9940B542C0885230016CE9F /* GameVM.swift */; };
 		C9940B572C0CF7D30016CE9F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9940B562C0CF7D30016CE9F /* User.swift */; };
 		C9FE18AC2C19D1340066DD85 /* GameARViewReprensentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9FE18AB2C19D1340066DD85 /* GameARViewReprensentable.swift */; };
@@ -115,8 +112,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				C98C7F652C29B99D007784C7 /* DSQ.xcframework in Embed Frameworks */,
-				12CA78892C296D4000D95719 /* DSQ.xcframework in Embed Frameworks */,
 				126AB5B52C09EE82001555CD /* (null) in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -171,11 +166,9 @@
 		12C595262C2974C70025FADE /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		12C595282C2975B10025FADE /* WinningReason.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WinningReason.swift; sourceTree = "<group>"; };
 		12C9C5872BF7846D00BB5B39 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
-		12CA78872C296D4000D95719 /* DSQ.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = DSQ.xcframework; path = ../../../../SwiftUI_ARKit_2024/XCFramework/DSQ.xcframework; sourceTree = "<group>"; };
 		12E5BA842C20370000110C7E /* HistoricVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoricVM.swift; sourceTree = "<group>"; };
 		12F35C932C09A4A4005566B2 /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 		BD0C96892C29AE14006B8702 /* GameContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameContext.swift; sourceTree = "<group>"; };
-		BD0C968B2C29B5D7006B8702 /* DSQ.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = DSQ.xcframework; path = ../../../SwiftUI_ARKit_2024/XCFramework/DSQ.xcframework; sourceTree = "<group>"; };
 		BD6B02C32C024B75006838AF /* BoardScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardScene.swift; sourceTree = "<group>"; };
 		BD6B02C52C024B9B006838AF /* PieceSprite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieceSprite.swift; sourceTree = "<group>"; };
 		BD6B02C72C024BD7006838AF /* BoardSceneValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardSceneValues.swift; sourceTree = "<group>"; };
@@ -189,6 +182,7 @@
 		BDDBC0CB2C1C34FF00DBE5C9 /* Board.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
 		BDDBC0CE2C1C42CF00DBE5C9 /* NodeType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeType.swift; sourceTree = "<group>"; };
 		BDDBC0D02C1C42E600DBE5C9 /* SKNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKNode.swift; sourceTree = "<group>"; };
+		C910E00B2C2C5DF1003F1168 /* DSQ.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = DSQ.xcframework; path = ../DSQ.xcframework; sourceTree = "<group>"; };
 		C96124992BFE7B4C00E1E55C /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
 		C961249B2BFF33F000E1E55C /* PlayerIndicatorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerIndicatorCell.swift; sourceTree = "<group>"; };
 		C961249D2BFF33FC00E1E55C /* MoveIndicatorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveIndicatorCell.swift; sourceTree = "<group>"; };
@@ -205,7 +199,6 @@
 		C96DF7812C201BD4003D752B /* ARBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARBoard.swift; sourceTree = "<group>"; };
 		C9940B542C0885230016CE9F /* GameVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameVM.swift; sourceTree = "<group>"; };
 		C9940B562C0CF7D30016CE9F /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		C9F3CCC82C28A757000845FF /* DSQ.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = DSQ.xcframework; path = ../../../Projects/SwiftUI_ARKit_2024/XCFramework/DSQ.xcframework; sourceTree = "<group>"; };
 		C9FE18AB2C19D1340066DD85 /* GameARViewReprensentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameARViewReprensentable.swift; sourceTree = "<group>"; };
 		C9FE18AD2C19D1490066DD85 /* GameARView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameARView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -215,8 +208,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C98C7F642C29B99D007784C7 /* DSQ.xcframework in Frameworks */,
-				12CA78882C296D4000D95719 /* DSQ.xcframework in Frameworks */,
+				C910E00C2C2C5DF1003F1168 /* DSQ.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -426,10 +418,7 @@
 		BD6B02C92C024ED7006838AF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				BD0C968B2C29B5D7006B8702 /* DSQ.xcframework */,
-				C9F3CCC82C28A757000845FF /* DSQ.xcframework */,
-				12CA78872C296D4000D95719 /* DSQ.xcframework */,
-				C9940B4F2C0881D60016CE9F /* DSQ.xcframework */,
+				C910E00B2C2C5DF1003F1168 /* DSQ.xcframework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
